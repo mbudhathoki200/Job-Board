@@ -1,12 +1,23 @@
 import express from "express";
 import config from "./config";
 import router from "./routes";
+import { requestLogger } from "./middleware/logger.middleware";
+import {
+  genericErrorHandler,
+  notFoundError,
+} from "./middleware/errorHandler.middleware";
 
 const app = express();
 
 app.use(express.json());
 
+app.use(requestLogger);
+
 app.use(router);
+
+app.use(notFoundError);
+
+app.use(genericErrorHandler);
 
 const PORT = config.PORT;
 

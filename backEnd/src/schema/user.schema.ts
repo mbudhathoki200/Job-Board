@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const createUserBodySchema = Joi.object({
+export const createUserBodySchema = Joi.object({
   name: Joi.string().required().messages({
     "any.required": "Name is required",
   }),
@@ -35,4 +35,23 @@ const createUserBodySchema = Joi.object({
   permissions: Joi.string().optional(),
 }).options({
   stripUnknown: true,
+});
+
+export const LoginSchema = Joi.object({
+  email: Joi.string().email().required().messages({
+    "string.email": "email must be in valid format",
+    "any.required": "email is required",
+  }),
+
+  password: Joi.string().required().messages({
+    "any.required": "password is required",
+  }),
+}).options({
+  stripUnknown: true,
+});
+
+export const RefreshSchema = Joi.object({
+  refreshToken: Joi.string().required().messages({
+    "any.required": "refreshToken is required",
+  }),
 });
