@@ -14,7 +14,6 @@ export async function getCompanyById(id: string) {
   logger.info("get user by id");
 
   const data = await CompanyModel.CompanyModel.getCompanyById(id);
-  console.log(data.length);
 
   if (data.length === 0) {
     throw new NotFoundError(`Company with the id: ${id} not found`);

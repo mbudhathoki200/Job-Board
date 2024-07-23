@@ -10,6 +10,9 @@ const knexConfig: Knex.Config = {
     if (value == "*") {
       return originalImpl(value);
     }
+    if (value == "jobCategories") {
+      return originalImpl(value);
+    }
 
     return originalImpl(toSnakeCase(value));
   },
