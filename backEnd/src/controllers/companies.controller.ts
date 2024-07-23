@@ -1,5 +1,5 @@
 import HttpStatusCodes from "http-status-codes";
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import * as CompaniesServices from "../services/companies.services";
 import loggerWithNameSpace from "../utils/logger";
 import { Request } from "../interfaces/auth.interface";
@@ -14,4 +14,21 @@ export async function createCompany(req: Request, res: Response) {
   return res
     .status(HttpStatusCodes.OK)
     .send({ message: "Company Registered succesfully", user: data });
+}
+
+export async function getCompanyById(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("get company by id");
+  const { id } = req.params;
+
+  try {
+    const user = await CompaniesServices.getCompanyById(id);
+    res.status(HttpStatusCodes.OK).send(user);
+  } catch (error) {
+    next(error);
+    return;
+  }
 }

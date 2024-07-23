@@ -15,4 +15,13 @@ export class CompanyModel extends BaseModel {
 
     return companyToCreate;
   }
+  //get company by id
+  static getCompanyById(userId: string) {
+    const query = this.queryBuilder()
+      .select("id", "name", "description", "logoUrl", "website", "userId")
+      .table("company")
+      .where({ id: userId });
+
+    return query;
+  }
 }
