@@ -1,16 +1,13 @@
-import knexConfig, { baseKnexConfig } from "../knexfile";
+import { baseKnexConfig } from "../knexfile";
 import toSnakeCase from "to-snake-case";
 import camelize from "camelize";
 
 import knex, { Knex } from "knex";
 
-const KnexConfig: Knex.Config = {
+const knexConfig: Knex.Config = {
   ...baseKnexConfig,
   wrapIdentifier: (value, originalImpl) => {
     if (value == "*") {
-      return originalImpl(value);
-    }
-    if (value == "userId") {
       return originalImpl(value);
     }
 
@@ -22,4 +19,4 @@ const KnexConfig: Knex.Config = {
   },
 };
 
-export default knex(KnexConfig);
+export default knex(knexConfig);
