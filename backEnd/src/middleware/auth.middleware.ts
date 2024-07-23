@@ -30,11 +30,11 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
   next();
 }
 
-export function authorize(permission: string) {
+export function authorize(role: string) {
   return (req: Request, res: Response, next: NextFunction) => {
     const user = req.user!;
 
-    if (user.roles !== permission) {
+    if (user.roles !== role) {
       next(new UnauthenticatedError("Forbidden"));
       return;
     }
