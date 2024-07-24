@@ -1,4 +1,5 @@
 import { NotFoundError } from "../error/NotFoundError";
+import { UnauthenticatedError } from "../error/UnauthenticatedError";
 import { GetJobQuery, IJOB } from "../interfaces/job.interface";
 import * as JobModel from "../models/job.model";
 import loggerWithaNameSpace from "../utils/logger";
@@ -37,4 +38,31 @@ export async function getJobs(query: GetJobQuery) {
   };
 
   return { data, meta };
+}
+export async function getJobById(jobId: string) {
+  logger.info("getJobById");
+  const data = await JobModel.JobModel.getJobById(jobId);
+
+  if (data.length == 0) {
+    throw new NotFoundError(`Job with the id: ${jobId} doesnot exist`);
+  }
+  return data;
+}
+
+export async function updateJob(jobId: string, newJob: IJOB, userId: string) {
+  logger.info("updateJob");
+
+  const existingJob = await JobModel.JobModel.getJobById(jobId);
+  if (!existingJob) {
+    throw new NotFoundError(`Job with id: ${jobId} not found`);
+  }
+
+  if (existingJob.createdBy !== userId) {
+    throw new UnauthenticatedError("Forbidden!!!");
+  }
+
+  if (existingJob.length == 0) {
+    throw new NotFoundError(`Job with id: ${jobId} not found`);
+  }
+  return await JobModel.JobModel.updateJob(jobId, newJob, userId);
 }

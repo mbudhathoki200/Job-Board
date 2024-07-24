@@ -29,6 +29,23 @@ export async function createJob(
   }
 }
 
+export async function getJobById(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("get todo by id");
+  const { id } = req.params;
+  try {
+    const data = await JobServices.getJobById(id);
+    return res.status(HttpStatusCodes.OK).send({
+      job: data,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 export async function getJobs(req: Request, res: Response, next: NextFunction) {
   logger.info("get todo");
 
@@ -37,6 +54,27 @@ export async function getJobs(req: Request, res: Response, next: NextFunction) {
   try {
     const data = await JobServices.getJobs(query);
     return res.status(HttpStatusCodes.OK).send(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function updateJob(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("udpate todo");
+  const userId = req.user?.id!;
+  const { id } = req.params;
+  const newJob = req.body;
+  try {
+    const data = await JobServices.updateJob(id, newJob, userId);
+
+    res.status(HttpStatusCodes.OK).send({
+      message: "Upated Succesfully",
+      job: data,
+    });
   } catch (error) {
     next(error);
   }

@@ -1,8 +1,21 @@
 import express from "express";
-import { createJob, getJobs } from "../controllers/job.controller";
+import {
+  createJob,
+  getJobById,
+  getJobs,
+  updateJob,
+} from "../controllers/job.controller";
 import { authenticate, authorize } from "../middleware/auth.middleware";
-import { validateReqBody } from "../middleware/validator.middleware";
-import { jobBodySchema } from "../schema/job.schema";
+import {
+  validateReqBody,
+  validateReqQuery,
+} from "../middleware/validator.middleware";
+import {
+  getJobQuerySchema,
+  jobBodySchema,
+  updateJobBodySchema,
+} from "../schema/job.schema";
+import { getQuerySchema } from "../schema/query.schema";
 
 const router = express();
 
@@ -14,6 +27,16 @@ router.post(
   createJob
 );
 
-router.get("/", getJobs);
+router.get("/", validateReqQuery(getJobQuerySchema), getJobs);
+
+router.get("/:id", validateReqQuery(getQuerySchema), getJobById);
+
+router.put(
+  "/:id",
+  validateReqQuery(getQuerySchema),
+  validateReqBody(updateJobBodySchema),
+  authenticate,
+  updateJob
+);
 
 export default router;
