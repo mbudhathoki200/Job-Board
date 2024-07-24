@@ -79,3 +79,22 @@ export async function updateJob(
     next(error);
   }
 }
+
+export async function deleteJob(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("delete job");
+  const { id } = req.params;
+  const userId = req.user?.id;
+  try {
+    const data = await JobServices.deleteJob(id, userId!);
+
+    res.status(HttpStatusCodes.OK).send({
+      message: `Todo with id: ${id} deleted succesfully`,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

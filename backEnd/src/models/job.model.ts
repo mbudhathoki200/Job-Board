@@ -90,4 +90,8 @@ export class JobModel extends BaseModel {
 
     return updatedJob;
   }
+
+  static async deleteJob(jobId: string) {
+    await this.queryBuilder().table("jobListings").del().where({ id: jobId });
+  }
 }

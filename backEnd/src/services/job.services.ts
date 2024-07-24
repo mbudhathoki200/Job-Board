@@ -53,6 +53,7 @@ export async function updateJob(jobId: string, newJob: IJOB, userId: string) {
   logger.info("updateJob");
 
   const existingJob = await JobModel.JobModel.getJobById(jobId);
+
   if (!existingJob) {
     throw new NotFoundError(`Job with id: ${jobId} not found`);
   }
@@ -61,8 +62,20 @@ export async function updateJob(jobId: string, newJob: IJOB, userId: string) {
     throw new UnauthenticatedError("Forbidden!!!");
   }
 
-  if (existingJob.length == 0) {
+  return await JobModel.JobModel.updateJob(jobId, newJob, userId);
+}
+
+export async function deleteJob(jobId: string, userId: string) {
+  logger.info("delete Job");
+  const data = await JobModel.JobModel.getJobById(jobId);
+
+  if (!data) {
     throw new NotFoundError(`Job with id: ${jobId} not found`);
   }
-  return await JobModel.JobModel.updateJob(jobId, newJob, userId);
+
+  if (data.createdBy !== userId) {
+    throw new UnauthenticatedError("Forbidden!!!");
+  }
+
+  JobModel.JobModel.deleteJob(jobId);
 }

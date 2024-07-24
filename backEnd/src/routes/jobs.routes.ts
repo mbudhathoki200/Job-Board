@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createJob,
+  deleteJob,
   getJobById,
   getJobs,
   updateJob,
@@ -36,7 +37,16 @@ router.put(
   validateReqQuery(getQuerySchema),
   validateReqBody(updateJobBodySchema),
   authenticate,
+  authorize("admin"),
   updateJob
+);
+
+router.delete(
+  "/:id",
+  validateReqQuery(getQuerySchema),
+  authenticate,
+  authorize("admin"),
+  deleteJob
 );
 
 export default router;
