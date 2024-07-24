@@ -1,5 +1,5 @@
 import express from "express";
-import { createJob } from "../controllers/job.controller";
+import { createJob, getJobs } from "../controllers/job.controller";
 import { authenticate, authorize } from "../middleware/auth.middleware";
 import { validateReqBody } from "../middleware/validator.middleware";
 import { jobBodySchema } from "../schema/job.schema";
@@ -13,5 +13,7 @@ router.post(
   authorize("admin"),
   createJob
 );
+
+router.get("/", getJobs);
 
 export default router;

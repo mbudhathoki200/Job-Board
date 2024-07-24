@@ -1,4 +1,4 @@
-import { IJOB } from "../interfaces/job.interface";
+import { GetJobQuery, IJOB } from "../interfaces/job.interface";
 import { BaseModel } from "./base.model";
 
 export class JobModel extends BaseModel {
@@ -26,5 +26,32 @@ export class JobModel extends BaseModel {
       .returning("*");
 
     return createdJob;
+  }
+
+  static getJobs(filter: GetJobQuery) {
+    const { q } = filter;
+    const job = this.queryBuilder()
+      .select("*")
+      .table("jobListings")
+      .limit(filter.size!)
+      .offset((filter.page! - 1) * filter.size!);
+
+    if (q) {
+      job.whereLike("title", `%${q}%`);
+    }
+
+    return job;
+  }
+
+  static count(filter: GetJobQuery) {
+    const { q } = filter;
+
+    const query = this.queryBuilder().count("*").table("jobListings").first();
+
+    if (q) {
+      query.whereLike("title", `%${q}%`);
+    }
+
+    return query;
   }
 }

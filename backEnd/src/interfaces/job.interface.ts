@@ -15,3 +15,9 @@ export interface IJOB {
   companyId: string;
   categoryId: string;
 }
+
+export interface GetJobQuery {
+  q?: string;
+  page?: number;
+  size?: number;
+}
