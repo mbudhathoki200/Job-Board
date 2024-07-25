@@ -1,6 +1,7 @@
 import express from "express";
 import config from "./config";
 import router from "./routes";
+import cors from "cors";
 import { requestLogger } from "./middleware/logger.middleware";
 import {
   genericErrorHandler,
@@ -8,6 +9,8 @@ import {
 } from "./middleware/errorHandler.middleware";
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 

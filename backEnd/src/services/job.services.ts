@@ -39,6 +39,7 @@ export async function getJobs(query: GetJobQuery) {
 
   return { data, meta };
 }
+
 export async function getJobById(jobId: string) {
   logger.info("getJobById");
   const data = await JobModel.JobModel.getJobById(jobId);
