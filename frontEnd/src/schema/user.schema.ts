@@ -51,7 +51,9 @@ export const RegisterUserSchema = Joi.object({
       }
       return value;
     }),
-  roles: Joi.string().optional(),
+  roles: Joi.string().required().messages({
+    "any.required": "Roles is required",
+  }),
 }).options({
   stripUnknown: true,
 });
