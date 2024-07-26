@@ -1,6 +1,6 @@
 import axios from "axios";
 import { validateForm } from "./utils/validator";
-import { LoginSchema } from "./schema/user.schema";
+import { LoginSchema, RegisterUserSchema } from "./schema/user.schema";
 
 const loginModal = document.getElementById("login_Modal") as HTMLDivElement;
 const loginModalButton = document.getElementById(
@@ -8,12 +8,16 @@ const loginModalButton = document.getElementById(
 ) as HTMLButtonElement;
 const logOutButton = document.getElementById("logout-btn") as HTMLButtonElement;
 const loginForm = document.getElementById("login_form") as HTMLFormElement;
+const signupForm = document.getElementById("signup_Form") as HTMLFormElement;
 const loginErrorMessage = document.getElementById(
   "errorMessage"
 ) as HTMLDivElement;
+const signUpErrorMessage = document.getElementById(
+  "signUperrorMessage"
+) as HTMLDivElement;
 const nonUserElements = document.querySelectorAll("#none_user_element");
 const userElements = document.querySelectorAll("#user_element");
-console.log(userElements);
+
 loginModalButton.addEventListener("click", () => {
   loginModal.classList.toggle("hidden");
   //   loginModal.classList.remove("hidden");
@@ -42,6 +46,21 @@ loginForm.addEventListener("submit", (event) => {
       .catch((error) => {
         loginErrorMessage.innerHTML = error.response.data.message;
       });
+  }
+});
+
+signupForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const target = event.target as HTMLFormElement;
+  const formData = {
+    name: target.userName.value,
+    email: target.userEmail.value,
+    password: target.userPassword.value,
+    roles: target.roles.value,
+  };
+  const error = validateForm(formData, RegisterUserSchema);
+  if (error) {
+    signUpErrorMessage.innerHTML = error![0].message;
   }
 });
 
