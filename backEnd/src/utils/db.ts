@@ -13,6 +13,9 @@ const knexConfig: Knex.Config = {
     if (value == "jobCategories") {
       return originalImpl(value);
     }
+    if (value == "userId") {
+      return originalImpl(value);
+    }
 
     return originalImpl(toSnakeCase(value));
   },

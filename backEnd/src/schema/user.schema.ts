@@ -32,7 +32,9 @@ export const createUserBodySchema = Joi.object({
       }
       return value;
     }),
-  permissions: Joi.string().optional(),
+  roles: Joi.string().messages({
+    "any.required": "Roles is required",
+  }),
 }).options({
   stripUnknown: true,
 });
