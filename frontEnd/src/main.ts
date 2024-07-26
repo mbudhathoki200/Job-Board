@@ -4,6 +4,8 @@ import { LoginSchema, RegisterUserSchema } from "./schema/user.schema";
 import Swal from "sweetalert2";
 
 const loginModal = document.getElementById("login_Modal") as HTMLDivElement;
+// const signUpModal = document.getElementById("signUp_modal") as HTMLDivElement;
+const signUpButton = document.getElementById("signup-btn") as HTMLButtonElement;
 const loginModalButton = document.getElementById(
   "login_button",
 ) as HTMLButtonElement;
@@ -22,6 +24,11 @@ const userElements = document.querySelectorAll("#user_element");
 loginModalButton.addEventListener("click", () => {
   loginModal.classList.toggle("hidden");
   //   loginModal.classList.remove("hidden");
+});
+signUpButton.addEventListener("click", () => {
+  console.log("here");
+
+  signupForm.classList.remove("hidden");
 });
 
 loginForm.addEventListener("submit", (event) => {
@@ -65,8 +72,8 @@ signupForm.addEventListener("submit", (event) => {
   } else {
     axios
       .post("http://localhost:3000/signUp", formData)
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        signupForm.classList.add("hidden");
         Swal.fire({
           title: "Account created!",
           icon: "success",
@@ -75,7 +82,7 @@ signupForm.addEventListener("submit", (event) => {
         });
       })
       .catch((error) => {
-        loginErrorMessage.innerHTML = error.response.data.message;
+        signUpErrorMessage.innerHTML = error.response.data.message;
       });
   }
 });
