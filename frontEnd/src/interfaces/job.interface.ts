@@ -16,6 +16,7 @@ export interface IJOB {
   categoryId: string;
   type: string;
   companyName: string;
+  companyDescription: string;
   logoUrl: string;
   website: string;
 }
