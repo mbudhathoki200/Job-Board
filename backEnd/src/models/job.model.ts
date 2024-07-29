@@ -32,7 +32,26 @@ export class JobModel extends BaseModel {
   static getJobs(filter: GetJobQuery) {
     const { q } = filter;
     const job = this.queryBuilder()
-      .select("*")
+      .select(
+        "jobListings.title",
+        "JobListings.description",
+        "JobListings.location",
+        "JobListings.salaryMin",
+        "JobListings.salaryMax",
+        "JobListings.postDate",
+        "JobListings.expiryDate",
+        "JobListings.openings",
+        "JobListings.experience",
+        "JobListings.level",
+        "JobListings.type",
+        "JobListings.createdBy",
+        "JobListings.companyId",
+        "JobListings.categoryId",
+        "company.name as companyName",
+        "company.logoUrl",
+        "company.website",
+        "company.description as companyDescription"
+      )
       .table("jobListings")
       .join("company", "jobListings.companyId", "company.id")
       .limit(filter.size!)
