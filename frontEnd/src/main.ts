@@ -2,6 +2,7 @@ import axios from "axios";
 import { validateForm } from "./utils/validator";
 import { LoginSchema, RegisterUserSchema } from "./schema/user.schema";
 import Swal from "sweetalert2";
+import axiosInstance from "./axios";
 
 const loginModal = document.getElementById("login_Modal") as HTMLDivElement;
 // const signUpModal = document.getElementById("signUp_modal") as HTMLDivElement;
@@ -25,9 +26,8 @@ loginModalButton.addEventListener("click", () => {
   loginModal.classList.toggle("hidden");
   //   loginModal.classList.remove("hidden");
 });
-signUpButton.addEventListener("click", () => {
-  console.log("here");
 
+signUpButton.addEventListener("click", () => {
   signupForm.classList.remove("hidden");
 });
 
@@ -95,7 +95,7 @@ if (accessToken) {
   };
 
   window.onload = async () => {
-    axios.get("http://localhost:3000/me", config).then((res) => {
+    axios.get("http://localhost:3000/me", config).then(() => {
       nonUserElements.forEach((el) => {
         el.classList.toggle("hidden");
       });
@@ -104,6 +104,21 @@ if (accessToken) {
       });
     });
   };
+}
+
+window.onload = async () => {
+  try {
+    const jobDetails = await axiosInstance.get("/job?page=1&size=3");
+    // const companyId = jobDetails.data.data.companyId;
+    // const companyDetails = await axiosInstance.get("/");
+    renderJobs(jobDetails.data.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+function renderJobs(jobs: any) {
+  console.log(jobs);
 }
 
 logOutButton.addEventListener("click", () => {
