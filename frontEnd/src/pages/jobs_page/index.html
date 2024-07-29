@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Board</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <!-- nav bar starts-->
+    <nav
+      class="relative top-0 z-10 block h-max w-full max-w-full rounded-none border border-white/80 bg-white bg-opacity-80 px-4 py-2 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4"
+    >
+      <div class="mx-3 flex items-center justify-between text-blue-gray-900">
+        <a
+          href="/index.html"
+          class="mr-4 block h-11 cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased"
+        >
+          <img src="/jobboard2.jpg" alt="logo" class="h-[100%] w-[100%]" />
+        </a>
+        <div class="mr-4 hidden lg:block">
+          <ul
+            class="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"
+          >
+            <li
+              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+            >
+              <a href="#" class="flex items-center"> Home </a>
+            </li>
+            <li
+              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+            >
+              <a href="#" class="flex items-center text-blue-400"> Jobs </a>
+            </li>
+            <li
+              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+            >
+              <a href="#" class="flex items-center"> Categories </a>
+            </li>
+            <li
+              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+            >
+              <a href="#" class="flex items-center"> Contact </a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex items-center gap-x-1" id="none_user_element">
+          <button
+            class="select-none rounded-lg px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+            type="button"
+            id="login_button"
+          >
+            <span>Log In</span>
+          </button>
+          <button
+            class="mx-4 select-none rounded-lg bg-gray-900 px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+            data-dialog-target="sign-in-dialog"
+            id="signup-btn"
+          >
+            Sign up
+          </button>
+        </div>
+        <div id="user_element" class="hidden">
+          <button
+            class="mx-4 select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+            type="button"
+            id="logout-btn"
+          >
+            <span>LOG OUT</span>
+          </button>
+        </div>
+
+        <button
+          class="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
+          type="button"
+        >
+          <span
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </nav>
+    <!-- nav bar ends-->
+    <div class="flex h-max justify-center bg-gray-100 p-10">
+      <div class="flex w-[80%] gap-8">
+        <div class="flex h-max w-[32%] flex-col gap-4 rounded-lg bg-white p-10">
+          <div class="flex flex-col gap-4">
+            <label for="search" class="text-xl">Search Company</label>
+            <div class="relative">
+              <div
+                class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
+              >
+                <svg
+                  class="h-4 w-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="default-search"
+                class="block w-full rounded-lg border border-gray-300 bg-white p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                placeholder="Search"
+                required
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-4">
+            <label
+              for="countries"
+              class="block text-xl font-medium text-gray-900"
+              >Categories</label
+            >
+            <select
+              id="Categories"
+              class="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+            >
+              <option value="WD">Web Designer</option>
+              <option value="WD">Web Developer</option>
+              <option value="WD">UI / UX Designer</option>
+              <option value="WD">Software Engineer</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-4">
+            <label
+              for="location"
+              class="block text-xl font-medium text-gray-900"
+              >Location</label
+            >
+            <select
+              id="location"
+              class="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+            >
+              <option value="WD">Kathmandu</option>
+              <option value="WD">Lalitpur</option>
+              <option value="WD">Bhaktapur</option>
+              <option value="WD">Jhapa</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-3">
+            <label for="">Job Type</label>
+            <div class="flex gap-3">
+              <input
+                id="checkbox-1"
+                type="checkbox"
+                value=""
+                class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
+              />
+              <label class="form-checkbox-label text-gray-600" for="fulltime"
+                >Full Time</label
+              >
+            </div>
+            <div class="flex gap-3">
+              <input
+                id="checkbox-1"
+                type="checkbox"
+                value=""
+                class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
+              />
+              <label class="form-checkbox-label text-gray-600" for="fulltime"
+                >Remote</label
+              >
+            </div>
+            <div class="flex gap-3">
+              <input
+                id="checkbox-1"
+                type="checkbox"
+                value=""
+                class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
+              />
+              <label class="form-checkbox-label text-gray-600" for="fulltime"
+                >Part Time</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="flex w-[60%] flex-col gap-8">
+          <div class="flex items-center gap-10 rounded-lg border bg-white p-8">
+            <img src="/69logo.jpeg" alt="logo" class="size-28 rounded-full" />
+            <div class="flex flex-col gap-4">
+              <p class="text-3xl font-bold">Back-End Developer</p>
+              <div class="flex gap-8 text-gray-600">
+                <div class="flex items-center gap-2">
+                  <i
+                    class="fa-regular fa-building fa-lg"
+                    style="color: #1e88e5"
+                  ></i>
+                  <p>Lenovo pvt ltd.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i
+                    class="fa-solid fa-location-dot fa-lg"
+                    style="color: #1e88e5"
+                  ></i>
+                  <div>Beijing, china</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-8 rounded-lg border bg-white p-8">
+            <div class="flex flex-col gap-4">
+              <p class="text-2xl font-semibold">Job Description:</p>
+              <p class="text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptatum, reprehenderit fugit! Ut maxime dolorum provident
+                illum ratione labore ex quasi modi aliquam quod est atque
+                perferendis consequatur aut quis, saepe sed aspernatur sapiente
+                aliquid animi voluptate sequi. Dolor, ea debitis exercitationem
+                velit sapiente corrupti tenetur minus earum voluptate
+                repellendus inventore.
+              </p>
+            </div>
+            <div class="flex flex-col gap-4">
+              <p class="text-2xl font-semibold">Requirements:</p>
+              <p class="text-gray-700">
+                It sometimes makes sense to select texts containing the various
+                letters and symbols specific to the output language. Proven
+                experience as a .NET Developer or Application Developer good
+                understanding of SQL and Relational Databases, specifically
+                Microsoft SQL Server. Experience designing, developing and
+                creating RESTful web services and APIs Basic know how of Agile
+                process and practices Good understanding of object-oriented
+                programming. Good understanding of concurrent programming. Sound
+                knowledge of application architecture and design. Excellent
+                problem solving and analytical skills
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex flex-col gap-3 rounded-lg border bg-white p-8 text-gray-700"
+          >
+            <p class="text-2xl font-semibold text-black">About Company</p>
+            <p>
+              <span class="text-lg font-semibold text-black">Name: </span>Lenovo
+              pvt. ltd.
+            </p>
+            <p>
+              <span class="text-lg font-semibold text-black">Location: </span
+              >Beijing, China
+            </p>
+            <p>
+              <span class="text-lg font-semibold text-black">Website: </span
+              >www.manish.com
+            </p>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Blanditiis iure eius nemo, in dolorem reiciendis sint accusantium
+              ad suscipit tenetur officiis dignissimos enim? Maxime corrupti
+              molestiae iure ratione ea, qui illo? Saepe tenetur nulla nisi
+              incidunt similique voluptatum repellat architecto nam nesciunt
+              doloribus ut eligendi quas, explicabo cumque! Accusamus, quia!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="node_modules/@material-tailwind/html@latest/scripts/dialog.js"></script>
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>
