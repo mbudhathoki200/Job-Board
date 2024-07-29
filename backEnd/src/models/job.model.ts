@@ -33,6 +33,7 @@ export class JobModel extends BaseModel {
     const { q } = filter;
     const job = this.queryBuilder()
       .select(
+        "jobListings.id",
         "jobListings.title",
         "JobListings.description",
         "JobListings.location",
