@@ -34,6 +34,7 @@ export class JobModel extends BaseModel {
     const job = this.queryBuilder()
       .select("*")
       .table("jobListings")
+      .join("company", "jobListings.companyId", "company.id")
       .limit(filter.size!)
       .offset((filter.page! - 1) * filter.size!);
 
