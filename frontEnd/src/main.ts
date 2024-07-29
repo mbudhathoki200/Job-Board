@@ -127,8 +127,7 @@ function renderPopularJobs(jobs: Array<IJOB>) {
   // singleJob.style.gap = "1.5rem";
 
   jobs.forEach((job) => {
-    console.log(job);
-    const remainigDays = calculateDays(job.postDate, job.expiryDate);
+    const remainigDays = calculateDays(job.expiryDate);
     singleJob.innerHTML += `<div
           class="max-w-[370px] cursor-pointer space-y-4 rounded-xl border-2 p-6 hover:scale-105"
         >
@@ -156,7 +155,7 @@ function renderPopularJobs(jobs: Array<IJOB>) {
               class="flex items-center justify-center gap-2 rounded-lg bg-gray-100 p-3 text-nowrap"
             >
               <i class="fa-regular fa-clock" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">${remainigDays} days left</p>
+              <p class="text-xs text-gray-500">${remainigDays}</p>
             </div>
             <div
               class="flex items-center justify-center gap-2 rounded-lg bg-gray-100 p-3 text-nowrap"
@@ -191,17 +190,21 @@ function renderPopularJobs(jobs: Array<IJOB>) {
   });
   popularJobsSection.appendChild(singleJob);
 }
-function calculateDays(postedDate: string, expiryDate: string) {
-  const postDate = new Date(postedDate);
+function calculateDays(expiryDate: string) {
   const expDate = new Date(expiryDate);
+  const currentDate = new Date();
 
   // Calculate the difference in milliseconds
-  const diffTime = expDate.getTime() - postDate.getTime();
+  const diffTime = expDate.getTime() - currentDate.getTime();
 
   // Convert milliseconds to days
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  return diffDays;
+  if (diffDays < 0) {
+    return "Expired";
+  } else {
+    return `${diffDays} days left`;
+  }
 }
 
 logOutButton.addEventListener("click", () => {
