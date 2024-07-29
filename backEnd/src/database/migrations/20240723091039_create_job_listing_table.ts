@@ -34,6 +34,8 @@ export async function up(knex: Knex): Promise<void> {
 
     table.string("level").notNullable();
 
+    table.string("type", 100).notNullable();
+
     table
       .bigInteger("company_id")
       .unsigned()
@@ -63,7 +65,7 @@ export async function up(knex: Knex): Promise<void> {
       .bigInteger("updated_by")
       .unsigned()
       .references("id")
-      .inTable(TABLE_NAME)
+      .inTable("users")
       .nullable();
   });
 }

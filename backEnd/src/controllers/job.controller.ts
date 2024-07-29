@@ -92,7 +92,7 @@ export async function deleteJob(
     const data = await JobServices.deleteJob(id, userId!);
 
     res.status(HttpStatusCodes.OK).send({
-      message: `Todo with id: ${id} deleted succesfully`,
+      message: `Job with id: ${id} deleted succesfully`,
     });
   } catch (error) {
     next(error);

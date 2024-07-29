@@ -14,6 +14,7 @@ export interface IJOB {
   createdBy: string;
   companyId: string;
   categoryId: string;
+  type: string;
 }
 
 export interface GetJobQuery {

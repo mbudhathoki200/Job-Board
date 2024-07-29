@@ -43,7 +43,7 @@ export class UserModel extends BaseModel {
       )
       .table("users")
       .where("users.email", email)
-      .leftJoin("roles", "users.id", "roles.id")
+      .join("roles", "users.id", "roles.userId")
       .first();
 
     return query;

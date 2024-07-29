@@ -9,7 +9,7 @@ import { getCompanyById } from "./companies.services";
 const logger = loggerWithaNameSpace("JobServices");
 
 export async function createJob(userId: string, job: IJOB) {
-  logger.info("createTodos");
+  logger.info("create Job");
 
   const categoryId = job.categoryId;
   const companyId = job.companyId;
@@ -43,8 +43,9 @@ export async function getJobs(query: GetJobQuery) {
 export async function getJobById(jobId: string) {
   logger.info("getJobById");
   const data = await JobModel.JobModel.getJobById(jobId);
+  console.log(data);
 
-  if (data.length == 0) {
+  if (!data) {
     throw new NotFoundError(`Job with the id: ${jobId} doesnot exist`);
   }
   return data;

@@ -50,6 +50,7 @@ export async function logIn(body: Pick<IUser, "email" | "password">) {
     permissions: existingUser.permissions,
     roles: existingUser.roles,
   };
+  console.log(payload);
 
   const accessToken = sign(payload, config.jwt.secret!, {
     expiresIn: config.jwt.accessTokenExpiryMS,

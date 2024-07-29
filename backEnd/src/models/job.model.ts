@@ -15,6 +15,7 @@ export class JobModel extends BaseModel {
       openings: Job.openings,
       experience: Job.experience,
       level: Job.level,
+      type: Job.type,
       createdBy: userId,
       companyId: Job.companyId,
       categoryId: Job.categoryId,
@@ -77,11 +78,13 @@ export class JobModel extends BaseModel {
       openings: Job.openings,
       experience: Job.experience,
       level: Job.level,
+      type: Job.type,
       companyId: Job.companyId,
       categoryId: Job.categoryId,
       updatedAt: new Date(),
       updatedBy: userId,
     };
+    console.log(jobToUpdate);
     const [updatedJob] = await this.queryBuilder()
       .update(jobToUpdate)
       .table("jobListings")

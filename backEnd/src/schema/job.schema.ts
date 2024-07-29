@@ -50,6 +50,10 @@ export const jobBodySchema = Joi.object({
     "any.required": "level is required",
     "string.min": "level should be atleast 2 charactes long",
   }),
+  type: Joi.string().min(2).required().messages({
+    "any.required": "type is required",
+    "string.min": "level should be atleast 2 charactes long",
+  }),
   companyId: Joi.string().required().messages({
     "any.required": "companyId is required",
   }),
@@ -122,6 +126,10 @@ export const updateJobBodySchema = Joi.object({
     "string.min": "experience should be atleast 2 charactes long",
   }),
   level: Joi.string().min(2).optional().messages({
+    "string.min": "level should be atleast 2 charactes long",
+  }),
+  type: Joi.string().min(2).required().messages({
+    "any.required": "type is required",
     "string.min": "level should be atleast 2 charactes long",
   }),
   companyId: Joi.string().optional(),
