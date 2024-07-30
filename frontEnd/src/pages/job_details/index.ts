@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import axiosInstance from "../../axios";
 import { IJOB } from "../../interfaces/job.interface";
 
@@ -12,7 +13,12 @@ window.onload = async () => {
     const response = await axiosInstance.get(`/job/${id}`);
     renderJobPage(response.data.job);
   } catch (error) {
-    console.log(error);
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!",
+      timer: 1000,
+    });
   }
 };
 

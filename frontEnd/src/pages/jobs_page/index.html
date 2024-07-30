@@ -38,7 +38,9 @@
             <li
               class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
             >
-              <a href="#" class="flex items-center text-blue-400"> Jobs </a>
+              <a href="#" class="flex items-center font-semibold text-blue-400">
+                Jobs
+              </a>
             </li>
             <li
               class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
@@ -61,7 +63,7 @@
             <span>Log In</span>
           </button>
           <button
-            class="mx-4 select-none rounded-lg bg-gray-900 px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            class="mx-4 select-none rounded-lg bg-blue-700 px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"
             data-dialog-target="sign-in-dialog"
             id="signup-btn"
@@ -105,34 +107,25 @@
     </nav>
     <!-- nav bar ends-->
     <div class="flex h-max justify-center bg-gray-100 p-10">
-      <div class="flex w-[80%] gap-8">
-        <div class="flex h-max w-[32%] flex-col gap-4 rounded-lg bg-white p-10">
+      <div class="flex w-[80%] gap-6">
+        <div
+          class="flex h-max w-[32%] flex-col gap-4 rounded-lg bg-white p-10 shadow"
+        >
           <div class="flex flex-col gap-4">
-            <label for="search" class="text-xl">Search Company</label>
+            <label for="search" class="text-lg">Search Company</label>
             <div class="relative">
               <div
-                class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
+                class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5"
               >
-                <svg
-                  class="h-4 w-4 text-gray-500 dark:text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                  />
-                </svg>
+                <i
+                  class="fa-solid fa-magnifying-glass"
+                  style="color: rgb(194, 194, 194)"
+                ></i>
               </div>
               <input
                 type="search"
                 id="default-search"
-                class="block w-full rounded-lg border border-gray-300 bg-white p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                class="block w-full rounded border-2 border-gray-300 bg-white p-3 ps-12 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500"
                 placeholder="Search"
                 required
               />
@@ -140,13 +133,13 @@
           </div>
           <div class="flex flex-col gap-4">
             <label
-              for="countries"
-              class="block text-xl font-medium text-gray-900"
+              for="Categories"
+              class="block text-lg font-medium text-gray-900"
               >Categories</label
             >
             <select
               id="Categories"
-              class="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              class="block h-[47px] w-full rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             >
               <option value="WD">Web Designer</option>
               <option value="WD">Web Developer</option>
@@ -157,12 +150,12 @@
           <div class="flex flex-col gap-4">
             <label
               for="location"
-              class="block text-xl font-medium text-gray-900"
+              class="block text-lg font-medium text-gray-900"
               >Location</label
             >
             <select
               id="location"
-              class="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              class="block h-[47px] w-full rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             >
               <option value="WD">Kathmandu</option>
               <option value="WD">Lalitpur</option>
@@ -170,119 +163,237 @@
               <option value="WD">Jhapa</option>
             </select>
           </div>
-          <div class="flex flex-col gap-3">
-            <label for="">Job Type</label>
-            <div class="flex gap-3">
-              <input
-                id="checkbox-1"
-                type="checkbox"
-                value=""
-                class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
-              />
-              <label class="form-checkbox-label text-gray-600" for="fulltime"
-                >Full Time</label
-              >
-            </div>
-            <div class="flex gap-3">
-              <input
-                id="checkbox-1"
-                type="checkbox"
-                value=""
-                class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
-              />
-              <label class="form-checkbox-label text-gray-600" for="fulltime"
-                >Remote</label
-              >
-            </div>
-            <div class="flex gap-3">
-              <input
-                id="checkbox-1"
-                type="checkbox"
-                value=""
-                class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
-              />
-              <label class="form-checkbox-label text-gray-600" for="fulltime"
-                >Part Time</label
-              >
-            </div>
-          </div>
-        </div>
-        <div class="flex w-[60%] flex-col gap-8">
-          <div class="flex items-center gap-10 rounded-lg border bg-white p-8">
-            <img src="/69logo.jpeg" alt="logo" class="size-28 rounded-full" />
-            <div class="flex flex-col gap-4">
-              <p class="text-3xl font-bold">Back-End Developer</p>
-              <div class="flex gap-8 text-gray-600">
-                <div class="flex items-center gap-2">
-                  <i
-                    class="fa-regular fa-building fa-lg"
-                    style="color: #1e88e5"
-                  ></i>
-                  <p>Lenovo pvt ltd.</p>
-                </div>
-                <div class="flex items-center gap-2">
-                  <i
-                    class="fa-solid fa-location-dot fa-lg"
-                    style="color: #1e88e5"
-                  ></i>
-                  <div>Beijing, china</div>
-                </div>
+          <div class="flex flex-col gap-4">
+            <label for="" class="text-lg">Job Type</label>
+            <div class="flex flex-col gap-3">
+              <div class="flex gap-3">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
+                />
+                <label class="form-checkbox-label text-gray-600" for="fulltime"
+                  >Full Time</label
+                >
+              </div>
+              <div class="flex gap-3">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
+                />
+                <label class="form-checkbox-label text-gray-600" for="fulltime"
+                  >Remote</label
+                >
+              </div>
+              <div class="flex gap-3">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
+                />
+                <label class="form-checkbox-label text-gray-600" for="fulltime"
+                  >Part Time</label
+                >
+              </div>
+              <div class="flex gap-3">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  class="h-5 w-5 cursor-pointer rounded-md border border-gray-200 bg-gray-100 text-blue-600 transition-all focus:ring-2 focus:ring-blue-200 focus:ring-offset-0"
+                />
+                <label class="form-checkbox-label text-gray-600" for="Hourly"
+                  >Hourly Basis</label
+                >
               </div>
             </div>
           </div>
-          <div class="flex flex-col gap-8 rounded-lg border bg-white p-8">
-            <div class="flex flex-col gap-4">
-              <p class="text-2xl font-semibold">Job Description:</p>
-              <p class="text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum, reprehenderit fugit! Ut maxime dolorum provident
-                illum ratione labore ex quasi modi aliquam quod est atque
-                perferendis consequatur aut quis, saepe sed aspernatur sapiente
-                aliquid animi voluptate sequi. Dolor, ea debitis exercitationem
-                velit sapiente corrupti tenetur minus earum voluptate
-                repellendus inventore.
-              </p>
-            </div>
-            <div class="flex flex-col gap-4">
-              <p class="text-2xl font-semibold">Requirements:</p>
-              <p class="text-gray-700">
-                It sometimes makes sense to select texts containing the various
-                letters and symbols specific to the output language. Proven
-                experience as a .NET Developer or Application Developer good
-                understanding of SQL and Relational Databases, specifically
-                Microsoft SQL Server. Experience designing, developing and
-                creating RESTful web services and APIs Basic know how of Agile
-                process and practices Good understanding of object-oriented
-                programming. Good understanding of concurrent programming. Sound
-                knowledge of application architecture and design. Excellent
-                problem solving and analytical skills
-              </p>
+          <div class="flex flex-col gap-4">
+            <label for="salary" class="text-lg">Salary</label>
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center gap-3">
+                <input
+                  id="default-radio-1"
+                  type="radio"
+                  value=""
+                  name="default-radio"
+                  class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-transparent"
+                />
+                <label class="form-checkbox-label text-gray-600" for="fulltime"
+                  >10k - 15k</label
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <input
+                  id="default-radio-1"
+                  type="radio"
+                  value=""
+                  name="default-radio"
+                  class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-transparent"
+                />
+                <label class="form-checkbox-label text-gray-600" for="fulltime"
+                  >15k - 25k</label
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <input
+                  id="default-radio-1"
+                  type="radio"
+                  value=""
+                  name="default-radio"
+                  class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-transparent"
+                />
+                <label class="form-checkbox-label text-gray-600" for="fulltime"
+                  >more than 25k</label
+                >
+              </div>
             </div>
           </div>
+          <div class="mt-6">
+            <button
+              class="select-none rounded-lg border-2 border-blue-800 px-8 py-3 text-center align-middle text-base font-bold uppercase text-blue-600 transition-all delay-100 ease-in-out hover:-translate-y-1 hover:scale-105 hover:opacity-75 focus:ring focus:ring-blue-300 active:opacity-[0.85]"
+              type="button"
+            >
+              Apply Filter
+            </button>
+          </div>
+        </div>
+        <div class="flex w-[68%] flex-col gap-8">
           <div
-            class="flex flex-col gap-3 rounded-lg border bg-white p-8 text-gray-700"
+            class="flex items-center justify-between gap-5 rounded-lg bg-white p-5 shadow transition-all duration-500 hover:shadow-2xl"
           >
-            <p class="text-2xl font-semibold text-black">About Company</p>
-            <p>
-              <span class="text-lg font-semibold text-black">Name: </span>Lenovo
-              pvt. ltd.
-            </p>
-            <p>
-              <span class="text-lg font-semibold text-black">Location: </span
-              >Beijing, China
-            </p>
-            <p>
-              <span class="text-lg font-semibold text-black">Website: </span
-              >www.manish.com
-            </p>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Blanditiis iure eius nemo, in dolorem reiciendis sint accusantium
-              ad suscipit tenetur officiis dignissimos enim? Maxime corrupti
-              molestiae iure ratione ea, qui illo? Saepe tenetur nulla nisi
-              incidunt similique voluptatum repellat architecto nam nesciunt
-              doloribus ut eligendi quas, explicabo cumque! Accusamus, quia!
-            </p>
+            <div class="flex items-center gap-2">
+              <div
+                class="flex size-14 items-center justify-center rounded-md bg-white shadow"
+              >
+                <img
+                  src="/facebook-logo.png"
+                  alt="company_logo"
+                  class="size-8"
+                />
+              </div>
+              <p
+                class="ms-3 min-w-[150px] text-lg font-semibold hover:text-blue-600"
+              >
+                Web Designer
+              </p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div
+                class="flex w-fit rounded-full bg-blue-50 px-4 py-2 text-xs font-medium text-blue-600"
+              >
+                <p>Full Time</p>
+              </div>
+              <div class="flex items-center gap-2 text-gray-500">
+                <i class="fa-regular fa-clock"></i>
+                <p>30th July 2024</p>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2 py-2 text-gray-500">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Nepal</p>
+              </div>
+              <div class="font-semibold">Rs 4,000- Rs 4,500</div>
+            </div>
+            <button
+              type="button"
+              class="mb-2 me-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            >
+              Apply Now
+            </button>
+          </div>
+          <div
+            class="flex items-center justify-between gap-5 rounded-lg bg-white p-5 shadow transition-all duration-500 hover:shadow-xl"
+          >
+            <div class="flex items-center gap-2">
+              <div
+                class="flex size-14 items-center justify-center rounded-md bg-white shadow"
+              >
+                <img
+                  src="/facebook-logo.png"
+                  alt="company_logo"
+                  class="size-8"
+                />
+              </div>
+              <p
+                class="ms-3 min-w-[150px] text-lg font-semibold hover:text-blue-600"
+              >
+                Web Designer
+              </p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div
+                class="flex w-fit rounded-full bg-blue-50 px-4 py-2 text-xs font-medium text-blue-600"
+              >
+                <p>Full Time</p>
+              </div>
+              <div class="flex items-center gap-2 text-gray-500">
+                <i class="fa-regular fa-clock"></i>
+                <p>30th July 2024</p>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2 py-2 text-gray-500">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Nepal</p>
+              </div>
+              <div class="font-semibold">Rs 4,000- Rs 4,500</div>
+            </div>
+            <button
+              type="button"
+              class="mb-2 me-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            >
+              Apply Now
+            </button>
+          </div>
+          <div
+            class="flex items-center justify-between gap-5 rounded-lg bg-white p-5 shadow transition-all duration-500 hover:shadow-xl"
+          >
+            <div class="flex items-center gap-2">
+              <div
+                class="flex size-14 items-center justify-center rounded-md bg-white shadow"
+              >
+                <img
+                  src="/facebook-logo.png"
+                  alt="company_logo"
+                  class="size-8"
+                />
+              </div>
+              <p
+                class="ms-3 min-w-[150px] text-lg font-semibold hover:text-blue-600"
+              >
+                Web Designer
+              </p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div
+                class="flex w-fit rounded-full bg-blue-50 px-4 py-2 text-xs font-medium text-blue-600"
+              >
+                <p>Full Time</p>
+              </div>
+              <div class="flex items-center gap-2 text-gray-500">
+                <i class="fa-regular fa-clock"></i>
+                <p>30th July 2024</p>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2 py-2 text-gray-500">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Nepal</p>
+              </div>
+              <div class="font-semibold">Rs 4,000- Rs 4,500</div>
+            </div>
+            <button
+              type="button"
+              class="mb-2 me-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            >
+              Apply Now
+            </button>
           </div>
         </div>
       </div>
