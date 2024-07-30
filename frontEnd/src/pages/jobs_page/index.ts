@@ -1,31 +1,66 @@
 import Swal from "sweetalert2";
 import axiosInstance from "../../axios";
-import { IJOB } from "../../interfaces/job.interface";
+import { IFilter, IJOB } from "../../interfaces/job.interface";
 import { formatDate } from "../../utils/formatDate";
+import { AxiosError } from "axios";
 
 const jobSection = document.getElementById("job_section") as HTMLDivElement;
+const filterForm = document.getElementById("filter_form") as HTMLFormElement;
 
 window.onload = async () => {
   try {
     const jobDetails = await axiosInstance.get("/job");
     renderJobs(jobDetails.data.data);
   } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `${error}`,
-    });
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
   }
 };
 
+filterForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const target = event.target as HTMLFormElement;
+
+  const formData = {
+    title: target.search.value,
+    category: target.category.value,
+    location: target.location.value,
+    type: target.type.value,
+    salary: target.salary.value,
+  };
+  getFilterData(formData);
+});
+
+async function getFilterData(data: IFilter) {
+  try {
+    const response = await axiosInstance.get(
+      `/job?page=1&size=10&title=${data.title}&salary=${data.salary}&location=${data.location}&category=${data.category}`,
+    );
+    renderJobs(response.data.data);
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
+  }
+}
+
 function renderJobs(jobs: Array<IJOB>) {
+  jobSection.innerHTML = "";
   const singleJob = document.createElement("div");
   singleJob.className = "grid grid-cols-1 gap-[1.5rem]";
   singleJob.innerHTML = " ";
 
   jobs.forEach((job) => {
     const formattedDate = formatDate(job.expiryDate);
-    console.log(job);
     singleJob.innerHTML += ` <div
             class="flex items-center justify-between gap-5 rounded-lg bg-white p-5 shadow transition-all duration-500 hover:shadow-2xl"
           >

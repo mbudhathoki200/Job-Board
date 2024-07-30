@@ -20,3 +20,11 @@ export interface IJOB {
   logoUrl: string;
   website: string;
 }
+
+export interface IFilter {
+  title: string;
+  category: string;
+  location: string;
+  type: string;
+  salary: string;
+}
