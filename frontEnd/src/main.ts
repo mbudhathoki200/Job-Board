@@ -122,7 +122,7 @@ function renderPopularJobs(jobs: Array<IJOB>) {
   const singleJob = document.createElement("div");
   singleJob.innerHTML = "";
   // singleJob.style.display = "grid";
-  singleJob.className = "grid grid-cols-3 gap-[1.5rem]";
+  singleJob.className = "grid grid-cols-3 gap-5";
 
   // singleJob.style.gap = "1.5rem";
 
