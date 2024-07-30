@@ -30,7 +30,7 @@ export class JobModel extends BaseModel {
   }
 
   static getJobs(filter: GetJobQuery) {
-    const { q } = filter;
+    const { title, category, location, type, salary } = filter;
     const job = this.queryBuilder()
       .select(
         "jobListings.id",
@@ -58,20 +58,56 @@ export class JobModel extends BaseModel {
       .limit(filter.size!)
       .offset((filter.page! - 1) * filter.size!);
 
-    if (q) {
-      job.whereLike("title", `%${q}%`);
+    if (title?.toLowerCase()) {
+      job.whereRaw("LOWER(title) LIKE ?", `%${title}%`);
+    }
+    if (location?.toLowerCase()) {
+      job.whereRaw("LOWER(location) LIKE ?", `%${location}%`);
+    }
+    if (type?.toLowerCase()) {
+      job.whereRaw("LOWER(type) LIKE ?", `%${type}%`);
     }
 
+    if (category) {
+      job.where("categoryId", category);
+    }
+    if (salary) {
+      switch (salary) {
+        case "10k-15k":
+          job.where(function () {
+            this.where("salaryMin", ">=", 10000).andWhere(
+              "salaryMax",
+              "<=",
+              15000
+            );
+          });
+          break;
+        case "15k-25k":
+          job.where(function () {
+            this.where("salaryMin", ">=", 15000).andWhere(
+              "salaryMax",
+              "<=",
+              25000
+            );
+          });
+          break;
+        case "gte25000":
+          job.where("salaryMin", ">", 25000);
+          break;
+        default:
+          break;
+      }
+    }
     return job;
   }
 
   static count(filter: GetJobQuery) {
-    const { q } = filter;
+    const { title, category } = filter;
 
     const query = this.queryBuilder().count("*").table("jobListings").first();
 
-    if (q) {
-      query.whereLike("title", `%${q}%`);
+    if (title) {
+      query.whereLike("title", `%${title}%`);
     }
 
     return query;

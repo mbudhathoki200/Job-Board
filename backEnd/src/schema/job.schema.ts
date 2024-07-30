@@ -65,7 +65,11 @@ export const jobBodySchema = Joi.object({
 });
 
 export const getJobQuerySchema = Joi.object({
-  q: Joi.string().optional(),
+  title: Joi.string().optional(),
+  category: Joi.string().optional(),
+  location: Joi.string().optional(),
+  type: Joi.string().optional(),
+  salary: Joi.string().optional(),
   page: Joi.number()
     .min(1)
     .optional()

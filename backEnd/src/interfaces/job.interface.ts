@@ -18,7 +18,11 @@ export interface IJOB {
 }
 
 export interface GetJobQuery {
-  q?: string;
+  title?: string;
   page?: number;
   size?: number;
+  category?: string;
+  location?: string;
+  type?: string;
+  salary?: string;
 }
