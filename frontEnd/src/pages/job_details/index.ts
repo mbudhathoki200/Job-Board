@@ -5,6 +5,14 @@ import { IJOB } from "../../interfaces/job.interface";
 const jobDetailsSection = document.getElementById(
   "job_details",
 ) as HTMLDivElement;
+const modal = document.getElementById("modal") as HTMLDivElement;
+const modalCloseBtn = document.getElementById(
+  "btn--close-modal",
+) as HTMLButtonElement;
+
+modalCloseBtn.addEventListener("click", () => {
+  modal.classList.toggle("hidden");
+});
 
 window.onload = async () => {
   let params = new URL(document.location.toString()).searchParams;
@@ -25,7 +33,7 @@ window.onload = async () => {
 function renderJobPage(data: IJOB) {
   jobDetailsSection.innerHTML = "";
   const dateFormated = formatDate(data.postDate);
-  jobDetailsSection.innerHTML = `<div class="flex w-[80%] gap-8">
+  jobDetailsSection.innerHTML = /*html*/ `<div class="flex w-[80%] gap-8">
         <div class="w-[60%]">
           <div class="flex flex-col gap-8">
             <div
@@ -172,13 +180,18 @@ function renderJobPage(data: IJOB) {
             <p class="text-lg font-bold">Are you intersted in this Job?</p>
             <button
               class="select-none rounded-lg border-2 border-blue-900 px-8 py-3 text-center align-middle font-sans text-base font-bold uppercase text-blue-600 transition-all hover:opacity-75 focus:ring focus:ring-blue-300 active:opacity-[0.85]"
-              type="button"
+              type="button" id="apply-btn"
             >
               Apply Now
             </button>
           </div>
         </div>
       </div>`;
+  const applyBtn = document.getElementById("apply-btn") as HTMLButtonElement;
+  console.log(applyBtn);
+  applyBtn.addEventListener("click", () => {
+    modal.classList.toggle("hidden");
+  });
 }
 
 function formatDate(isoDate: string): string {
