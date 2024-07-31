@@ -14,9 +14,9 @@ export async function up(knex: Knex): Promise<void> {
 
     table.string("title", 100).notNullable();
 
-    table.string("description", 1000).notNullable();
+    table.string("description", 10000).notNullable();
 
-    table.string("requirements", 1000).notNullable();
+    table.string("requirements", 10000).notNullable();
 
     table.string("location", 100).notNullable();
 
