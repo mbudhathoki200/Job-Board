@@ -1,9 +1,7 @@
-import { uploadOnCloudinary } from "./../utils/cloudinary";
 import { IUser } from "../interfaces/user.interface";
 import * as UserModel from "../models/user.model";
+import { NotFoundError } from "../error/NotFoundError";
 import loggerWithNameSpace from "../utils/logger";
-import { UploadApiResponse } from "cloudinary";
-
 const logger = loggerWithNameSpace("UserServices");
 
 export function createUser(user: IUser) {
@@ -17,18 +15,14 @@ export async function getUserByEmail(email: string) {
   return data;
 }
 
-export async function uploadResume(resumePath: string | undefined) {
-  logger.info("upload resume");
-  let response: UploadApiResponse | null = null;
+export async function getUserById(id: number) {
+  logger.info("getUserById");
 
-  if (resumePath) {
-    response = await uploadOnCloudinary(resumePath);
-    console.log(response);
+  const data = await UserModel.UserModel.getUserById(id);
+
+  if (!data) {
+    throw new NotFoundError(`user with id: ${id}`);
   }
 
-  if (response == null) {
-    throw new Error();
-  }
-  return response;
-  //  await UserModel.updateAvatar(id, image.url);
+  return data;
 }

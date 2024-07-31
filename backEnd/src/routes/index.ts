@@ -5,6 +5,7 @@ import companyRoutes from "../routes/companies.routes";
 import categoryRoutes from "../routes/categories.routes";
 import jobRoutes from "../routes/jobs.routes";
 import userRoutes from "../routes/user.routes";
+import applicationRoutes from "../routes/application.routes";
 
 const router = express();
 
@@ -17,5 +18,7 @@ router.use("/category", categoryRoutes);
 router.use("/job", jobRoutes);
 
 router.use("/", userRoutes);
+
+router.use("/", applicationRoutes);
 
 export default router;

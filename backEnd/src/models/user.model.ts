@@ -48,4 +48,16 @@ export class UserModel extends BaseModel {
 
     return query;
   }
+
+  static async getUserById(id: number) {
+    logger.info("getUserById");
+    const data = await this.queryBuilder()
+      .select("users.id", "users.name", "users.email", "roles.roles")
+      .table("users")
+      .where("users.id", id)
+      .join("roles", "users.id", "roles.userId")
+      .first();
+
+    return data;
+  }
 }

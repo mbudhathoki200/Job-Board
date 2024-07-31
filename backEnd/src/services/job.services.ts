@@ -43,7 +43,6 @@ export async function getJobs(query: GetJobQuery) {
 export async function getJobById(jobId: string) {
   logger.info("getJobById");
   const data = await JobModel.JobModel.getJobById(jobId);
-  console.log(data);
 
   if (!data) {
     throw new NotFoundError(`Job with the id: ${jobId} doesnot exist`);

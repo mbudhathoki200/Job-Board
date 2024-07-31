@@ -35,7 +35,7 @@ export async function up(knex: Knex): Promise<void> {
 
     table.string("resume_url", 1000).notNullable();
 
-    table.string("status", 100).notNullable();
+    table.string("status", 100).notNullable().defaultTo("submitted");
 
     table.timestamp("applied_date").notNullable().defaultTo(knex.raw("now()"));
 

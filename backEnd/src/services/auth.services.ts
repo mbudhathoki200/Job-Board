@@ -31,7 +31,6 @@ export async function logIn(body: Pick<IUser, "email" | "password">) {
   logger.info("log in");
 
   const existingUser = await UserServices.getUserByEmail(body.email);
-  console.log(existingUser);
 
   if (!existingUser) {
     throw new UnauthenticatedError("Invalid Username or Password");
@@ -47,7 +46,6 @@ export async function logIn(body: Pick<IUser, "email" | "password">) {
     id: existingUser.id,
     name: existingUser.name,
     email: existingUser.email,
-    permissions: existingUser.permissions,
     roles: existingUser.roles,
   };
   console.log(payload);

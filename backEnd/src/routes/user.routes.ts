@@ -1,15 +1,14 @@
 import express from "express";
-import { authenticate } from "../middleware/auth.middleware";
 import {
   getCurrentUserDetails,
-  uploadResume,
+  getUserById,
 } from "../controllers/user.controller";
-import { upload } from "../middleware/multer.middleware";
+import { authenticate } from "../middleware/auth.middleware";
 
 const router = express();
 
 router.get("/me", authenticate, getCurrentUserDetails);
 
-router.post("/upload", upload.single("resume"), uploadResume);
+router.get("/:id", getUserById);
 
 export default router;
