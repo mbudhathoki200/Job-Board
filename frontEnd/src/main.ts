@@ -91,22 +91,37 @@ signupForm.addEventListener("submit", (event) => {
 });
 
 let accessToken = localStorage.getItem("accessToken");
+console.log(accessToken);
 
 if (accessToken) {
   const config = {
     headers: { Authorization: `Bearer ${accessToken}` },
   };
 
-  window.onload = async () => {
-    axios.get("http://localhost:3000/me", config).then(() => {
-      nonUserElements.forEach((el) => {
-        el.classList.toggle("hidden");
-      });
-      userElements.forEach((el) => {
-        el.classList.toggle("hidden");
-      });
+  axios.get("http://localhost:3000/me", config).then((response) => {
+    console.log(response.data);
+    nonUserElements.forEach((el) => {
+      el.classList.toggle("hidden");
     });
-  };
+    userElements.forEach((el) => {
+      el.classList.toggle("hidden");
+    });
+  });
+
+  // window.onload = async () => {
+  //   console.log("here");
+  //   console.log(nonUserElements);
+  //   console.log(userElements);
+  //   axios.get("http://localhost:3000/me", config).then((response) => {
+  //     console.log(response.data);
+  //     nonUserElements.forEach((el) => {
+  //       el.classList.toggle("hidden");
+  //     });
+  //     userElements.forEach((el) => {
+  //       el.classList.toggle("hidden");
+  //     });
+  //   });
+  // };
 }
 
 window.onload = async () => {

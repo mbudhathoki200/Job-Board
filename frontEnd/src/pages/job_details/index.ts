@@ -5,6 +5,9 @@ import { IJOB } from "../../interfaces/job.interface";
 const jobDetailsSection = document.getElementById(
   "job_details",
 ) as HTMLDivElement;
+
+let fileInput: HTMLInputElement | null = null;
+
 const modal = document.getElementById("modal") as HTMLDivElement;
 
 window.onload = async () => {
@@ -222,6 +225,8 @@ function renderJobPage(data: IJOB) {
 
   const applyForm = document.getElementById("apply_form") as HTMLFormElement;
 
+  fileInput = document.getElementById("file_input") as HTMLInputElement;
+
   applyForm.addEventListener("submit", handleApplyJob);
 
   applyBtn.addEventListener("click", () => {
@@ -247,7 +252,32 @@ function formatDate(isoDate: string): string {
   return date.toLocaleDateString("en-US", options);
 }
 
-function handleApplyJob(event: SubmitEvent) {
+async function handleApplyJob(event: SubmitEvent) {
   event.preventDefault();
-  console.log("clicked");
+  // const target = event.target as HTMLFormElement;
+  if (!fileInput || !fileInput.files?.length) {
+    alert("Please select a file.");
+    return;
+  }
+  const file = fileInput.files[0];
+  const formData = new FormData();
+
+  formData.append("resume", file);
+
+  submitApplyForm(formData);
+  modal.classList.toggle("hidden");
+}
+
+async function submitApplyForm(formData: FormData) {
+  let params = new URL(document.location.toString()).searchParams;
+  const id = params.get("id");
+  try {
+    await axiosInstance.post(`/apply/${id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
