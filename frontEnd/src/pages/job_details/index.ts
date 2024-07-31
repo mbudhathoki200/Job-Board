@@ -219,6 +219,11 @@ function renderJobPage(data: IJOB) {
           </form>
         </div>
       </div>`;
+
+  const applyForm = document.getElementById("apply_form") as HTMLFormElement;
+
+  applyForm.addEventListener("submit", handleApplyJob);
+
   applyBtn.addEventListener("click", () => {
     modal.classList.toggle("hidden");
   });
@@ -240,4 +245,9 @@ function formatDate(isoDate: string): string {
     day: "numeric",
   };
   return date.toLocaleDateString("en-US", options);
+}
+
+function handleApplyJob(event: SubmitEvent) {
+  event.preventDefault();
+  console.log("clicked");
 }
