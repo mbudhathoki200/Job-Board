@@ -4,12 +4,12 @@ import {
   getCurrentUserDetails,
   uploadResume,
 } from "../controllers/user.controller";
-import { uploadResumeParser } from "../middleware/multer.middleware";
+import { upload } from "../middleware/multer.middleware";
 
 const router = express();
 
 router.get("/me", authenticate, getCurrentUserDetails);
 
-router.post("/upload", uploadResumeParser, uploadResume);
+router.post("/upload", upload.single("resume"), uploadResume);
 
 export default router;

@@ -1,7 +1,8 @@
+import { uploadOnCloudinary } from "./../utils/cloudinary";
 import { IUser } from "../interfaces/user.interface";
 import * as UserModel from "../models/user.model";
-import { uploadImageOnCloudinary } from "../utils/cloudinary";
 import loggerWithNameSpace from "../utils/logger";
+import { UploadApiResponse } from "cloudinary";
 
 const logger = loggerWithNameSpace("UserServices");
 
@@ -16,20 +17,18 @@ export async function getUserByEmail(email: string) {
   return data;
 }
 
-// export async function uploadResume(localFilePath: string) {
-//   const response = await uploadImageOnCloudinary(localFilePath);
-//   console.log(response?.secure_url);
-// }
-export async function uploadResume(
-  localFilePath: string,
-  fileType: "image" | "raw"
-) {
-  try {
-    const response = await uploadImageOnCloudinary(localFilePath, fileType);
-    console.log("Uploaded file URL:", response?.secure_url);
-    return response;
-  } catch (error) {
-    console.error("Error in uploadResume service:", error);
-    return null;
+export async function uploadResume(resumePath: string | undefined) {
+  logger.info("upload resume");
+  let response: UploadApiResponse | null = null;
+
+  if (resumePath) {
+    response = await uploadOnCloudinary(resumePath);
+    console.log(response);
   }
+
+  if (response == null) {
+    throw new Error();
+  }
+  return response;
+  //  await UserModel.updateAvatar(id, image.url);
 }
