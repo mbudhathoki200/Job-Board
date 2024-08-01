@@ -33,13 +33,18 @@ export async function logIn(body: Pick<IUser, "email" | "password">) {
   const existingUser = await UserServices.getUserByEmail(body.email);
 
   if (!existingUser) {
-    throw new UnauthenticatedError("Invalid Username or Password");
+    logger.info("Incorrect Email");
+    throw new UnauthenticatedError("Invalid Email or Password");
   }
 
-  const isValidPassword = bcrypt.compare(existingUser.password, body.password);
+  const isValidPassword = await bcrypt.compare(
+    body.password,
+    existingUser.password
+  );
 
   if (!isValidPassword) {
-    throw new UnauthenticatedError("Invalid Username or Password");
+    logger.info("Incorrect Password");
+    throw new UnauthenticatedError("Invalid Email or Password");
   }
 
   const payload = {
@@ -48,7 +53,6 @@ export async function logIn(body: Pick<IUser, "email" | "password">) {
     email: existingUser.email,
     roles: existingUser.roles,
   };
-  console.log(payload);
 
   const accessToken = sign(payload, config.jwt.secret!, {
     expiresIn: config.jwt.accessTokenExpiryMS,

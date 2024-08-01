@@ -5,21 +5,20 @@ import { BaseModel } from "./base.model";
 const logger = loggerWithNameSpace("UserModel");
 export class UserModel extends BaseModel {
   static async createuser(user: IUser) {
-    console.log(user);
     const userToCreate = {
       name: user.name,
       email: user.email,
       password: user.password,
     };
+
     await this.queryBuilder().table("users").insert(userToCreate);
+
     if (user.roles) {
       const userId = await this.queryBuilder()
         .select("id")
         .table("users")
         .where({ email: userToCreate.email })
         .first();
-
-      console.log(userId);
 
       await this.queryBuilder().table("roles").insert({
         userId: userId.id,
