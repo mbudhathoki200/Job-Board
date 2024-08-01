@@ -1,7 +1,8 @@
+import { AxiosError } from "axios";
 import Swal from "sweetalert2";
 import axiosInstance from "../../axios";
 import { IJOB } from "../../interfaces/job.interface";
-import { AxiosError } from "axios";
+import { formatDate } from "../../utils/formatDate";
 
 const jobDetailsSection = document.getElementById(
   "job_details",
@@ -9,11 +10,14 @@ const jobDetailsSection = document.getElementById(
 
 let fileInput: HTMLInputElement | null = null;
 
+let applyBtn: HTMLButtonElement | null = null;
+
 const modal = document.getElementById("modal") as HTMLDivElement;
 
 window.onload = async () => {
   let params = new URL(document.location.toString()).searchParams;
   const id = params.get("id");
+  let accessToken = localStorage.getItem("accessToken");
   try {
     const response = await axiosInstance.get(`/job/${id}`);
     renderJobPage(response.data.job);
@@ -24,6 +28,11 @@ window.onload = async () => {
       text: "Something went wrong!",
       timer: 1000,
     });
+  }
+  if (accessToken) {
+    try {
+      validateAppliedJobs();
+    } catch (error) {}
   }
 };
 
@@ -185,7 +194,7 @@ function renderJobPage(data: IJOB) {
           </div>
         </div>
       </div>`;
-  const applyBtn = document.getElementById("apply-btn") as HTMLButtonElement;
+  applyBtn = document.getElementById("apply-btn") as HTMLButtonElement;
 
   modal.innerHTML = /*HTML*/ `<div
         class="fixed inset-0 z-50 flex items-center justify-center w-full transition-all duration-500 bg-black rounded-lg shadow-2xl bg-opacity-35"
@@ -242,17 +251,6 @@ function renderJobPage(data: IJOB) {
   });
 }
 
-function formatDate(isoDate: string): string {
-  const date = new Date(isoDate);
-  const options: Intl.DateTimeFormatOptions = {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  };
-  return date.toLocaleDateString("en-US", options);
-}
-
 async function handleApplyJob(event: SubmitEvent) {
   event.preventDefault();
   if (!fileInput || !fileInput.files?.length) {
@@ -272,6 +270,9 @@ async function handleApplyJob(event: SubmitEvent) {
     timer: 1000,
   });
   modal.classList.toggle("hidden");
+
+  applyBtn!.disabled = true;
+  applyBtn!.innerHTML = "Already applied";
 }
 
 async function submitApplyForm(formData: FormData) {
@@ -291,5 +292,30 @@ async function submitApplyForm(formData: FormData) {
         text: `${error.response.data.message}`,
       });
     }
+  }
+}
+
+// document.addEventListener("DOMContentLoaded", async () => {
+//   let accessToken = localStorage.getItem("accessToken");
+//   if (accessToken) {
+//     try {
+//       validateAppliedJobs();
+//     } catch (error) {}
+//   }
+// });
+
+async function validateAppliedJobs() {
+  let params = new URL(document.location.toString()).searchParams;
+  const id = params.get("id");
+  console.log(applyBtn);
+  try {
+    const response = await axiosInstance.get(`/validate/${id}`);
+    if (response.data) {
+      applyBtn!.disabled = true;
+      applyBtn!.innerHTML = "Already applied";
+    }
+  } catch (error) {
+    applyBtn!.disabled = false;
+    applyBtn!.innerHTML = "Apply Now";
   }
 }

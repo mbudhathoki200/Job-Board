@@ -17,28 +17,28 @@
   <body>
     <!-- nav bar starts-->
     <nav
-      class="relative top-0 z-10 block h-max w-full max-w-full rounded-none border border-white/80 bg-white bg-opacity-80 px-4 py-2 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4"
+      class="relative top-0 z-10 block w-full max-w-full px-4 py-2 text-white bg-white border rounded-none shadow-md h-max border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4"
     >
-      <div class="mx-3 flex items-center justify-between text-blue-gray-900">
+      <div class="flex items-center justify-between mx-3 text-blue-gray-900">
         <a
           href="#"
           class="mr-4 block h-11 cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased"
         >
           <img src="./jobboard2.jpg" alt="logo" class="h-[100%] w-[100%]" />
         </a>
-        <div class="mr-4 hidden lg:block">
+        <div class="hidden mr-4 lg:block">
           <ul
-            class="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"
+            class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"
           >
             <li
-              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+              class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
             >
               <a href="#" class="flex items-center font-semibold text-blue-400">
                 Home
               </a>
             </li>
             <li
-              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+              class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
             >
               <a
                 href="./src/pages/jobs_page/index.html"
@@ -48,12 +48,12 @@
               </a>
             </li>
             <li
-              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+              class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
             >
               <a href="#" class="flex items-center"> Categories </a>
             </li>
             <li
-              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+              class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
             >
               <a href="#" class="flex items-center"> Contact </a>
             </li>
@@ -61,7 +61,7 @@
         </div>
         <div class="flex items-center gap-x-1" id="none_user_element">
           <button
-            class="select-none rounded-lg px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+            class="px-4 py-2 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
             type="button"
             id="login_button"
           >
@@ -91,11 +91,11 @@
           type="button"
         >
           <span
-            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform"
+            class="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="w-6 h-6"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -120,23 +120,23 @@
           >
             <div class="flex flex-col gap-4 p-6">
               <h4
-                class="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
+                class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
               >
                 Log In
               </h4>
               <p
-                class="mb-3 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased"
+                class="block mb-3 font-sans text-base antialiased font-normal leading-relaxed text-gray-700"
               >
                 Enter your email and password to Log In.
               </p>
               <h6
-                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+                class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit"
               >
                 Your Email
               </h6>
               <div class="relative h-11 w-full min-w-[200px]">
                 <input
-                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   id="email"
                 />
@@ -147,13 +147,13 @@
                 </label>
               </div>
               <h6
-                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+                class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit"
               >
                 Your Password
               </h6>
               <div class="relative h-11 w-full min-w-[200px]">
                 <input
-                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   type="password"
                   id="password"
@@ -168,7 +168,7 @@
               <div class="-ml-2.5 -mt-3">
                 <div class="inline-flex items-center">
                   <label
-                    class="relative flex cursor-pointer items-center rounded-full p-3"
+                    class="relative flex items-center p-3 rounded-full cursor-pointer"
                     htmlFor="remember"
                   >
                     <input
@@ -177,7 +177,7 @@
                       id="remember"
                     />
                     <span
-                      class="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100"
+                      class="absolute text-white transition-opacity opacity-0 pointer-events-none left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 peer-checked:opacity-100"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +196,7 @@
                     </span>
                   </label>
                   <label
-                    class="mt-px cursor-pointer select-none font-light text-gray-700"
+                    class="mt-px font-light text-gray-700 cursor-pointer select-none"
                     htmlFor="remember"
                   >
                     Remember Me
@@ -217,12 +217,12 @@
                 Log In
               </button>
               <p
-                class="mt-4 flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased"
+                class="flex justify-center mt-4 font-sans text-sm antialiased font-light leading-normal text-inherit"
               >
                 Don&apos;t have an account?
                 <a
                   href="#signup"
-                  class="ml-1 block font-sans text-sm font-bold leading-normal text-blue-gray-900 antialiased"
+                  class="block ml-1 font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900"
                 >
                   Sign up
                 </a>
@@ -247,23 +247,23 @@
           >
             <div class="flex flex-col gap-4 p-6">
               <h4
-                class="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
+                class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
               >
                 Sign Up
               </h4>
               <p
-                class="mb-3 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased"
+                class="block mb-3 font-sans text-base antialiased font-normal leading-relaxed text-gray-700"
               >
                 Enter your details to Sign Up.
               </p>
               <h6
-                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+                class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit"
               >
                 Your Name
               </h6>
               <div class="relative h-11 w-full min-w-[200px]">
                 <input
-                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   type="text"
                   autocomplete="off"
@@ -276,13 +276,13 @@
                 </label>
               </div>
               <h6
-                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+                class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit"
               >
                 Your Email
               </h6>
               <div class="relative h-11 w-full min-w-[200px]">
                 <input
-                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   type="email"
                   id="userEmail"
@@ -294,13 +294,13 @@
                 </label>
               </div>
               <h6
-                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+                class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit"
               >
                 Your Password
               </h6>
               <div class="relative h-11 w-full min-w-[200px]">
                 <input
-                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   type="password"
                   id="userPassword"
@@ -314,7 +314,7 @@
               </div>
               <div class="relative h-11 w-full min-w-[200px]">
                 <h6
-                  class="mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+                  class="block mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit"
                 >
                   Your Role
                 </h6>
@@ -331,7 +331,7 @@
               id="signUperrorMessage"
               class="mx-auto mt-8 flex w-full max-w-[24rem] items-center justify-center text-red-900"
             ></div>
-            <div class="mt-7 p-6 pt-0">
+            <div class="p-6 pt-0 mt-7">
               <button
                 class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="submit"
@@ -339,12 +339,12 @@
                 Sign Up
               </button>
               <p
-                class="mt-4 flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased"
+                class="flex justify-center mt-4 font-sans text-sm antialiased font-light leading-normal text-inherit"
               >
                 Already have an account?
                 <a
                   href="#signup"
-                  class="ml-1 block font-sans text-sm font-bold leading-normal text-blue-gray-900 antialiased"
+                  class="block ml-1 font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900"
                 >
                   Log in
                 </a>
@@ -357,16 +357,16 @@
     <!-- signup form ends-->
     <!-- hero section starts -->
     <div class="flex max-h-[90vh] flex-col items-center justify-center py-80">
-      <div class="cols flex-col items-center justify-center">
-        <div class="text-center text-5xl font-bold">
+      <div class="flex-col items-center justify-center cols">
+        <div class="text-5xl font-bold text-center">
           Join us & <span class="text-blue-300">Explore</span>
         </div>
-        <div class="mt-6 text-center text-5xl font-bold">
+        <div class="mt-6 text-5xl font-bold text-center">
           <span class="text-blue-300">Thousands</span> of Jobs
         </div>
       </div>
       <div
-        class="mx-auto mt-14 w-1/2 max-w-xl text-center text-lg text-gray-400"
+        class="w-1/2 max-w-xl mx-auto text-lg text-center text-gray-400 mt-14"
       >
         Find Jobs, Employment & Career Opportunities. Some of the companies
         we've helped recruit excellent applicants over the years.
@@ -374,7 +374,7 @@
       <form class="mx-auto mt-14 w-[35rem]">
         <div class="relative">
           <div
-            class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
+            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3"
           >
             <i
               class="fa-brands fa-searchengin fa-xl ps-4"
@@ -384,7 +384,7 @@
           <input
             type="search"
             id="default-search"
-            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-14 text-sm text-gray-900 placeholder:text-lg focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 ps-14 placeholder:text-lg focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             placeholder="Search Jobs that suits you..."
             required
           />
@@ -396,7 +396,7 @@
           </button>
         </div>
       </form>
-      <div class="mt-14 text-center text-lg text-gray-400">
+      <div class="text-lg text-center text-gray-400 mt-14">
         <span class="text-gray-900">Popular Searches :</span> Designer,
         Developer, Web, IOS, PHP Senior Engineer
       </div>
@@ -404,12 +404,12 @@
     <!-- hero section ends -->
     <!-- popular section starts -->
     <div
-      class="flex w-full flex-col items-center justify-center bg-gray-50 py-12"
+      class="flex flex-col items-center justify-center w-full py-12 bg-gray-50"
     >
       <div class="w-full">
-        <div class="text-center text-3xl font-bold">Popular Categories</div>
+        <div class="text-3xl font-bold text-center">Popular Categories</div>
         <div
-          class="mx-auto mt-8 max-w-screen-md text-center text-lg text-gray-400"
+          class="max-w-screen-md mx-auto mt-8 text-lg text-center text-gray-400"
         >
           Explore top job sectors and in-demand roles. Find opportunities
           matching your skills and interests. Discover trending careers across
@@ -420,9 +420,9 @@
         <div
           class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 px-3 py-10 hover:bg-light-blue-50"
         >
-          <div class="w-30 flex items-center justify-center">
+          <div class="flex items-center justify-center w-30">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="flex items-center justify-center text-center border border-gray-300 rounded size-16 bg-light-blue-50"
             >
               <i
                 class="fa-solid fa-laptop-code fa-xl"
@@ -430,16 +430,16 @@
               ></i>
             </div>
           </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
+          <div class="text-lg font-medium tracking-widest text-center w-30">
             Software <br />Engineer
           </div>
         </div>
         <div
           class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 px-3 py-10 hover:bg-light-blue-50"
         >
-          <div class="w-30 flex items-center justify-center">
+          <div class="flex items-center justify-center w-30">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="flex items-center justify-center text-center border border-gray-300 rounded size-16 bg-light-blue-50"
             >
               <i
                 class="fa-solid fa-laptop-code fa-xl"
@@ -447,16 +447,16 @@
               ></i>
             </div>
           </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
+          <div class="text-lg font-medium tracking-widest text-center w-30">
             Software <br />Engineer
           </div>
         </div>
         <div
           class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 px-3 py-10 hover:bg-light-blue-50"
         >
-          <div class="w-30 flex items-center justify-center">
+          <div class="flex items-center justify-center w-30">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="flex items-center justify-center text-center border border-gray-300 rounded size-16 bg-light-blue-50"
             >
               <i
                 class="fa-solid fa-laptop-code fa-xl"
@@ -464,16 +464,16 @@
               ></i>
             </div>
           </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
+          <div class="text-lg font-medium tracking-widest text-center w-30">
             Software <br />Engineer
           </div>
         </div>
         <div
           class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 px-3 py-10 hover:bg-light-blue-50"
         >
-          <div class="w-30 flex items-center justify-center">
+          <div class="flex items-center justify-center w-30">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="flex items-center justify-center text-center border border-gray-300 rounded size-16 bg-light-blue-50"
             >
               <i
                 class="fa-solid fa-laptop-code fa-xl"
@@ -481,16 +481,16 @@
               ></i>
             </div>
           </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
+          <div class="text-lg font-medium tracking-widest text-center w-30">
             Software <br />Engineer
           </div>
         </div>
         <div
           class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 px-3 py-10 hover:bg-light-blue-50"
         >
-          <div class="w-30 flex items-center justify-center">
+          <div class="flex items-center justify-center w-30">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="flex items-center justify-center text-center border border-gray-300 rounded size-16 bg-light-blue-50"
             >
               <i
                 class="fa-solid fa-laptop-code fa-xl"
@@ -498,7 +498,7 @@
               ></i>
             </div>
           </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
+          <div class="text-lg font-medium tracking-widest text-center w-30">
             Software <br />Engineer
           </div>
         </div>
@@ -507,7 +507,7 @@
     <!-- popular section ends -->
     <!-- job section starts -->
     <div class="p-12">
-      <div class="mb-12 flex flex-col gap-4 text-center">
+      <div class="flex flex-col gap-4 mb-12 text-center">
         <p class="text-5xl font-bold">Get your dream Job now</p>
         <p class="text-lg text-gray-400">
           Search your career opportunity through the available positions.
@@ -709,19 +709,19 @@
 
     <!-- footer section  -->
     <footer class="bg-white shadow dark:bg-gray-900">
-      <div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
+      <div class="w-full max-w-screen-xl p-4 mx-auto md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
           <a
             href="/"
-            class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse"
+            class="flex items-center mb-4 space-x-3 sm:mb-0 rtl:space-x-reverse"
           >
             <img src="./jobboard2.jpg" class="h-8" alt="Job Board" />
             <span
-              class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
+              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
             ></span>
           </a>
           <ul
-            class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
+            class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
           >
             <li>
               <a href="#" class="me-4 hover:underline md:me-6">About</a>
