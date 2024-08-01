@@ -50,6 +50,7 @@ export async function validateAppliedJob(
   const { id: jobId } = req.params;
   const { user } = req;
   const userId = user!.id;
+  console.log(userId);
   try {
     const data = await ApplicationService.validateAppliedJob(jobId, userId);
     res.status(HttpStatusCodes.OK).send(data);

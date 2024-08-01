@@ -20,7 +20,7 @@ export class ApplicationModel extends BaseModel {
     return appliedJob;
   }
 
-  static async validateAppliedJob(userId: string, jobId: string) {
+  static async validateAppliedJob(jobId: string, userId: string) {
     const data = await this.queryBuilder()
       .select("*")
       .table("job_applications")
