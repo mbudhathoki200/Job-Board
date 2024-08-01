@@ -24,4 +24,13 @@ export class CompanyModel extends BaseModel {
 
     return query;
   }
+
+  static getCompanies(userId: string) {
+    const data = this.queryBuilder()
+      .select("id", "name", "description", "logoUrl", "website", "userId")
+      .table("company")
+      .where({ userId });
+
+    return data;
+  }
 }

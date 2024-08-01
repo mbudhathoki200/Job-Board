@@ -32,3 +32,23 @@ export async function getCompanyById(
     return;
   }
 }
+
+export async function getCompanies(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("get Companies");
+  const { user } = req;
+
+  const userId = user?.id;
+
+  try {
+    const data = await CompaniesServices.getCompanies(userId!);
+    res.status(HttpStatusCodes.OK).send({
+      companies: data,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

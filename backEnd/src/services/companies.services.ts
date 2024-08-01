@@ -21,3 +21,14 @@ export async function getCompanyById(id: string) {
 
   return data;
 }
+
+export async function getCompanies(userId: string) {
+  logger.info("Get companies");
+  const data = await CompanyModel.CompanyModel.getCompanies(userId);
+  if (data.length == 0) {
+    throw new NotFoundError(
+      `No companies registered by user with id: ${userId}`
+    );
+  }
+  return data;
+}

@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createCompany,
+  getCompanies,
   getCompanyById,
 } from "../controllers/companies.controller";
 import {
@@ -22,5 +23,7 @@ router.post(
 );
 
 router.get("/:id", validateReqQuery(getQuerySchema), getCompanyById);
+
+router.get("/", authenticate, authorize("admin"), getCompanies);
 
 export default router;
