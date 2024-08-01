@@ -22,20 +22,20 @@
       <div class="flex items-center justify-between">
         <a
           href="/src/pages/admin_dashboard/index.html"
-          class="ms-2 flex md:me-24"
+          class="flex ms-2 md:me-24"
         >
-          <img src="/jobboard2.jpg" class="me-3 h-8" alt="FlowBite Logo" />
+          <img src="/jobboard2.jpg" class="h-8 me-3" alt="FlowBite Logo" />
         </a>
       </div>
       <div class="flex items-center">
-        <div class="ms-3 flex items-center gap-4">
+        <div class="flex items-center gap-4 ms-3">
           <div>
             <button
               type="button"
-              class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300"
+              class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
             >
               <img
-                class="h-9 w-9 rounded-full"
+                class="rounded-full h-9 w-9"
                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                 alt="user photo"
               />
@@ -49,24 +49,33 @@
     </nav>
     <!-- nav bar ends -->
     <!-- side bar starts -->
-    <div class="fixed top-[4rem] z-10 flex h-full gap-7">
+    <div class="fixed top-[4rem] z-10 flex h-full w-[100%] gap-7">
       <div
-        class="h-screen w-full max-w-[20rem] flex-col border-r-2 bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5"
+        class="h-screen w-[22%] flex-col border-r-2 bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5"
       >
         <sidebar
-          class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700"
+          class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-semibold text-blue-gray-700"
         >
           <div
             role="button"
-            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex items-center w-full p-3 leading-tight transition-all bg-blue-500 rounded-lg outline-none text-start text-gray-50 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="mr-4 grid place-items-center">
+            <div class="grid mr-4 place-items-center">
+              <i class="fa-solid fa-table-columns"></i>
+            </div>
+            Dash Board
+          </div>
+          <div
+            role="button"
+            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+          >
+            <div class="grid mr-4 place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="h-5 w-5"
+                class="w-5 h-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -79,24 +88,24 @@
           </div>
           <div
             role="button"
-            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="mr-4 flex items-center hover:text-blue-gray-900">
+            <div class="flex items-center mr-4 hover:text-blue-gray-900">
               <i class="fa-solid fa-folder-plus" style="color: #455a64"></i>
             </div>
             Post job
           </div>
           <div
             role="button"
-            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="mr-4 grid place-items-center">
+            <div class="grid mr-4 place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="h-5 w-5"
+                class="w-5 h-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -106,9 +115,9 @@
               </svg>
             </div>
             Job Applications
-            <div class="ml-auto grid place-items-center justify-self-end">
+            <div class="grid ml-auto place-items-center justify-self-end">
               <div
-                class="relative grid select-none items-center whitespace-nowrap rounded-full bg-blue-gray-500/20 px-2 py-1 font-sans text-xs font-bold uppercase text-blue-gray-900"
+                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900"
               >
                 <span class="">14</span>
               </div>
@@ -116,15 +125,15 @@
           </div>
           <div
             role="button"
-            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="mr-4 grid place-items-center">
+            <div class="grid mr-4 place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="h-5 w-5"
+                class="w-5 h-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -137,15 +146,15 @@
           </div>
           <div
             role="button"
-            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="mr-4 grid place-items-center">
+            <div class="grid mr-4 place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="h-5 w-5"
+                class="w-5 h-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -158,15 +167,15 @@
           </div>
           <div
             role="button"
-            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="mr-4 grid place-items-center">
+            <div class="grid mr-4 place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="h-5 w-5"
+                class="w-5 h-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -179,181 +188,67 @@
           </div>
         </sidebar>
       </div>
-      <div class="w-[90%] overflow-auto p-4">
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          similique nemo hic itaque maiores suscipit earum quisquam, neque qui
-          fugit quo? Nesciunt quo corporis harum adipisci sit omnis quae facilis
-          beatae laudantium? Voluptatum, fugit numquam reiciendis minima quae
-          voluptate aliquid, ea tempora aperiam magni id possimus dolorum at
-          est. Culpa maiores sed rerum quisquam voluptatibus, id enim aut?
-          Suscipit, unde vitae voluptates asperiores culpa aspernatur modi at ea
-          accusantium officiis autem enim alias? Ipsam aspernatur, sed ut
-          inventore dignissimos ullam sint alias expedita. Suscipit quod animi
-          ut dicta aliquam temporibus! Explicabo nulla quibusdam vitae
-          voluptatibus voluptates nemo ducimus dolorem quaerat nisi numquam
-          veniam ad velit aliquam sint porro, assumenda officiis perferendis
-          neque sunt, nobis culpa sapiente aspernatur omnis. Iusto, optio
-          perferendis! Illo, iste officiis laboriosam, perspiciatis culpa error,
-          totam reprehenderit id magni tenetur veritatis. Beatae earum fugiat
-          natus, molestiae, quam rerum a at odit numquam dolores facere aliquid
-          ab rem assumenda! Ipsam suscipit error, nostrum doloribus aspernatur
-          quidem maiores, quam eaque ipsum dignissimos neque quos quas numquam
-          ab alias? Rerum numquam, nemo exercitationem alias aperiam quas atque
-          earum magnam a soluta excepturi recusandae dolor optio ipsam porro
-          fuga deserunt dolore eaque veniam laborum quia. Eum repellat
-          laudantium sapiente? Reprehenderit, quaerat!
+      <div class="flex w-[75%] flex-col gap-10 p-4">
+        <div
+          class="flex h-[235px] justify-between rounded-lg bg-blue-500 p-10 shadow-sm"
+        >
+          <div class="flex flex-col justify-center gap-6 text-white">
+            <p class="text-3xl font-semibold">Welcome to Job Board</p>
+            <p class="text-5xl font-bold">John Doe</p>
+          </div>
+          <img
+            src="/dashboard_back.png"
+            alt="dashboard"
+            class="h-auto w-[300px]"
+          />
         </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          similique nemo hic itaque maiores suscipit earum quisquam, neque qui
-          fugit quo? Nesciunt quo corporis harum adipisci sit omnis quae facilis
-          beatae laudantium? Voluptatum, fugit numquam reiciendis minima quae
-          voluptate aliquid, ea tempora aperiam magni id possimus dolorum at
-          est. Culpa maiores sed rerum quisquam voluptatibus, id enim aut?
-          Suscipit, unde vitae voluptates asperiores culpa aspernatur modi at ea
-          accusantium officiis autem enim alias? Ipsam aspernatur, sed ut
-          inventore dignissimos ullam sint alias expedita. Suscipit quod animi
-          ut dicta aliquam temporibus! Explicabo nulla quibusdam vitae
-          voluptatibus voluptates nemo ducimus dolorem quaerat nisi numquam
-          veniam ad velit aliquam sint porro, assumenda officiis perferendis
-          neque sunt, nobis culpa sapiente aspernatur omnis. Iusto, optio
-          perferendis! Illo, iste officiis laboriosam, perspiciatis culpa error,
-          totam reprehenderit id magni tenetur veritatis. Beatae earum fugiat
-          natus, molestiae, quam rerum a at odit numquam dolores facere aliquid
-          ab rem assumenda! Ipsam suscipit error, nostrum doloribus aspernatur
-          quidem maiores, quam eaque ipsum dignissimos neque quos quas numquam
-          ab alias? Rerum numquam, nemo exercitationem alias aperiam quas atque
-          earum magnam a soluta excepturi recusandae dolor optio ipsam porro
-          fuga deserunt dolore eaque veniam laborum quia. Eum repellat
-          laudantium sapiente? Reprehenderit, quaerat!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          similique nemo hic itaque maiores suscipit earum quisquam, neque qui
-          fugit quo? Nesciunt quo corporis harum adipisci sit omnis quae facilis
-          beatae laudantium? Voluptatum, fugit numquam reiciendis minima quae
-          voluptate aliquid, ea tempora aperiam magni id possimus dolorum at
-          est. Culpa maiores sed rerum quisquam voluptatibus, id enim aut?
-          Suscipit, unde vitae voluptates asperiores culpa aspernatur modi at ea
-          accusantium officiis autem enim alias? Ipsam aspernatur, sed ut
-          inventore dignissimos ullam sint alias expedita. Suscipit quod animi
-          ut dicta aliquam temporibus! Explicabo nulla quibusdam vitae
-          voluptatibus voluptates nemo ducimus dolorem quaerat nisi numquam
-          veniam ad velit aliquam sint porro, assumenda officiis perferendis
-          neque sunt, nobis culpa sapiente aspernatur omnis. Iusto, optio
-          perferendis! Illo, iste officiis laboriosam, perspiciatis culpa error,
-          totam reprehenderit id magni tenetur veritatis. Beatae earum fugiat
-          natus, molestiae, quam rerum a at odit numquam dolores facere aliquid
-          ab rem assumenda! Ipsam suscipit error, nostrum doloribus aspernatur
-          quidem maiores, quam eaque ipsum dignissimos neque quos quas numquam
-          ab alias? Rerum numquam, nemo exercitationem alias aperiam quas atque
-          earum magnam a soluta excepturi recusandae dolor optio ipsam porro
-          fuga deserunt dolore eaque veniam laborum quia. Eum repellat
-          laudantium sapiente? Reprehenderit, quaerat!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          similique nemo hic itaque maiores suscipit earum quisquam, neque qui
-          fugit quo? Nesciunt quo corporis harum adipisci sit omnis quae facilis
-          beatae laudantium? Voluptatum, fugit numquam reiciendis minima quae
-          voluptate aliquid, ea tempora aperiam magni id possimus dolorum at
-          est. Culpa maiores sed rerum quisquam voluptatibus, id enim aut?
-          Suscipit, unde vitae voluptates asperiores culpa aspernatur modi at ea
-          accusantium officiis autem enim alias? Ipsam aspernatur, sed ut
-          inventore dignissimos ullam sint alias expedita. Suscipit quod animi
-          ut dicta aliquam temporibus! Explicabo nulla quibusdam vitae
-          voluptatibus voluptates nemo ducimus dolorem quaerat nisi numquam
-          veniam ad velit aliquam sint porro, assumenda officiis perferendis
-          neque sunt, nobis culpa sapiente aspernatur omnis. Iusto, optio
-          perferendis! Illo, iste officiis laboriosam, perspiciatis culpa error,
-          totam reprehenderit id magni tenetur veritatis. Beatae earum fugiat
-          natus, molestiae, quam rerum a at odit numquam dolores facere aliquid
-          ab rem assumenda! Ipsam suscipit error, nostrum doloribus aspernatur
-          quidem maiores, quam eaque ipsum dignissimos neque quos quas numquam
-          ab alias? Rerum numquam, nemo exercitationem alias aperiam quas atque
-          earum magnam a soluta excepturi recusandae dolor optio ipsam porro
-          fuga deserunt dolore eaque veniam laborum quia. Eum repellat
-          laudantium sapiente? Reprehenderit, quaerat!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          similique nemo hic itaque maiores suscipit earum quisquam, neque qui
-          fugit quo? Nesciunt quo corporis harum adipisci sit omnis quae facilis
-          beatae laudantium? Voluptatum, fugit numquam reiciendis minima quae
-          voluptate aliquid, ea tempora aperiam magni id possimus dolorum at
-          est. Culpa maiores sed rerum quisquam voluptatibus, id enim aut?
-          Suscipit, unde vitae voluptates asperiores culpa aspernatur modi at ea
-          accusantium officiis autem enim alias? Ipsam aspernatur, sed ut
-          inventore dignissimos ullam sint alias expedita. Suscipit quod animi
-          ut dicta aliquam temporibus! Explicabo nulla quibusdam vitae
-          voluptatibus voluptates nemo ducimus dolorem quaerat nisi numquam
-          veniam ad velit aliquam sint porro, assumenda officiis perferendis
-          neque sunt, nobis culpa sapiente aspernatur omnis. Iusto, optio
-          perferendis! Illo, iste officiis laboriosam, perspiciatis culpa error,
-          totam reprehenderit id magni tenetur veritatis. Beatae earum fugiat
-          natus, molestiae, quam rerum a at odit numquam dolores facere aliquid
-          ab rem assumenda! Ipsam suscipit error, nostrum doloribus aspernatur
-          quidem maiores, quam eaque ipsum dignissimos neque quos quas numquam
-          ab alias? Rerum numquam, nemo exercitationem alias aperiam quas atque
-          earum magnam a soluta excepturi recusandae dolor optio ipsam porro
-          fuga deserunt dolore eaque veniam laborum quia. Eum repellat
-          laudantium sapiente? Reprehenderit, quaerat!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          similique nemo hic itaque maiores suscipit earum quisquam, neque qui
-          fugit quo? Nesciunt quo corporis harum adipisci sit omnis quae facilis
-          beatae laudantium? Voluptatum, fugit numquam reiciendis minima quae
-          voluptate aliquid, ea tempora aperiam magni id possimus dolorum at
-          est. Culpa maiores sed rerum quisquam voluptatibus, id enim aut?
-          Suscipit, unde vitae voluptates asperiores culpa aspernatur modi at ea
-          accusantium officiis autem enim alias? Ipsam aspernatur, sed ut
-          inventore dignissimos ullam sint alias expedita. Suscipit quod animi
-          ut dicta aliquam temporibus! Explicabo nulla quibusdam vitae
-          voluptatibus voluptates nemo ducimus dolorem quaerat nisi numquam
-          veniam ad velit aliquam sint porro, assumenda officiis perferendis
-          neque sunt, nobis culpa sapiente aspernatur omnis. Iusto, optio
-          perferendis! Illo, iste officiis laboriosam, perspiciatis culpa error,
-          totam reprehenderit id magni tenetur veritatis. Beatae earum fugiat
-          natus, molestiae, quam rerum a at odit numquam dolores facere aliquid
-          ab rem assumenda! Ipsam suscipit error, nostrum doloribus aspernatur
-          quidem maiores, quam eaque ipsum dignissimos neque quos quas numquam
-          ab alias? Rerum numquam, nemo exercitationem alias aperiam quas atque
-          earum magnam a soluta excepturi recusandae dolor optio ipsam porro
-          fuga deserunt dolore eaque veniam laborum quia. Eum repellat
-          laudantium sapiente? Reprehenderit, quaerat!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          similique nemo hic itaque maiores suscipit earum quisquam, neque qui
-          fugit quo? Nesciunt quo corporis harum adipisci sit omnis quae facilis
-          beatae laudantium? Voluptatum, fugit numquam reiciendis minima quae
-          voluptate aliquid, ea tempora aperiam magni id possimus dolorum at
-          est. Culpa maiores sed rerum quisquam voluptatibus, id enim aut?
-          Suscipit, unde vitae voluptates asperiores culpa aspernatur modi at ea
-          accusantium officiis autem enim alias? Ipsam aspernatur, sed ut
-          inventore dignissimos ullam sint alias expedita. Suscipit quod animi
-          ut dicta aliquam temporibus! Explicabo nulla quibusdam vitae
-          voluptatibus voluptates nemo ducimus dolorem quaerat nisi numquam
-          veniam ad velit aliquam sint porro, assumenda officiis perferendis
-          neque sunt, nobis culpa sapiente aspernatur omnis. Iusto, optio
-          perferendis! Illo, iste officiis laboriosam, perspiciatis culpa error,
-          totam reprehenderit id magni tenetur veritatis. Beatae earum fugiat
-          natus, molestiae, quam rerum a at odit numquam dolores facere aliquid
-          ab rem assumenda! Ipsam suscipit error, nostrum doloribus aspernatur
-          quidem maiores, quam eaque ipsum dignissimos neque quos quas numquam
-          ab alias? Rerum numquam, nemo exercitationem alias aperiam quas atque
-          earum magnam a soluta excepturi recusandae dolor optio ipsam porro
-          fuga deserunt dolore eaque veniam laborum quia. Eum repellat
-          laudantium sapiente? Reprehenderit, quaerat!
+        <div class="flex w-[100%] gap-7">
+          <div
+            class="flex items-center justify-center gap-10 p-8 bg-white shadow-md w-fit rounded-xl hover:shadow-2xl"
+          >
+            <div class="flex flex-col items-center justify-center gap-4">
+              <div class="font-bold text-7xl text-blue-gray-900">07</div>
+              <div class="text-xl font-semibold text-gray-600">Job Posts</div>
+            </div>
+            <div
+              class="flex items-center justify-center bg-gray-200 rounded-full size-20 text-blue-gray-600"
+            >
+              <i class="fa-solid fa-box-archive fa-2xl"></i>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-center gap-10 p-8 bg-white shadow-md w-fit rounded-xl hover:shadow-2xl"
+          >
+            <div class="flex flex-col items-center justify-center gap-4">
+              <div class="font-bold text-7xl text-blue-gray-900">02</div>
+              <div class="text-xl font-semibold text-gray-600">
+                Applications
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-center bg-gray-200 rounded-full size-20 text-blue-gray-600"
+            >
+              <i class="fa-regular fa-folder-open fa-2xl"></i>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-center gap-10 p-8 bg-white shadow-md w-fit rounded-xl hover:shadow-2xl"
+          >
+            <div class="flex flex-col items-center justify-center gap-4">
+              <div class="font-bold text-7xl text-blue-gray-900">01</div>
+              <div class="text-xl font-semibold text-gray-600">Companies</div>
+            </div>
+            <div
+              class="flex items-center justify-center bg-gray-200 rounded-full size-20 text-blue-gray-600"
+            >
+              <i class="fa-regular fa-building fa-2xl"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <!-- side bar ends -->
 
-    <script src="node_modules/@material-tailwind/html@latest/scripts/dialog.js"></script>
-    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="./index.ts"></script>
   </body>
