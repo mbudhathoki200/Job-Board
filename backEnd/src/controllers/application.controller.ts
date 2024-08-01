@@ -41,3 +41,19 @@ export async function applyJob(
     next(error);
   }
 }
+
+export async function validateAppliedJob(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const { id: jobId } = req.params;
+  const { user } = req;
+  const userId = user!.id;
+  try {
+    const data = await ApplicationService.validateAppliedJob(jobId, userId);
+    res.status(HttpStatusCodes.OK).send(data);
+  } catch (error) {
+    next(error);
+  }
+}

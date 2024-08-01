@@ -41,3 +41,14 @@ export async function applyJob(jobId: string, resumePath: string, user: IUser) {
     jobId
   );
 }
+
+export async function validateAppliedJob(jobId: string, userId: string) {
+  const data = await ApplicationModel.ApplicationModel.validateAppliedJob(
+    jobId,
+    userId
+  );
+  if (!data) {
+    throw new NotFoundError("User has not applied to the job");
+  }
+  return data;
+}
