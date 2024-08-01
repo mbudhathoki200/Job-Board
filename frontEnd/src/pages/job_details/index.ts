@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import axiosInstance from "../../axios";
 import { IJOB } from "../../interfaces/job.interface";
+import { AxiosError } from "axios";
 
 const jobDetailsSection = document.getElementById(
   "job_details",
@@ -254,7 +255,6 @@ function formatDate(isoDate: string): string {
 
 async function handleApplyJob(event: SubmitEvent) {
   event.preventDefault();
-  // const target = event.target as HTMLFormElement;
   if (!fileInput || !fileInput.files?.length) {
     alert("Please select a file.");
     return;
@@ -265,6 +265,12 @@ async function handleApplyJob(event: SubmitEvent) {
   formData.append("resume", file);
 
   submitApplyForm(formData);
+  Swal.fire({
+    icon: "success",
+    title: "Job Applied Successfully",
+    showConfirmButton: false,
+    timer: 1000,
+  });
   modal.classList.toggle("hidden");
 }
 
@@ -278,6 +284,12 @@ async function submitApplyForm(formData: FormData) {
       },
     });
   } catch (error) {
-    console.log(error);
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
   }
 }
