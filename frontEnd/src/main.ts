@@ -20,6 +20,7 @@ const signUpErrorMessage = document.getElementById(
   "signUperrorMessage",
 ) as HTMLDivElement;
 const nonUserElements = document.querySelectorAll("#none_user_element");
+
 const userElements = document.querySelectorAll("#user_element");
 const popularJobsSection = document.getElementById(
   "popular_jobs",
@@ -47,17 +48,17 @@ loginForm.addEventListener("submit", (event) => {
 
   if (error) {
     loginErrorMessage.innerHTML = error![0].message;
-  } else {
-    axios
-      .post("http://localhost:3000/login", formData)
-      .then((res) => {
-        localStorage.setItem("accessToken", res.data.data.accessToken);
-        location.reload();
-      })
-      .catch((error) => {
-        loginErrorMessage.innerHTML = error.response.data.message;
-      });
+    return;
   }
+  axios
+    .post("http://localhost:3000/login", formData)
+    .then((res) => {
+      localStorage.setItem("accessToken", res.data.data.accessToken);
+      vaidateUser();
+    })
+    .catch((error) => {
+      loginErrorMessage.innerHTML = error.response.data.message;
+    });
 });
 
 signupForm.addEventListener("submit", (event) => {
@@ -90,38 +91,28 @@ signupForm.addEventListener("submit", (event) => {
   }
 });
 
-let accessToken = localStorage.getItem("accessToken");
-console.log(accessToken);
-
-if (accessToken) {
-  const config = {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  };
-
-  axios.get("http://localhost:3000/me", config).then((response) => {
-    console.log(response.data);
-    nonUserElements.forEach((el) => {
-      el.classList.toggle("hidden");
-    });
-    userElements.forEach((el) => {
-      el.classList.toggle("hidden");
-    });
-  });
-
-  // window.onload = async () => {
-  //   console.log("here");
-  //   console.log(nonUserElements);
-  //   console.log(userElements);
-  //   axios.get("http://localhost:3000/me", config).then((response) => {
-  //     console.log(response.data);
-  //     nonUserElements.forEach((el) => {
-  //       el.classList.toggle("hidden");
-  //     });
-  //     userElements.forEach((el) => {
-  //       el.classList.toggle("hidden");
-  //     });
-  //   });
-  // };
+async function vaidateUser() {
+  let accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    try {
+      const response = await axiosInstance.get("/me");
+      console.log(response.data.data);
+      const userData = response.data.data;
+      if (userData.roles == "admin") {
+        window.location.href =
+          "http://localhost:5173/src/pages/admin_dashboard/index.html";
+      }
+      nonUserElements.forEach((el) => {
+        el.classList.add("hidden");
+        el.classList.remove("flex");
+      });
+      userElements.forEach((el) => {
+        el.classList.toggle("hidden");
+      });
+      loginModal.classList.add("hidden");
+    } catch (error) {}
+  }
+  // document.addEventListener("DOMContentLoaded", async () => {});
 }
 
 window.onload = async () => {
@@ -225,4 +216,27 @@ function calculateDays(expiryDate: string) {
 logOutButton.addEventListener("click", () => {
   localStorage.clear();
   location.reload();
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  let accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    try {
+      const response = await axiosInstance.get("/me");
+      console.log(response.data.data);
+      const userData = response.data.data;
+      if (userData.roles == "admin") {
+        window.location.href =
+          "http://localhost:5173/src/pages/admin_dashboard/index.html";
+      }
+      nonUserElements.forEach((el) => {
+        el.classList.add("hidden");
+        el.classList.remove("flex");
+      });
+      userElements.forEach((el) => {
+        el.classList.toggle("hidden");
+      });
+      loginModal.classList.add("hidden");
+    } catch (error) {}
+  }
 });
