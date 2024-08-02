@@ -22,20 +22,20 @@
       <div class="flex items-center justify-between">
         <a
           href="/src/pages/admin_dashboard/index.html"
-          class="flex ms-2 md:me-24"
+          class="ms-2 flex md:me-24"
         >
-          <img src="/jobboard2.jpg" class="h-8 me-3" alt="FlowBite Logo" />
+          <img src="/jobboard2.jpg" class="me-3 h-8" alt="FlowBite Logo" />
         </a>
       </div>
       <div class="flex items-center">
-        <div class="flex items-center gap-4 ms-3">
+        <div class="ms-3 flex items-center gap-4">
           <div>
             <button
               type="button"
-              class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
+              class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300"
             >
               <img
-                class="rounded-full h-9 w-9"
+                class="h-9 w-9 rounded-full"
                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                 alt="user photo"
               />
@@ -57,25 +57,27 @@
           class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-semibold text-blue-gray-700"
         >
           <div
+            id="dashboard"
             role="button"
-            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="grid mr-4 place-items-center">
+            <div class="mr-4 grid place-items-center">
               <i class="fa-solid fa-table-columns"></i>
             </div>
             Dash Board
           </div>
           <div
+            id="viewJobs"
             role="button"
-            class="flex items-center w-full p-3 leading-tight transition-all bg-blue-500 rounded-lg outline-none text-start text-gray-50 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex w-full items-center rounded-lg bg-blue-500 p-3 text-start leading-tight text-gray-50 outline-none transition-all focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="grid mr-4 place-items-center">
+            <div class="mr-4 grid place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="w-5 h-5"
+                class="h-5 w-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -88,24 +90,24 @@
           </div>
           <div
             role="button"
-            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="flex items-center mr-4 hover:text-blue-gray-900">
+            <div class="mr-4 flex items-center hover:text-blue-gray-900">
               <i class="fa-solid fa-folder-plus" style="color: #455a64"></i>
             </div>
             Post job
           </div>
           <div
             role="button"
-            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="grid mr-4 place-items-center">
+            <div class="mr-4 grid place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="w-5 h-5"
+                class="h-5 w-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -115,9 +117,9 @@
               </svg>
             </div>
             Job Applications
-            <div class="grid ml-auto place-items-center justify-self-end">
+            <div class="ml-auto grid place-items-center justify-self-end">
               <div
-                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900"
+                class="relative grid select-none items-center whitespace-nowrap rounded-full bg-blue-gray-500/20 px-2 py-1 font-sans text-xs font-bold uppercase text-blue-gray-900"
               >
                 <span class="">14</span>
               </div>
@@ -125,15 +127,15 @@
           </div>
           <div
             role="button"
-            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="grid mr-4 place-items-center">
+            <div class="mr-4 grid place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="w-5 h-5"
+                class="h-5 w-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -146,15 +148,15 @@
           </div>
           <div
             role="button"
-            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="grid mr-4 place-items-center">
+            <div class="mr-4 grid place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="w-5 h-5"
+                class="h-5 w-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -166,16 +168,17 @@
             Settings
           </div>
           <div
+            id="logout-btn"
             role="button"
-            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+            class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
           >
-            <div class="grid mr-4 place-items-center">
+            <div class="mr-4 grid place-items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
-                class="w-5 h-5"
+                class="h-5 w-5"
               >
                 <path
                   fill-rule="evenodd"
@@ -191,11 +194,11 @@
       <div class="flex w-[75%] flex-col gap-10 p-4">
         <div class="flex w-[100%] flex-col gap-8" id="job_section">
           <div
-            class="flex items-center justify-between gap-5 p-5 transition-all duration-500 bg-white rounded-lg shadow hover:shadow-2xl"
+            class="flex items-center justify-between gap-5 rounded-lg bg-white p-5 shadow transition-all duration-500 hover:shadow-2xl"
           >
             <div class="flex items-center gap-2">
               <div
-                class="flex items-center justify-center bg-white rounded-md shadow size-14"
+                class="flex size-14 items-center justify-center rounded-md bg-white shadow"
               >
                 <img src="${job.logoUrl}" alt="company_logo" class="size-8" />
               </div>
@@ -207,7 +210,7 @@
             </div>
             <div class="flex flex-col gap-2">
               <div
-                class="flex px-4 py-2 text-xs font-medium text-blue-600 rounded-full w-fit bg-blue-50"
+                class="flex w-fit rounded-full bg-blue-50 px-4 py-2 text-xs font-medium text-blue-600"
               >
                 <p>${job.type}</p>
               </div>
@@ -221,20 +224,20 @@
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="capitalize">${job.location}</p>
               </div>
-              <div class="font-semibold text-nowrap">
+              <div class="text-nowrap font-semibold">
                 Rs ${job.salaryMin}- Rs ${job.salaryMax}
               </div>
             </div>
             <div>
               <button
                 type="button"
-                class="px-3 py-2 mb-2 text-sm font-semibold text-white bg-blue-700 rounded-lg me-2 text-nowrap hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                class="mb-2 me-2 text-nowrap rounded-lg bg-blue-700 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
               >
                 <i class="fa-regular fa-pen-to-square fa-lg"></i>
               </button>
               <button
                 type="button"
-                class="px-3 py-2 mb-2 text-sm font-semibold text-white bg-red-900 rounded-lg me-2 text-nowrap hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                class="mb-2 me-2 text-nowrap rounded-lg bg-red-900 px-3 py-2 text-sm font-semibold text-white hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
               >
                 <i class="fa-solid fa-trash fa-lg"></i>
               </button>
@@ -246,6 +249,7 @@
     <!-- side bar ends -->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../common/admin.ts"></script>
     <script type="module" src="./index.ts"></script>
   </body>
 </html>
