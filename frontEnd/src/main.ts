@@ -5,11 +5,8 @@ import Swal from "sweetalert2";
 import axiosInstance from "./axios";
 import { IJOB } from "./interfaces/job.interface";
 
-const loginModal = document.getElementById("login_Modal") as HTMLDivElement;
+const loginModal = document.getElementById("login_Modal2") as HTMLDivElement;
 const signUpButton = document.getElementById("signup-btn") as HTMLButtonElement;
-const loginModalButton = document.getElementById(
-  "login_button",
-) as HTMLButtonElement;
 const logOutButton = document.getElementById("logout-btn") as HTMLButtonElement;
 const loginForm = document.getElementById("login_form") as HTMLFormElement;
 const signupForm = document.getElementById("signup_Form") as HTMLFormElement;
@@ -25,11 +22,6 @@ const userElements = document.querySelectorAll("#user_element");
 const popularJobsSection = document.getElementById(
   "popular_jobs",
 ) as HTMLDivElement;
-
-loginModalButton.addEventListener("click", () => {
-  loginModal.classList.toggle("hidden");
-  //   loginModal.classList.remove("hidden");
-});
 
 signUpButton.addEventListener("click", () => {
   signupForm.classList.remove("hidden");
@@ -112,7 +104,6 @@ async function vaidateUser() {
       loginModal.classList.add("hidden");
     } catch (error) {}
   }
-  // document.addEventListener("DOMContentLoaded", async () => {});
 }
 
 window.onload = async () => {

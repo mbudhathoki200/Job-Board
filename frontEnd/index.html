@@ -63,6 +63,7 @@
           <button
             class="select-none rounded-lg px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
             type="button"
+            data-dialog-target="login"
             id="login_button"
           >
             <span>Log In</span>
@@ -112,10 +113,15 @@
     </nav>
     <!-- nav bar ends-->
     <!-- login form starts -->
-    <div id="login_Form">
+    <div id="login_Modal2" class="">
       <form id="login_form">
-        <div class="absolute left-[40%] top-[20%] hidden" id="login_Modal">
+        <div
+          data-dialog-backdrop="login"
+          data-dialog-backdrop-close="true"
+          class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+        >
           <div
+            data-dialog="login"
             class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
           >
             <div class="flex flex-col gap-4 p-6">
@@ -405,6 +411,7 @@
     <!-- popular section starts -->
     <div
       class="flex w-full flex-col items-center justify-center bg-gray-50 py-12"
+      id="categories"
     >
       <div class="w-full">
         <div class="text-center text-3xl font-bold">Popular Categories</div>
@@ -513,199 +520,12 @@
           Search your career opportunity through the available positions.
         </p>
       </div>
-      <div class="flex items-center justify-center gap-7" id="popular_jobs">
-        <!-- <div
-          class="max-w-[370px] cursor-pointer space-y-4 rounded-xl border-2 p-6 hover:scale-105"
-        >
-          <div class="flex flex-col gap-3">
-            <div>
-              <img
-                src="./69logo.jpeg"
-                alt="company logo"
-                class="object-cover w-16 h-16 rounded-full"
-              />
-            </div>
-            <div class="flex flex-col gap-3">
-              <p class="text-xl font-semibold">Content Writer Intern</p>
-              <p class="tracking-widest text-blue-500 uppercase">Bhyakur</p>
-            </div>
-          </div>
-          <div>
-            <p class="text-gray-500">As a content writer intern,you will...</p>
-          </div>
-          <div class="flex gap-1">
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-regular fa-clock" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">3 days left</p>
-            </div>
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-solid fa-location-dot" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">Kathmandu</p>
-            </div>
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-solid fa-briefcase" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">Full time</p>
-            </div>
-          </div>
-          <div>
-            <div
-              class="flex items-center gap-2 p-3 bg-gray-100 rounded-lg max-w-fit hover:scale-110"
-            >
-              <a
-                href="/src/pages/job_details/index.html"
-                class="text-sm font-bold text-blue-500"
-              >
-                <span class="mr-2">Apply Now</span>
-                <i
-                  class="fa-regular fa-circle-right fa-xl"
-                  style="color: #42a5f5"
-                ></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="max-w-[370px] cursor-pointer space-y-4 rounded-xl border-2 p-6 hover:scale-105"
-        >
-          <div class="flex flex-col gap-3">
-            <div>
-              <img
-                src="./69logo.jpeg"
-                alt="company logo"
-                class="object-cover w-16 h-16 rounded-full"
-              />
-            </div>
-            <div class="flex flex-col gap-3">
-              <p class="text-xl font-semibold">Content Writer Intern</p>
-              <p class="tracking-widest text-blue-500 uppercase">Bhyakur</p>
-            </div>
-          </div>
-          <div>
-            <p class="text-gray-500">As a content writer intern,you will...</p>
-          </div>
-          <div class="flex gap-1">
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-regular fa-clock" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">3 days left</p>
-            </div>
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-solid fa-location-dot" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">Kathmandu</p>
-            </div>
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-solid fa-briefcase" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">Full time</p>
-            </div>
-          </div>
-          <div>
-            <div
-              class="flex items-center gap-2 p-3 bg-gray-100 rounded-lg max-w-fit hover:scale-110"
-            >
-              <a href="" class="text-sm font-bold text-blue-500">
-                <span class="mr-2">Apply Now</span>
-                <i
-                  class="fa-regular fa-circle-right fa-xl"
-                  style="color: #42a5f5"
-                ></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="max-w-[370px] cursor-pointer space-y-4 rounded-xl border-2 p-6 hover:scale-105"
-        >
-          <div class="flex flex-col gap-3">
-            <div>
-              <img
-                src="./69logo.jpeg"
-                alt="company logo"
-                class="object-cover w-16 h-16 rounded-full"
-              />
-            </div>
-            <div class="flex flex-col gap-3">
-              <p class="text-xl font-semibold">Content Writer Intern</p>
-              <p class="tracking-widest text-blue-500 uppercase">Bhyakur</p>
-            </div>
-          </div>
-          <div>
-            <p class="text-gray-500">As a content writer intern,you will...</p>
-          </div>
-          <div class="flex gap-1">
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-regular fa-clock" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">3 days left</p>
-            </div>
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-solid fa-location-dot" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">Kathmandu</p>
-            </div>
-            <div
-              class="flex items-center justify-center gap-2 p-3 bg-gray-100 rounded-lg"
-            >
-              <i class="fa-solid fa-briefcase" style="color: #9e9e9e"></i>
-              <p class="text-xs text-gray-500">Full time</p>
-            </div>
-          </div>
-          <div>
-            <div
-              class="flex items-center gap-2 p-3 bg-gray-100 rounded-lg max-w-fit hover:scale-110"
-            >
-              <a href="" class="text-sm font-bold text-blue-500">
-                <span class="mr-2">Apply Now</span>
-                <i
-                  class="fa-regular fa-circle-right fa-xl"
-                  style="color: #42a5f5"
-                ></i
-              ></a>
-            </div>
-          </div>
-        </div> -->
-      </div>
+      <div
+        class="flex items-center justify-center gap-7"
+        id="popular_jobs"
+      ></div>
     </div>
     <!-- job section ends -->
-
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda autem
-      explicabo quia atque voluptatibus doloribus iusto quae sapiente, sequi,
-      quam dolores. Error sed voluptas consectetur ratione voluptatem non, quam
-      maxime, autem, quaerat repellendus rem maiores provident reiciendis
-      magnam? Repellat temporibus, dicta dignissimos natus possimus delectus
-      laboriosam. Repellat tempora nisi molestias inventore, in tenetur
-      architecto et earum excepturi sed, esse nobis amet veniam rerum voluptates
-      dolores sapiente! Porro ipsam distinctio impedit officiis, fuga
-      perferendis quos corrupti labore tenetur, quasi architecto a recusandae
-      accusamus animi earum. Aperiam, quasi ut. Blanditiis quo illo animi
-      architecto officia excepturi harum voluptate eveniet quasi ipsam eaque,
-      natus quae beatae voluptas ducimus adipisci perspiciatis quia fugiat! Qui
-      nesciunt molestias harum dignissimos quod et, dicta ipsa alias nihil,
-      distinctio exercitationem sequi nostrum eum aspernatur molestiae
-      consequuntur architecto maiores excepturi rerum cumque impedit iure?
-      Numquam fugiat illo iusto laboriosam. Rerum corporis pariatur dolorum
-      repellendus tempora, eius doloribus accusamus assumenda similique aperiam
-      reprehenderit obcaecati, mollitia ad totam velit repellat perferendis fuga
-      ullam provident sit accusantium minima nihil quisquam voluptatum. Nostrum
-      illo qui cumque dolor est corporis facilis fuga hic earum ipsum, ratione
-      deserunt officia incidunt temporibus molestiae ipsam soluta sapiente animi
-      veritatis obcaecati vel? Consectetur neque laborum repudiandae aliquid
-      quis?
-    </div>
-    <!-- popular section ends -->
 
     <!-- footer section  -->
     <footer class="bg-white shadow dark:bg-gray-900">
@@ -724,15 +544,19 @@
             class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
           >
             <li>
-              <a href="#" class="me-4 hover:underline md:me-6">About</a>
+              <a href="/" class="me-4 hover:underline md:me-6">Home</a>
             </li>
             <li>
-              <a href="#" class="me-4 hover:underline md:me-6"
-                >Privacy Policy</a
+              <a
+                href="http://localhost:5173/src/pages/jobs_page/index.html"
+                class="me-4 hover:underline md:me-6"
+                >Jobs</a
               >
             </li>
             <li>
-              <a href="#" class="me-4 hover:underline md:me-6">Licensing</a>
+              <a href="#categories" class="me-4 hover:underline md:me-6"
+                >Categories</a
+              >
             </li>
             <li>
               <a href="#" class="hover:underline">Contact</a>
