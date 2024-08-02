@@ -127,15 +127,12 @@ window.onload = async () => {
 function renderPopularJobs(jobs: Array<IJOB>) {
   const singleJob = document.createElement("div");
   singleJob.innerHTML = "";
-  // singleJob.style.display = "grid";
   singleJob.className = "grid grid-cols-3 gap-5";
-
-  // singleJob.style.gap = "1.5rem";
 
   jobs.forEach((job) => {
     const remainigDays = calculateDays(job.expiryDate);
     singleJob.innerHTML += `<div
-          class="max-w-[370px] cursor-pointer space-y-4 rounded-xl border-2 p-6 hover:scale-105"
+          class="max-w-[370px] cursor-pointer space-y-4 rounded-xl border-2 p-6 hover:shadow-2xl"
         >
           <div class="flex flex-col gap-3">
             <div>
@@ -196,6 +193,7 @@ function renderPopularJobs(jobs: Array<IJOB>) {
   });
   popularJobsSection.appendChild(singleJob);
 }
+
 function calculateDays(expiryDate: string) {
   const expDate = new Date(expiryDate);
   const currentDate = new Date();
