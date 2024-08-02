@@ -193,13 +193,239 @@
           </div>
         </sidebar>
       </div>
-      <div class="flex w-[75%] flex-col gap-10 p-4">
-        <div class="flex w-[90%] flex-col gap-8"></div>
+      <div class="flex w-[75%] flex-col gap-10 overflow-y-auto p-4">
+        <div class="flex w-[90%] flex-col gap-8">
+          <form>
+            <div class="flex flex-col gap-4 rounded-lg bg-white p-10">
+              <p class="mb-6 text-4xl font-bold text-gray-900">Job Details</p>
+              <div class="flex flex-col gap-4">
+                <label class="text-lg font-medium text-gray-900"
+                  >Job Title</label
+                >
+                <input
+                  type="search"
+                  id="search"
+                  class="block w-full rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="Web Developer"
+                />
+              </div>
+              <div class="flex flex-col gap-4">
+                <label class="text-lg font-medium text-gray-900"
+                  >Job Description</label
+                >
+                <textarea
+                  name="comments"
+                  id="comments"
+                  class="mt-1 w-full rounded-md border-2 border-gray-300 p-4"
+                  placeholder="Write Job Description :"
+                  spellcheck="false"
+                ></textarea>
+              </div>
+              <div class="flex flex-col gap-4">
+                <label class="text-lg font-medium text-gray-900"
+                  >Job Requirements</label
+                >
+                <textarea
+                  name="comments"
+                  id="comments"
+                  class="mt-1 w-full rounded-md border-2 border-gray-300 p-4"
+                  placeholder="Write Job Requirements :"
+                  spellcheck="false"
+                ></textarea>
+              </div>
+              <div class="flex w-full">
+                <div class="flex w-1/2 flex-col gap-4">
+                  <label
+                    for="Categories"
+                    class="block text-lg font-medium text-gray-900"
+                    >Categories</label
+                  >
+                  <select
+                    id="category"
+                    class="block h-[47px] w-1/3 rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <option value="3">IT & Software</option>
+                    <option value="1">Government</option>
+                    <option value="2">Technology</option>
+                    <option value="4">Accounting / Finanace</option>
+                    <option value="5">Construction</option>
+                    <option value="6">Tele-communications</option>
+                    <option value="7">Design & Multimedia</option>
+                    <option value="8">Human Resource</option>
+                    <option value="9">Engineer</option>
+                    <option value="10">Developer Engineer</option>
+                  </select>
+                </div>
+                <div class="flex w-1/2 flex-col gap-4">
+                  <label
+                    for="type"
+                    class="block text-lg font-medium text-gray-900"
+                    >Job Type</label
+                  >
+                  <select
+                    id="type"
+                    class="block h-[47px] w-1/3 rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Remote">Remote</option>
+                    <option value="WFH">WFH</option>
+                  </select>
+                </div>
+              </div>
+              <div class="flex flex-col gap-4">
+                <label for="" class="w-1/2 text-lg font-medium text-gray-900"
+                  >Salary</label
+                >
+                <div class="flex">
+                  <div class="relative w-1/2">
+                    <div
+                      class="pointer-events-none absolute inset-y-0 start-0 top-0 flex items-center ps-3.5"
+                    >
+                      $
+                    </div>
+                    <input
+                      type="number"
+                      id="min_input"
+                      class="block w-1/3 rounded-md border-2 border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="min"
+                      required
+                    />
+                  </div>
+                  <div class="relative w-1/2">
+                    <div
+                      class="pointer-events-none absolute inset-y-0 start-0 top-0 flex items-center ps-3.5"
+                    >
+                      $
+                    </div>
+                    <input
+                      type="number"
+                      id="max_input"
+                      class="block w-1/3 rounded-md border-2 border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="max"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="flex">
+                <div class="flex w-1/2 flex-col gap-4">
+                  <label for="" class="text-lg font-medium text-gray-900"
+                    >Experience</label
+                  >
+                  <input
+                    type="number"
+                    id="min_input"
+                    class="block w-1/3 rounded-md border-2 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Years"
+                    required
+                  />
+                </div>
+                <div class="flex w-1/2 flex-col gap-4">
+                  <label for="" class="text-lg font-medium text-gray-900"
+                    >Level</label
+                  >
+                  <select
+                    id="level"
+                    class="block h-[47px] w-1/3 rounded-md border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <option value="Entry">Entry</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Mid">Mid</option>
+                    <option value="Senior">Senior</option>
+                  </select>
+                </div>
+              </div>
+              <div class="flex">
+                <div class="flex w-1/2 flex-col gap-4">
+                  <label
+                    for="location"
+                    class="text-lg font-medium text-gray-900"
+                    >Location</label
+                  >
+                  <input
+                    type="search"
+                    id="search"
+                    class="block w-1/3 rounded-md border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Kathmandu"
+                    required
+                  />
+                </div>
+                <div class="flex w-1/2 flex-col gap-4">
+                  <label
+                    for="openings"
+                    class="text-lg font-medium text-gray-900"
+                    >Openings</label
+                  >
+                  <input
+                    type="number"
+                    id="min_input"
+                    class="block w-1/3 rounded-md border-2 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Years"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="flex w-1/2 flex-col gap-4">
+                <label for="openings" class="text-lg font-medium text-gray-900"
+                  >Expiry Date</label
+                >
+                <input
+                  datepicker
+                  id="default-datepicker"
+                  type="date"
+                  class="block w-1/3 rounded-md border-2 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="Select date"
+                />
+              </div>
+            </div>
+          </form>
+          <div>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam
+            asperiores aperiam illum totam aspernatur. Amet, eaque? Quam officia
+            perspiciatis itaque iste consequuntur fuga, aspernatur, ipsa dicta
+            cupiditate accusantium nobis id similique! Eligendi amet soluta
+            similique distinctio. Tempore neque dignissimos quis. Omnis eius
+            earum doloremque accusantium? Eveniet quisquam ex accusantium id.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ut
+            illo esse tempora hic, laborum repellat modi distinctio qui a
+            officia consequuntur molestiae id neque reiciendis pariatur
+            asperiores ratione excepturi! Consequatur aliquid repudiandae quae
+            ducimus voluptatibus dignissimos ut officia minima minus vitae sunt
+            ratione iure vero soluta illo nesciunt ipsam, dolorum nulla harum
+            voluptates ipsa quibusdam cum nostrum. Non veniam reprehenderit,
+            aliquam fuga, recusandae aspernatur minima distinctio repellendus
+            perferendis sit quo tempore voluptas! Aspernatur, iusto! Quas
+            eligendi molestiae quasi hic nemo maxime vero pariatur architecto
+            cumque aut neque, minus, sit doloribus alias optio. Officia, minima
+            dolorum. Repellendus vitae blanditiis voluptate! Lorem ipsum dolor
+            sit, amet consectetur adipisicing elit. Numquam asperiores aperiam
+            illum totam aspernatur. Amet, eaque? Quam officia perspiciatis
+            itaque iste consequuntur fuga, aspernatur, ipsa dicta cupiditate
+            accusantium nobis id similique! Eligendi amet soluta similique
+            distinctio. Tempore neque dignissimos quis. Omnis eius earum
+            doloremque accusantium? Eveniet quisquam ex accusantium id. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Debitis ut illo
+            esse tempora hic, laborum repellat modi distinctio qui a officia
+            consequuntur molestiae id neque reiciendis pariatur asperiores
+            ratione excepturi! Consequatur aliquid repudiandae quae ducimus
+            voluptatibus dignissimos ut officia minima minus vitae sunt ratione
+            iure vero soluta illo nesciunt ipsam, dolorum nulla harum voluptates
+            ipsa quibusdam cum nostrum. Non veniam reprehenderit, aliquam fuga,
+            recusandae aspernatur minima distinctio repellendus perferendis sit
+            quo tempore voluptas! Aspernatur, iusto! Quas eligendi molestiae
+            quasi hic nemo maxime vero pariatur architecto cumque aut neque,
+            minus, sit doloribus alias optio. Officia, minima dolorum.
+            Repellendus vitae blanditiis voluptate!
+          </div>
+        </div>
       </div>
     </div>
     <!-- side bar ends -->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script type="module" src="../common/admin.ts"></script>
     <script type="module" src="./index.ts"></script>
   </body>
