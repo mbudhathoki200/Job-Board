@@ -20,12 +20,12 @@ window.onload = async () => {
 function renderPopularJobs(jobs: Array<IJOB>) {
   const singleJob = document.createElement("div");
   singleJob.innerHTML = "";
-  singleJob.className = "grid grid-cols-3 gap-5";
+  singleJob.className = "grid grid-cols-3 gap-8";
 
   jobs.forEach((job) => {
     const remainigDays = calculateDays(job.expiryDate);
     singleJob.innerHTML += `<div
-          class="max-w-[370px] cursor-pointer space-y-4 rounded-xl border-2 p-6 hover:shadow-2xl"
+          class="max-w-[370px] cursor-pointer space-y-4 rounded-xl border shadow p-6 hover:shadow-2xl"
         >
           <div class="flex flex-col gap-3">
             <div>
