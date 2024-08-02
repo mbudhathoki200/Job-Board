@@ -4,6 +4,7 @@ const viewJobsBtn = document.getElementById("viewJobs") as HTMLButtonElement;
 const jobApplicationBtn = document.getElementById(
   "jobApplication-btn",
 ) as HTMLButtonElement;
+const postJobBtn = document.getElementById("postJob-btn") as HTMLButtonElement;
 
 logoutBtn.addEventListener("click", () => {
   localStorage.clear();
@@ -27,6 +28,12 @@ viewJobsBtn.addEventListener("click", () => {
 jobApplicationBtn.addEventListener("click", () => {
   const location =
     "http://localhost:5173/src/pages/admin_jobapplication/index.html";
+  if (window.location.href != location) {
+    window.location.href = location;
+  }
+});
+postJobBtn.addEventListener("click", () => {
+  const location = "http://localhost:5173/src/pages/admin_postjob/index.html";
   if (window.location.href != location) {
     window.location.href = location;
   }
