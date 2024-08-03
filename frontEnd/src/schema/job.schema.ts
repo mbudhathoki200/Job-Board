@@ -36,10 +36,6 @@ export const jobBodySchema = Joi.object({
   openings: Joi.string().messages({
     "any.required": "openings is required",
   }),
-  experience: Joi.string().min(2).messages({
-    "any.required": "experience is required",
-    "string.min": "experience should be atleast 2 charactes long",
-  }),
   level: Joi.string().min(2).messages({
     "any.required": "level is required",
     "string.min": "level should be atleast 2 charactes long",

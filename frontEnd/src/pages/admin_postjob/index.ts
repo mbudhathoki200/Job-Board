@@ -4,6 +4,7 @@ import { ICompany } from "../../interfaces/company.interface";
 import Swal from "sweetalert2";
 import { jobBodySchema } from "../../schema/job.schema";
 import { validateForm } from "../../utils/validator";
+import { createCompanySchema } from "../../schema/company.schema";
 
 const modal = document.getElementById("modal") as HTMLDivElement;
 const dropdownElement = document.getElementById(
@@ -55,34 +56,59 @@ modalOpenBtn.addEventListener("click", () => {
   modal.classList.toggle("hidden");
 });
 
+let companiesArr: ICompany[] = [];
+
 addCompanyForm.addEventListener("submit", handleCompanySubmitForm);
 
 async function handleCompanySubmitForm(event: Event) {
   event.preventDefault();
-  const formData = {
-    name: nameInput.value,
-    description: descriptionInput.value,
-    website: websiteInput.value,
-    companyLogo: fileInput.files ? fileInput.files[0] : null,
-  };
-  console.log("Form Data:", formData);
-  modal.classList.toggle("hidden");
-  // addCompanyForm.reset();
-  // try {
-  //   const response = await axiosInstance.post("/company/add", formData);
-  //   console.log(response);
-  // } catch (error) {
-  //   if (error instanceof AxiosError && error.response) {
-  //     console.log(error.response);
-  //   }
-  // }
+
+  const formData = new FormData();
+  formData.append("name", nameInput.value);
+  formData.append("description", descriptionInput.value);
+  formData.append("website", websiteInput.value);
+
+  if (fileInput.files && fileInput.files[0]) {
+    formData.append("logo", fileInput.files[0]);
+  }
+
+  const error = validateForm(formData, createCompanySchema);
+  if (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      timer: 1000,
+      text: `${error![0].message}`,
+    });
+  }
+
+  try {
+    const response = await axiosInstance.post("/company/add", formData);
+    const newCompany = response.data.company;
+    console.log(newCompany);
+    companiesArr.push(newCompany);
+    addCompanyForm.reset();
+    updateDropDown();
+    modal.classList.toggle("hidden");
+    Swal.fire({
+      title: "Company Added Successfully!",
+      icon: "success",
+      timer: 1000,
+      showConfirmButton: false,
+    });
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      console.log(error.response);
+    }
+  }
 }
 
 window.onload = async () => {
   try {
     const response = await axiosInstance.get("/company");
     const companies = response.data.companies;
-    updateDropDown(companies);
+    companiesArr = companies;
+    updateDropDown();
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
       if (error.response.status == 401) {
@@ -92,9 +118,9 @@ window.onload = async () => {
   }
 };
 
-function updateDropDown(companies: Array<ICompany>) {
+function updateDropDown() {
   dropdownElement.innerHTML = '<option value="">Select a company</option>';
-  companies.forEach((company) => {
+  companiesArr.forEach((company) => {
     const option = document.createElement("option");
     option.value = company.id;
     option.textContent = company.name;
@@ -120,7 +146,6 @@ async function handleJobSubmit(event: Event) {
     openings: openings.value,
     expiryDate: expiryDate.value,
   };
-  console.log("Form Data:", formData);
   const error = validateForm(formData, jobBodySchema);
   if (error) {
     Swal.fire({
