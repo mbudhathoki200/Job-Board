@@ -1,5 +1,8 @@
 import multer from "multer";
 import { Request } from "express";
+import loggerWithNameSpace from "../utils/logger";
+
+const logger = loggerWithNameSpace("Multer Middleware");
 
 const storage = multer.diskStorage({
   destination: function (req: Request, file: Express.Multer.File, cb) {

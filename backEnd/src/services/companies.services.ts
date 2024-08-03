@@ -2,12 +2,19 @@ import { NotFoundError } from "../error/NotFoundError";
 import { Icompany } from "../interfaces/companies.interface";
 import * as CompanyModel from "../models/companies.model";
 import loggerWithNameSpace from "../utils/logger";
+import { upload } from "../utils/upload";
 
 const logger = loggerWithNameSpace("Companies Services");
 
-export function createCompany(company: Icompany, userId: string) {
+export async function createCompany(
+  company: Icompany,
+  userId: string,
+  logoPath: string
+) {
   logger.info("Create company");
-  return CompanyModel.CompanyModel.createCompany(company, userId);
+  const logoUrl = await upload(logoPath);
+  console.log(logoUrl);
+  return CompanyModel.CompanyModel.createCompany(company, userId, logoUrl);
 }
 
 export async function getCompanyById(id: string) {

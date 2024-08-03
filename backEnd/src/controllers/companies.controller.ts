@@ -6,14 +6,24 @@ import { Request } from "../interfaces/auth.interface";
 
 const logger = loggerWithNameSpace("companiesController");
 
-export async function createCompany(req: Request, res: Response) {
+export async function createCompany(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   logger.info("create company");
   const { body } = req;
   const userId = req.user?.id!;
-  const data = await CompaniesServices.createCompany(body, userId);
-  return res
-    .status(HttpStatusCodes.OK)
-    .send({ message: "Company Registered succesfully", user: data });
+  const { file } = req;
+  try {
+    const logoPath = file?.path;
+    const data = await CompaniesServices.createCompany(body, userId, logoPath!);
+    return res
+      .status(HttpStatusCodes.OK)
+      .send({ message: "Company Registered succesfully", company: data });
+  } catch (error) {
+    next(error);
+  }
 }
 
 export async function getCompanyById(

@@ -24,7 +24,7 @@ export async function up(knex: Knex): Promise<void> {
 
     table.string("salary_max", 100).notNullable();
 
-    table.date("post_date").notNullable();
+    table.date("post_date").notNullable().defaultTo(knex.raw("now()"));
 
     table.date("expiry_date").notNullable();
 

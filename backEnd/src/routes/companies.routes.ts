@@ -11,14 +11,15 @@ import {
 import { createCompanySchema } from "../schema/companies.schema";
 import { authenticate, authorize } from "../middleware/auth.middleware";
 import { getQuerySchema } from "../schema/query.schema";
+import { upload } from "../middleware/multer.middleware";
 
 const router = express();
 
 router.post(
   "/add",
-  validateReqBody(createCompanySchema),
   authenticate,
   authorize("admin"),
+  upload.single("logo"),
   createCompany
 );
 

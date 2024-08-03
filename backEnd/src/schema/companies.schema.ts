@@ -9,9 +9,6 @@ export const createCompanySchema = Joi.object({
     "string.min": "Description Should be at least 10 character long",
     "string.max": "Description Should not exceed 600 characters",
   }),
-  logoUrl: Joi.string().required().messages({
-    "any.required": "logoUrl is required",
-  }),
   website: Joi.string().required().messages({
     "any.required": "website is required",
   }),

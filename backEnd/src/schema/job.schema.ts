@@ -27,12 +27,6 @@ export const jobBodySchema = Joi.object({
     "any.required": "salaryMax is required",
     "number.positive": "salaryMax be a positive value",
   }),
-  postDate: Joi.date().iso().required().messages({
-    "date.base": "Post date must be a valid date",
-    "date.format": "Post date must be in ISO 8601 format(e.g:'2023-04-15)",
-    "date.min": "Post date cannot be in the past",
-    "any.required": "Post date is required",
-  }),
   expiryDate: Joi.date().iso().required().messages({
     "date.base": "Expiry date must be a valid date",
     "date.format": "Expiry date must be in ISO 8601(e.g:'2023-04-15) format",
@@ -42,9 +36,9 @@ export const jobBodySchema = Joi.object({
   openings: Joi.string().required().messages({
     "any.required": "openings is required",
   }),
-  experience: Joi.string().min(2).required().messages({
+  experience: Joi.string().min(1).required().messages({
     "any.required": "experience is required",
-    "string.min": "experience should be atleast 2 charactes long",
+    "string.min": "experience should be atleast 1 charactes long",
   }),
   level: Joi.string().min(2).required().messages({
     "any.required": "level is required",
@@ -113,11 +107,7 @@ export const updateJobBodySchema = Joi.object({
   salaryMax: Joi.number().positive().optional().messages({
     "number.positive": "salaryMax be a positive value",
   }),
-  postDate: Joi.date().iso().optional().messages({
-    "date.base": "Post date must be a valid date",
-    "date.format": "Post date must be in ISO 8601 format(e.g:'2023-04-15)",
-    "date.min": "Post date cannot be in the past",
-  }),
+
   expiryDate: Joi.date().iso().optional().messages({
     "date.base": "Expiry date must be a valid date",
     "date.format": "Expiry date must be in ISO 8601(e.g:'2023-04-15) format",

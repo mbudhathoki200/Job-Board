@@ -2,18 +2,25 @@ import { Icompany } from "../interfaces/companies.interface";
 import { BaseModel } from "./base.model";
 
 export class CompanyModel extends BaseModel {
-  static async createCompany(company: Icompany, userId: string) {
+  static async createCompany(
+    company: Icompany,
+    userId: string,
+    logoUrl: string
+  ) {
     const companyToCreate = {
       name: company.name,
       description: company.description,
-      logoUrl: company.logoUrl,
+      logoUrl: logoUrl,
       website: company.website,
       userId: userId,
     };
 
-    await this.queryBuilder().table("company").insert(companyToCreate);
+    const [createdCompany] = await this.queryBuilder()
+      .table("company")
+      .insert(companyToCreate)
+      .returning("*");
 
-    return companyToCreate;
+    return createdCompany;
   }
   //get company by id
   static getCompanyById(userId: string) {
