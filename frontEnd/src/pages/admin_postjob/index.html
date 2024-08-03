@@ -193,9 +193,34 @@
           </div>
         </sidebar>
       </div>
-      <div class="flex w-[75%] flex-col gap-10 overflow-y-auto p-4">
-        <div class="flex w-[90%] flex-col gap-8">
-          <form>
+      <div class="m-10 flex w-[75%] flex-col gap-10 overflow-y-auto p-4">
+        <div class="mb-40 flex w-[90%] flex-col gap-8">
+          <form class="flex flex-col gap-8">
+            <div class="flex flex-col gap-6 rounded-lg bg-white p-10">
+              <p class="mb-6 text-4xl font-bold text-gray-900">
+                Company Details
+              </p>
+              <div class="flex flex-col gap-4">
+                <label
+                  for="Categories"
+                  class="block text-lg font-medium text-gray-900"
+                  >Select Your Registered Company</label
+                >
+                <select
+                  id="companyDropdown"
+                  class="block h-[47px] w-1/3 rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                >
+                  <option value="">Select a company</option>
+                </select>
+              </div>
+              <button
+                type="button"
+                id="btn--open-modal"
+                class="mb-2 me-2 w-fit rounded-lg bg-blue-700 px-6 py-4 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Add New Company
+              </button>
+            </div>
             <div class="flex flex-col gap-4 rounded-lg bg-white p-10">
               <p class="mb-6 text-4xl font-bold text-gray-900">Job Details</p>
               <div class="flex flex-col gap-4">
@@ -231,6 +256,7 @@
                   class="mt-1 w-full rounded-md border-2 border-gray-300 p-4"
                   placeholder="Write Job Requirements :"
                   spellcheck="false"
+                  required
                 ></textarea>
               </div>
               <div class="flex w-full">
@@ -242,6 +268,7 @@
                   >
                   <select
                     id="category"
+                    required
                     class="block h-[47px] w-1/3 rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                   >
                     <option value="3">IT & Software</option>
@@ -264,6 +291,7 @@
                   >
                   <select
                     id="type"
+                    required
                     class="block h-[47px] w-1/3 rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                   >
                     <option value="Full Time">Full Time</option>
@@ -327,6 +355,7 @@
                   >
                   <select
                     id="level"
+                    required
                     class="block h-[47px] w-1/3 rounded-md border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                   >
                     <option value="Entry">Entry</option>
@@ -379,45 +408,96 @@
                   placeholder="Select date"
                 />
               </div>
+              <button
+                type="submit"
+                class="mb-2 me-2 mt-3 w-fit rounded-lg bg-blue-700 px-10 py-4 text-sm font-medium uppercase tracking-wider text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Post Job
+              </button>
             </div>
           </form>
-          <div>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam
-            asperiores aperiam illum totam aspernatur. Amet, eaque? Quam officia
-            perspiciatis itaque iste consequuntur fuga, aspernatur, ipsa dicta
-            cupiditate accusantium nobis id similique! Eligendi amet soluta
-            similique distinctio. Tempore neque dignissimos quis. Omnis eius
-            earum doloremque accusantium? Eveniet quisquam ex accusantium id.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ut
-            illo esse tempora hic, laborum repellat modi distinctio qui a
-            officia consequuntur molestiae id neque reiciendis pariatur
-            asperiores ratione excepturi! Consequatur aliquid repudiandae quae
-            ducimus voluptatibus dignissimos ut officia minima minus vitae sunt
-            ratione iure vero soluta illo nesciunt ipsam, dolorum nulla harum
-            voluptates ipsa quibusdam cum nostrum. Non veniam reprehenderit,
-            aliquam fuga, recusandae aspernatur minima distinctio repellendus
-            perferendis sit quo tempore voluptas! Aspernatur, iusto! Quas
-            eligendi molestiae quasi hic nemo maxime vero pariatur architecto
-            cumque aut neque, minus, sit doloribus alias optio. Officia, minima
-            dolorum. Repellendus vitae blanditiis voluptate! Lorem ipsum dolor
-            sit, amet consectetur adipisicing elit. Numquam asperiores aperiam
-            illum totam aspernatur. Amet, eaque? Quam officia perspiciatis
-            itaque iste consequuntur fuga, aspernatur, ipsa dicta cupiditate
-            accusantium nobis id similique! Eligendi amet soluta similique
-            distinctio. Tempore neque dignissimos quis. Omnis eius earum
-            doloremque accusantium? Eveniet quisquam ex accusantium id. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Debitis ut illo
-            esse tempora hic, laborum repellat modi distinctio qui a officia
-            consequuntur molestiae id neque reiciendis pariatur asperiores
-            ratione excepturi! Consequatur aliquid repudiandae quae ducimus
-            voluptatibus dignissimos ut officia minima minus vitae sunt ratione
-            iure vero soluta illo nesciunt ipsam, dolorum nulla harum voluptates
-            ipsa quibusdam cum nostrum. Non veniam reprehenderit, aliquam fuga,
-            recusandae aspernatur minima distinctio repellendus perferendis sit
-            quo tempore voluptas! Aspernatur, iusto! Quas eligendi molestiae
-            quasi hic nemo maxime vero pariatur architecto cumque aut neque,
-            minus, sit doloribus alias optio. Officia, minima dolorum.
-            Repellendus vitae blanditiis voluptate!
+          <div class="hidden" id="modal">
+            <div
+              class="fixed inset-0 z-50 flex w-full items-center justify-center rounded-lg bg-black bg-opacity-35 shadow-2xl transition-all duration-500"
+            >
+              <div class="fixed w-[40%] rounded-lg bg-white shadow-lg">
+                <button
+                  class="absolute right-4 top-2 flex size-10 cursor-pointer items-center justify-center text-3xl font-bold"
+                  id="btn--close-modal"
+                >
+                  &times;
+                </button>
+
+                <div
+                  class="rounded-t-lg border-b-2 bg-white p-6 text-lg font-bold"
+                >
+                  Company Registration
+                </div>
+                <form
+                  class="flex flex-col gap-4 p-6"
+                  id="comapany_register_form"
+                >
+                  <div class="flex flex-col gap-4">
+                    <label class="text-lg font-medium text-gray-900"
+                      >Company Name</label
+                    >
+                    <input
+                      type="search"
+                      id="search"
+                      required
+                      class="block w-full rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="Web Developer"
+                    />
+                  </div>
+                  <div class="flex flex-col gap-4">
+                    <label class="text-lg font-medium text-gray-900"
+                      >Company Description</label
+                    >
+                    <textarea
+                      name="comments"
+                      id="comments"
+                      class="mt-1 w-full rounded-md border-2 border-gray-300 p-4"
+                      placeholder="Write Company Description :"
+                      spellcheck="false"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="flex flex-col gap-4">
+                    <label class="text-lg font-medium text-gray-900"
+                      >Company Website</label
+                    >
+                    <input
+                      type="search"
+                      id="search"
+                      required
+                      class="block w-full rounded border-2 border-gray-300 bg-white p-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="www.google.com"
+                    />
+                  </div>
+                  <div class="flex flex-col gap-4">
+                    <label class="text-lg font-medium text-gray-900"
+                      >Company Logo</label
+                    >
+                    <input
+                      class="w-full cursor-pointer rounded-sm border border-gray-300 bg-gray-50 p-2 text-sm text-gray-900 file:mx-3 file:h-9 file:cursor-pointer file:rounded-md file:border-none file:bg-blue-700 file:px-3 file:text-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      aria-describedby="file_input_help"
+                      id="file_input"
+                      type="file"
+                      required
+                    />
+                    <p class="mt-1 text-sm text-gray-600" id="file_input_help ">
+                      PNG,JPG,GIF (MAX. 10 MB).
+                    </p>
+                  </div>
+                  <button
+                    type="submit"
+                    class="mb-2 me-2 mt-3 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium uppercase tracking-wider text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Register
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
