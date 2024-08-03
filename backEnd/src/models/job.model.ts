@@ -177,4 +177,34 @@ export class JobModel extends BaseModel {
   static async deleteJob(jobId: string) {
     await this.queryBuilder().table("jobListings").del().where({ id: jobId });
   }
+
+  static getUsersJobs(userId: string) {
+    const data = this.queryBuilder()
+      .select(
+        "jobListings.id",
+        "jobListings.title",
+        "JobListings.description",
+        "JobListings.location",
+        "JobListings.salaryMin",
+        "JobListings.salaryMax",
+        "JobListings.postDate",
+        "JobListings.expiryDate",
+        "JobListings.openings",
+        "JobListings.experience",
+        "JobListings.level",
+        "JobListings.type",
+        "JobListings.createdBy",
+        "JobListings.companyId",
+        "JobListings.categoryId",
+        "company.name as companyName",
+        "company.logoUrl",
+        "company.website",
+        "company.description as companyDescription"
+      )
+      .table("job_listings")
+      .join("company", "jobListings.companyId", "company.id")
+      .where({ "job_listings.createdBy": userId });
+
+    return data;
+  }
 }

@@ -80,3 +80,14 @@ export async function deleteJob(jobId: string, userId: string) {
 
   JobModel.JobModel.deleteJob(jobId);
 }
+
+export async function getUsersJobs(userId: string) {
+  logger.info("getUserJob");
+
+  const data = await JobModel.JobModel.getUsersJobs(userId);
+
+  if (data.length == 0) {
+    throw new NotFoundError(`User Job doesnot exist`);
+  }
+  return data;
+}

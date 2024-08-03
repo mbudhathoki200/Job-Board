@@ -1,10 +1,9 @@
-import HttpStatusCodes from "http-status-codes";
 import { NextFunction, Response } from "express";
+import HttpStatusCodes from "http-status-codes";
 import { Request } from "../interfaces/auth.interface";
 import loggerWithNameSpace from "../utils/logger";
 
 import * as JobServices from "../services/job.services";
-import { NotFoundError } from "../error/NotFoundError";
 
 const logger = loggerWithNameSpace("JobController");
 
@@ -34,7 +33,7 @@ export async function getJobById(
   res: Response,
   next: NextFunction
 ) {
-  logger.info("get todo by id");
+  logger.info("get job by id");
   const { id } = req.params;
   try {
     const data = await JobServices.getJobById(id);
@@ -47,7 +46,7 @@ export async function getJobById(
 }
 
 export async function getJobs(req: Request, res: Response, next: NextFunction) {
-  logger.info("get todo");
+  logger.info("get jobs");
 
   const { query } = req;
 
@@ -58,13 +57,31 @@ export async function getJobs(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 }
+export async function getUsersJob(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("get users job");
+  const { user } = req;
+
+  const userId = user?.id;
+  try {
+    const data = await JobServices.getUsersJobs(userId!);
+    return res.status(HttpStatusCodes.OK).send({
+      jobs: data,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
 export async function updateJob(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  logger.info("udpate todo");
+  logger.info("udpate job");
   const userId = req.user?.id!;
   const { id } = req.params;
   const newJob = req.body;

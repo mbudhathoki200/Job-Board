@@ -4,6 +4,7 @@ import {
   deleteJob,
   getJobById,
   getJobs,
+  getUsersJob,
   updateJob,
 } from "../controllers/job.controller";
 import { authenticate, authorize } from "../middleware/auth.middleware";
@@ -48,5 +49,7 @@ router.delete(
   authorize("admin"),
   deleteJob
 );
+
+router.get("/user/job", authenticate, authorize("admin"), getUsersJob);
 
 export default router;
