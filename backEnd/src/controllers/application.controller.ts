@@ -1,7 +1,10 @@
 import { NextFunction, Response } from "express";
 import HttpStatusCodes from "http-status-codes";
 import { Request } from "../interfaces/auth.interface";
+import loggerWithNameSpace from "../utils/logger";
 import * as ApplicationService from "../services/application.services";
+
+const logger = loggerWithNameSpace("Application Controller");
 
 export async function uploadResume(
   req: Request,
@@ -27,6 +30,7 @@ export async function applyJob(
   res: Response,
   next: NextFunction
 ) {
+  logger.info("Apply job");
   const { id: jobId } = req.params;
   const { user } = req;
   const { file } = req;
@@ -47,6 +51,8 @@ export async function validateAppliedJob(
   res: Response,
   next: NextFunction
 ) {
+  logger.info("Validate Applied Jobs");
+
   const { id: jobId } = req.params;
   const { user } = req;
   const userId = user!.id;
@@ -54,6 +60,25 @@ export async function validateAppliedJob(
   try {
     const data = await ApplicationService.validateAppliedJob(jobId, userId);
     res.status(HttpStatusCodes.OK).send(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function getApplications(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("get Appliations");
+  const { user } = req;
+  const userId = user?.id;
+  console.log(userId);
+  try {
+    const data = await ApplicationService.getApplications(userId!);
+    return res.status(HttpStatusCodes.OK).send({
+      Applications: data,
+    });
   } catch (error) {
     next(error);
   }

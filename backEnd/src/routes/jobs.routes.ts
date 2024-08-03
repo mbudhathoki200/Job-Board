@@ -21,6 +21,7 @@ import { getQuerySchema } from "../schema/query.schema";
 
 const router = express();
 
+//create job
 router.post(
   "/add",
   validateReqBody(jobBodySchema),
@@ -29,10 +30,13 @@ router.post(
   createJob
 );
 
+//get jobs
 router.get("/", validateReqQuery(getJobQuerySchema), getJobs);
 
+//get job by id
 router.get("/:id", validateReqQuery(getQuerySchema), getJobById);
 
+//update job
 router.put(
   "/:id",
   validateReqQuery(getQuerySchema),
@@ -42,6 +46,7 @@ router.put(
   updateJob
 );
 
+//delete job
 router.delete(
   "/:id",
   validateReqQuery(getQuerySchema),
@@ -50,6 +55,7 @@ router.delete(
   deleteJob
 );
 
+//get users job
 router.get("/user/job", authenticate, authorize("admin"), getUsersJob);
 
 export default router;

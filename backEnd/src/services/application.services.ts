@@ -52,3 +52,14 @@ export async function validateAppliedJob(jobId: string, userId: string) {
   }
   return data;
 }
+
+export async function getApplications(userId: string) {
+  logger.info("get Applications");
+
+  const data = await ApplicationModel.ApplicationModel.getApplications(userId);
+
+  if (data.length == 0) {
+    throw new NotFoundError(`Applications doesnot exist`);
+  }
+  return data;
+}

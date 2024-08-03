@@ -29,4 +29,32 @@ export class ApplicationModel extends BaseModel {
       .first();
     return data;
   }
+
+  static getApplications(userId: string) {
+    const data = this.queryBuilder()
+      .select(
+        "job_applications.id",
+        "job_applications.job_id",
+        "job_applications.user_id",
+        "job_applications.resume_url",
+        "job_applications.status",
+        "job_applications.applied_date",
+        "users.name",
+        "users.email",
+        "job_listings.title",
+        "job_listings.postDate",
+        "job_listings.expiryDate",
+        "job_listings.location",
+        "job_listings.type",
+        "company.logoUrl",
+        "company.name"
+      )
+      .table("job_applications")
+      .where("job_applications.userId", userId)
+      .join("users", "job_applications.userId", "users.id")
+      .join("job_listings", "job_listings.id", "job_applications.jobId")
+      .join("company", "job_listings.companyId", "company.id");
+
+    return data;
+  }
 }
