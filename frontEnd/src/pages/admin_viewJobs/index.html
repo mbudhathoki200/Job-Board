@@ -194,58 +194,7 @@
         </sidebar>
       </div>
       <div class="flex w-[75%] flex-col gap-10 p-4">
-        <div class="flex w-[100%] flex-col gap-8" id="job_section">
-          <div
-            class="flex items-center justify-between gap-5 rounded-lg bg-white p-5 shadow transition-all duration-500 hover:shadow-2xl"
-          >
-            <div class="flex items-center gap-2">
-              <div
-                class="flex size-14 items-center justify-center rounded-md bg-white shadow"
-              >
-                <img src="${job.logoUrl}" alt="company_logo" class="size-8" />
-              </div>
-              <p
-                class="ms-3 min-w-[190px] text-nowrap text-lg font-semibold hover:text-blue-600"
-              >
-                ${job.title}
-              </p>
-            </div>
-            <div class="flex flex-col gap-2">
-              <div
-                class="flex w-fit rounded-full bg-blue-50 px-4 py-2 text-xs font-medium text-blue-600"
-              >
-                <p>${job.type}</p>
-              </div>
-              <div class="flex items-center gap-2 text-gray-500">
-                <i class="fa-regular fa-clock"></i>
-                <p class="text-nowrap">${formattedDate}</p>
-              </div>
-            </div>
-            <div class="flex flex-col">
-              <div class="flex items-center gap-2 py-2 text-gray-500">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="capitalize">${job.location}</p>
-              </div>
-              <div class="text-nowrap font-semibold">
-                Rs ${job.salaryMin}- Rs ${job.salaryMax}
-              </div>
-            </div>
-            <div>
-              <button
-                type="button"
-                class="mb-2 me-2 text-nowrap rounded-lg bg-blue-700 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              >
-                <i class="fa-regular fa-pen-to-square fa-lg"></i>
-              </button>
-              <button
-                type="button"
-                class="mb-2 me-2 text-nowrap rounded-lg bg-red-900 px-3 py-2 text-sm font-semibold text-white hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              >
-                <i class="fa-solid fa-trash fa-lg"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+        <div class="flex w-[100%] flex-col gap-8" id="job_section"></div>
       </div>
     </div>
     <!-- side bar ends -->
