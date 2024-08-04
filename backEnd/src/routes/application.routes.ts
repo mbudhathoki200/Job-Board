@@ -27,11 +27,6 @@ router.get(
 );
 
 //get application of recruiter
-router.get(
-  "/application/get",
-  authenticate,
-  authorize("admin"),
-  getApplications
-);
+router.get("/application/get", authenticate, getApplications);
 
 export default router;
