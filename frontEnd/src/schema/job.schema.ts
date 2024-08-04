@@ -5,15 +5,15 @@ export const jobBodySchema = Joi.object({
     "any.required": "Title is required",
     "string.min": "Title must be atleast 3 characters long",
   }),
-  description: Joi.string().min(3).max(600).messages({
+  description: Joi.string().min(3).max(10000).messages({
     "any.required": "description is required",
     "string.min": "Description must be atleast 3 characters long",
-    "string.max": "Description shouldnot exceed 600 characters",
+    "string.max": "Description shouldnot exceed 10000 characters",
   }),
-  requirements: Joi.string().min(3).max(600).messages({
+  requirements: Joi.string().min(3).max(10000).messages({
     "any.required": "requirements is required",
     "string.min": "requirements must be atleast 3 characters long",
-    "string.max": "requirements shouldnot exceed 600 characters",
+    "string.max": "requirements shouldnot exceed 10000 characters",
   }),
   location: Joi.string().min(3).messages({
     "any.required": "location is required",
@@ -46,6 +46,9 @@ export const jobBodySchema = Joi.object({
   }),
   companyId: Joi.string().messages({
     "any.required": "companyId is required",
+  }),
+  experience: Joi.string().min(1).optional().messages({
+    "string.min": "experience should be atleast 1 charactes long",
   }),
   categoryId: Joi.string().messages({
     "any.required": "categoryId is required",
@@ -86,13 +89,13 @@ export const updateJobBodySchema = Joi.object({
   title: Joi.string().min(3).optional().messages({
     "string.min": "Title must be atleast 3 characters long",
   }),
-  description: Joi.string().min(3).max(600).optional().messages({
+  description: Joi.string().min(3).max(10000).optional().messages({
     "string.min": "Description must be atleast 3 characters long",
-    "string.max": "Description shouldnot exceed 600 characters",
+    "string.max": "Description shouldnot exceed 10000 characters",
   }),
-  requirements: Joi.string().min(3).max(600).optional().messages({
+  requirements: Joi.string().min(3).max(10000).optional().messages({
     "string.min": "requirements must be atleast 3 characters long",
-    "string.max": "requirements shouldnot exceed 600 characters",
+    "string.max": "requirements shouldnot exceed 10000 characters",
   }),
   location: Joi.string().min(3).optional().messages({
     "string.min": "requirement must be atleast 3 characters long",
@@ -112,8 +115,8 @@ export const updateJobBodySchema = Joi.object({
   openings: Joi.string().optional().messages({
     "any.required": "openings is required",
   }),
-  experience: Joi.string().min(2).optional().messages({
-    "string.min": "experience should be atleast 2 charactes long",
+  experience: Joi.string().min(1).optional().messages({
+    "string.min": "experience should be atleast 1 charactes long",
   }),
   level: Joi.string().min(2).optional().messages({
     "string.min": "level should be atleast 2 charactes long",

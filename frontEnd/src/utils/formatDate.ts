@@ -7,3 +7,8 @@ export function formatDate(isoDate: string): string {
   };
   return date.toLocaleDateString("en-US", options);
 }
+
+export function formatDateForInput(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toISOString().split("T")[0];
+}

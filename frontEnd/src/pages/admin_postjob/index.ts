@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import axiosInstance from "../../axios";
 import { ICompany } from "../../interfaces/company.interface";
 import Swal from "sweetalert2";
-import { jobBodySchema } from "../../schema/job.schema";
+import { jobBodySchema, updateJobBodySchema } from "../../schema/job.schema";
 import { validateForm } from "../../utils/validator";
 import { createCompanySchema } from "../../schema/company.schema";
 
@@ -146,7 +146,7 @@ async function handleJobSubmit(event: Event) {
     openings: openings.value,
     expiryDate: expiryDate.value,
   };
-  const error = validateForm(formData, jobBodySchema);
+  const error = validateForm(formData, updateJobBodySchema);
   if (error) {
     Swal.fire({
       icon: "error",

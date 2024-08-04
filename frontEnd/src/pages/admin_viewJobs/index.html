@@ -195,6 +195,228 @@
       </div>
       <div class="mb-20 flex w-[75%] flex-col gap-10 overflow-y-auto p-6">
         <div class="flex w-[100%] flex-col gap-8" id="job_section"></div>
+        <div class="hidden" id="modal">
+          <div
+            class="fixed inset-0 z-50 flex w-full items-center justify-center rounded-lg bg-black bg-opacity-35 shadow-2xl transition-all duration-500"
+          >
+            <div
+              class="fixed h-[88%] w-[40%] overflow-y-auto rounded-lg bg-white shadow-lg"
+            >
+              <button
+                class="absolute right-4 top-2 flex size-10 cursor-pointer items-center justify-center text-3xl font-bold"
+                id="btn--close-modal"
+              >
+                &times;
+              </button>
+              <div
+                class="rounded-t-lg border-b-2 bg-white p-6 text-lg font-bold"
+              >
+                Job Details
+              </div>
+              <form class="flex flex-col gap-8" id="job-post-form">
+                <div class="flex flex-col gap-2 rounded-lg bg-white p-6">
+                  <div class="flex flex-col gap-2">
+                    <label class="text-base font-medium text-gray-900"
+                      >Job Title</label
+                    >
+                    <input
+                      type="search"
+                      id="search"
+                      class="block w-full rounded border-2 border-gray-300 bg-white p-2 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="Web Developer"
+                      required
+                    />
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label class="text-base font-medium text-gray-900"
+                      >Job Description</label
+                    >
+                    <textarea
+                      name="description"
+                      id="description"
+                      class="mt-1 w-full rounded-md border-2 border-gray-300 p-2"
+                      placeholder="Write Job Description :"
+                      spellcheck="false"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label class="text-base font-medium text-gray-900"
+                      >Job Requirements</label
+                    >
+                    <textarea
+                      name="requirement"
+                      id="requirement"
+                      class="mt-1 w-full rounded-md border-2 border-gray-300 p-2"
+                      placeholder="Write Job Requirements :"
+                      spellcheck="false"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="flex w-full">
+                    <div class="flex w-1/2 flex-col gap-2">
+                      <label
+                        for="Categories"
+                        class="block text-base font-medium text-gray-900"
+                        >Categories</label
+                      >
+                      <select
+                        id="category"
+                        required
+                        class="block h-[40px] w-3/4 rounded border-2 border-gray-300 bg-white p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                      >
+                        <option value="3">IT & Software</option>
+                        <option value="1">Government</option>
+                        <option value="2">Technology</option>
+                        <option value="4">Accounting / Finanace</option>
+                        <option value="5">Construction</option>
+                        <option value="6">Tele-communications</option>
+                        <option value="7">Design & Multimedia</option>
+                        <option value="8">Human Resource</option>
+                        <option value="9">Engineer</option>
+                        <option value="10">Developer Engineer</option>
+                      </select>
+                    </div>
+                    <div class="flex w-1/2 flex-col gap-2">
+                      <label
+                        for="type"
+                        class="block text-base font-medium text-gray-900"
+                        >Job Type</label
+                      >
+                      <select
+                        id="type"
+                        required
+                        class="block h-[40px] w-3/4 rounded border-2 border-gray-300 bg-white p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                      >
+                        <option value="Full Time">Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                        <option value="Remote">Remote</option>
+                        <option value="WFH">WFH</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label
+                      for=""
+                      class="w-1/2 text-base font-medium text-gray-900"
+                      >Salary</label
+                    >
+                    <div class="flex">
+                      <div class="relative w-1/2">
+                        <div
+                          class="pointer-events-none absolute inset-y-0 start-0 top-0 flex items-center ps-3.5"
+                        >
+                          $
+                        </div>
+                        <input
+                          type="number"
+                          id="min_input"
+                          class="block w-3/4 rounded-md border-2 border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="min"
+                          required
+                        />
+                      </div>
+                      <div class="relative w-1/2">
+                        <div
+                          class="pointer-events-none absolute inset-y-0 start-0 top-0 flex items-center ps-3.5"
+                        >
+                          $
+                        </div>
+                        <input
+                          type="number"
+                          id="max_input"
+                          class="block w-3/4 rounded-md border-2 border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="max"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="flex w-1/2 flex-col gap-2">
+                      <label for="" class="text-base font-medium text-gray-900"
+                        >Experience</label
+                      >
+                      <input
+                        type="number"
+                        id="experience"
+                        class="block w-3/4 rounded-md border-2 border-gray-300 bg-gray-50 p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="Years"
+                        required
+                      />
+                    </div>
+                    <div class="flex w-1/2 flex-col gap-2">
+                      <label for="" class="text-base font-medium text-gray-900"
+                        >Level</label
+                      >
+                      <select
+                        id="level"
+                        required
+                        class="block h-[40px] w-3/4 rounded-md border-2 border-gray-300 bg-white p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                      >
+                        <option value="Entry">Entry</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Mid">Mid</option>
+                        <option value="Senior">Senior</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="flex w-1/2 flex-col gap-2">
+                      <label
+                        for="location"
+                        class="text-base font-medium text-gray-900"
+                        >Location</label
+                      >
+                      <input
+                        type="text"
+                        id="location"
+                        class="block w-3/4 rounded-md border-2 border-gray-300 bg-white p-2 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="Kathmandu"
+                        required
+                      />
+                    </div>
+                    <div class="flex w-1/2 flex-col gap-2">
+                      <label
+                        for="openings"
+                        class="text-base font-medium text-gray-900"
+                        >Openings</label
+                      >
+                      <input
+                        type="number"
+                        id="openings"
+                        class="block w-3/4 rounded-md border-2 border-gray-300 bg-gray-50 p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="Number"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="flex w-1/2 flex-col gap-2">
+                    <label
+                      for="expiry"
+                      class="text-base font-medium text-gray-900"
+                      >Expiry Date</label
+                    >
+                    <input
+                      datepicker
+                      id="datepicker"
+                      type="date"
+                      class="block w-3/4 rounded-md border-2 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="Select date"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="mb-2 me-2 mt-3 w-fit rounded-lg bg-blue-700 px-10 py-4 text-sm font-medium uppercase tracking-wider text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Post Job
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- side bar ends -->
