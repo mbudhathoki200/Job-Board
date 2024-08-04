@@ -39,7 +39,7 @@ export class ApplicationModel extends BaseModel {
         "job_applications.resume_url",
         "job_applications.status",
         "job_applications.applied_date",
-        "users.name",
+        "users.name as userName",
         "users.email",
         "job_listings.title",
         "job_listings.postDate",
