@@ -1,6 +1,8 @@
+import { AxiosError } from "axios";
 import axiosInstance from "../../axios";
 import { calculateDays } from "../../utils/calculateDays";
 import { formatDate } from "../../utils/formatDate";
+import Swal from "sweetalert2";
 
 const applicationSection = document.getElementById(
   "application-section",
@@ -11,7 +13,15 @@ window.onload = async () => {
   try {
     const response = await axiosInstance.get("/application/get");
     renderApplications(response.data.Applications);
-  } catch (error) {}
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
+  }
 };
 
 function renderApplications(applications: any) {

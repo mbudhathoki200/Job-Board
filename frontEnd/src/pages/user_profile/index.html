@@ -375,18 +375,18 @@
     <!-- signup form ends-->
     <!-- profile section starts -->
     <div class="flex max-h-[90vh] flex-col items-center justify-center">
-      <div class="flex w-[100%] gap-12 p-16">
+      <div class="flex w-[100%] gap-8 p-16">
         <div
           class="h-fit w-fit rounded-lg bg-gray-100 p-8 shadow-md hover:shadow-xl"
         >
-          <p class="mb-9 text-2xl font-bold">Personal Details:</p>
+          <p class="mb-9 text-nowrap text-2xl font-bold">Personal Details:</p>
           <div class="flex w-fit flex-col gap-7">
             <div class="flex text-lg font-semibold text-gray-600">
               <div class="flex items-center gap-4">
                 <i class="fa-solid fa-user fa-lg"></i>
                 <p>
                   Name:
-                  <span class="text-lg text-gray-900">Manish Budathoki</span>
+                  <span class="text-lg text-gray-900" id="user-name"></span>
                 </p>
               </div>
             </div>
@@ -395,9 +395,7 @@
                 <i class="fa-regular fa-envelope fa-lg"></i>
                 <p>
                   Email:
-                  <span class="text-lg text-gray-900"
-                    >mbudhathoki200@gmail.com</span
-                  >
+                  <span class="text-lg text-gray-900" id="user-email"></span>
                 </p>
               </div>
             </div>
@@ -406,81 +404,28 @@
                 <i class="fa-solid fa-hat-cowboy fa-lg"></i>
                 <p>
                   Role:
-                  <span class="text-lg text-gray-900">User</span>
+                  <span class="text-lg text-gray-900" id="user-role"></span>
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="h-full w-full rounded-lg p-8 shadow-md hover:shadow-xl">
+        <div class="h-full w-full rounded-lg p-6 shadow-md hover:shadow-xl">
           <p class="mb-9 text-2xl font-bold">Applied Jobs</p>
           <div
-            class="grid grid-cols-5 justify-items-center gap-4 rounded-lg bg-blue-100 p-2 font-semibold text-blue-900"
+            class="grid grid-cols-6 justify-items-center gap-4 rounded-lg bg-blue-100 p-2 font-semibold text-blue-900"
           >
             <div>Company</div>
             <div>Title</div>
             <div>Type</div>
             <div>Location</div>
-            <div>status</div>
+            <div>Applied Date</div>
+            <div>Status</div>
           </div>
-          <div class="mb-2 mt-4 divide-y-2 text-center">
-            <div
-              class="grid grid-cols-5 place-items-center gap-4 rounded-lg p-2 font-semibold text-blue-gray-900"
-            >
-              <div class="flex items-center gap-4">
-                <div>
-                  <img src="/facebook-logo.png" alt="logo" class="size-8" />
-                </div>
-                <div>Leapfrog</div>
-              </div>
-              <div>Title</div>
-              <div>Type</div>
-              <div>Location</div>
-              <div class="rounded-3xl bg-blue-100 px-6 py-2">status</div>
-            </div>
-            <div
-              class="grid grid-cols-5 place-items-center gap-4 rounded-lg p-2 font-semibold text-blue-gray-900"
-            >
-              <div class="flex items-center gap-4">
-                <div>
-                  <img src="/facebook-logo.png" alt="logo" class="size-8" />
-                </div>
-                <div>Company</div>
-              </div>
-              <div>Title</div>
-              <div>Type</div>
-              <div>Location</div>
-              <div class="rounded-3xl bg-blue-100 px-6 py-2">status</div>
-            </div>
-            <div
-              class="grid grid-cols-5 place-items-center gap-4 rounded-lg p-2 font-semibold text-blue-gray-900"
-            >
-              <div class="flex items-center gap-4">
-                <div>
-                  <img src="/facebook-logo.png" alt="logo" class="size-8" />
-                </div>
-                <div>Company</div>
-              </div>
-              <div>Title</div>
-              <div>Type</div>
-              <div>Location</div>
-              <div class="rounded-3xl bg-blue-100 px-6 py-2">status</div>
-            </div>
-            <div
-              class="grid grid-cols-5 place-items-center gap-4 rounded-lg p-2 font-semibold text-blue-gray-900"
-            >
-              <div class="flex items-center gap-4">
-                <div>
-                  <img src="/facebook-logo.png" alt="logo" class="size-8" />
-                </div>
-                <div>Company</div>
-              </div>
-              <div>Title</div>
-              <div>Type</div>
-              <div>Location</div>
-              <div class="rounded-3xl bg-blue-100 px-6 py-2">status</div>
-            </div>
-          </div>
+          <div
+            class="mb-2 mt-4 divide-y-2 text-center"
+            id="application-section"
+          ></div>
         </div>
       </div>
     </div>
