@@ -12,7 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="../../style.css" />
   </head>
   <body>
     <!-- nav bar starts-->
@@ -24,7 +24,7 @@
           href="/"
           class="mr-4 block h-11 cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased"
         >
-          <img src="./jobboard2.jpg" alt="logo" class="h-[100%] w-[100%]" />
+          <img src="/jobboard2.jpg" alt="logo" class="h-[100%] w-[100%]" />
         </a>
         <div class="mr-4 hidden lg:block">
           <ul
@@ -33,7 +33,10 @@
             <li
               class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
             >
-              <a href="#" class="flex items-center font-semibold text-blue-400">
+              <a
+                href="/"
+                class="flex max-w-[90vh] items-center font-normal text-gray-900"
+              >
                 Home
               </a>
             </li>
@@ -41,7 +44,7 @@
               class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
             >
               <a
-                href="./src/pages/jobs_page/index.html"
+                href="../../../src/pages/jobs_page/index.html"
                 class="flex items-center"
               >
                 Jobs
@@ -82,7 +85,7 @@
             <button
               type="button"
               id="user--btn"
-              class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300"
+              class="flex rounded-full bg-gray-800 text-sm ring-4 ring-gray-300 focus:ring-4 focus:ring-gray-300"
             >
               <img src="/user.png" alt="user" class="size-8" />
             </button>
@@ -370,207 +373,123 @@
       </form>
     </div>
     <!-- signup form ends-->
-    <!-- hero section starts -->
-    <div class="flex max-h-[90vh] flex-col items-center justify-center py-80">
-      <div class="cols flex-col items-center justify-center">
-        <div class="text-center text-5xl font-bold">
-          Join us & <span class="text-blue-300">Explore</span>
+    <!-- profile section starts -->
+    <div class="flex max-h-[90vh] flex-col items-center justify-center">
+      <div class="flex w-[100%] gap-16 p-20">
+        <div
+          class="h-fit w-fit rounded-lg bg-gray-100 p-8 shadow-md hover:shadow-xl"
+        >
+          <p class="mb-9 text-2xl font-bold">Personal Details:</p>
+          <div class="flex w-fit flex-col gap-7">
+            <div class="flex text-lg font-semibold text-gray-600">
+              <div class="flex items-center gap-4">
+                <i class="fa-solid fa-user fa-lg"></i>
+                <p>
+                  Name:
+                  <span class="text-lg text-gray-900">Manish Budathoki</span>
+                </p>
+              </div>
+            </div>
+            <div class="flex text-lg font-semibold text-gray-600">
+              <div class="flex items-center gap-4">
+                <i class="fa-regular fa-envelope fa-lg"></i>
+                <p>
+                  Email:
+                  <span class="text-lg text-gray-900"
+                    >mbudhathoki200@gmail.com</span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="flex text-lg font-semibold text-gray-600">
+              <div class="flex items-center gap-4">
+                <i class="fa-solid fa-hat-cowboy fa-lg"></i>
+                <p>
+                  Role:
+                  <span class="text-lg text-gray-900">User</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mt-6 text-center text-5xl font-bold">
-          <span class="text-blue-300">Thousands</span> of Jobs
-        </div>
-      </div>
-      <div
-        class="mx-auto mt-14 w-1/2 max-w-xl text-center text-lg text-gray-400"
-      >
-        Find Jobs, Employment & Career Opportunities. Some of the companies
-        we've helped recruit excellent applicants over the years.
-      </div>
-      <form class="mx-auto mt-14 w-[35rem]" id="search-form">
-        <div class="relative">
+        <div class="h-full w-full rounded-lg p-8 shadow-md hover:shadow-xl">
+          <p class="mb-9 text-2xl font-bold">Applied Jobs</p>
           <div
-            class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
+            class="grid grid-cols-5 justify-items-center gap-4 rounded-lg bg-blue-100 p-2 font-semibold text-blue-900"
           >
-            <i
-              class="fa-brands fa-searchengin fa-xl ps-4"
-              style="color: #3daef5"
-            ></i>
+            <div>Company</div>
+            <div>Title</div>
+            <div>Type</div>
+            <div>Location</div>
+            <div>status</div>
           </div>
-          <input
-            type="search"
-            id="default-search"
-            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-14 text-sm text-gray-900 placeholder:text-lg focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            placeholder="Search Jobs that suits you..."
-            required
-          />
-          <button
-            type="submit"
-            class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          >
-            Search
-          </button>
-        </div>
-      </form>
-      <div class="mt-14 text-center text-lg text-gray-400">
-        <span class="text-gray-900">Popular Searches :</span> Designer,
-        Developer, Web, IOS, PHP Senior Engineer
-      </div>
-    </div>
-    <!-- hero section ends -->
-    <!-- popular section starts -->
-    <div
-      class="flex w-full flex-col items-center justify-center bg-gray-50 py-12"
-      id="categories"
-    >
-      <div class="w-full">
-        <div class="text-center text-3xl font-bold">Popular Categories</div>
-        <div
-          class="mx-auto mt-8 max-w-screen-md text-center text-lg text-gray-400"
-        >
-          Explore top job sectors and in-demand roles. Find opportunities
-          matching your skills and interests. Discover trending careers across
-          industries worldwide.
-        </div>
-      </div>
-      <div class="flex gap-9 p-11">
-        <div
-          class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 bg-white px-3 py-10 shadow hover:shadow-2xl"
-        >
-          <div class="w-30 flex items-center justify-center">
+          <div class="mb-2 mt-4 divide-y-2 text-center">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="grid grid-cols-5 place-items-center gap-4 rounded-lg p-2 font-semibold text-blue-gray-900"
             >
-              <i
-                class="fa-solid fa-laptop-code fa-xl"
-                style="color: #3aa6b9"
-              ></i>
+              <div class="flex items-center gap-4">
+                <div>
+                  <img src="/facebook-logo.png" alt="logo" class="size-8" />
+                </div>
+                <div>Company</div>
+              </div>
+              <div>Title</div>
+              <div>Type</div>
+              <div>Location</div>
+              <div class="rounded-3xl bg-blue-100 px-6 py-2">status</div>
             </div>
-          </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
-            Software <br />Engineer
-          </div>
-        </div>
-        <div
-          class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 bg-white px-3 py-10 shadow hover:shadow-2xl"
-        >
-          <div class="w-30 flex items-center justify-center">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="grid grid-cols-5 place-items-center gap-4 rounded-lg p-2 font-semibold text-blue-gray-900"
             >
-              <i
-                class="fa-solid fa-laptop-code fa-xl"
-                style="color: #3aa6b9"
-              ></i>
+              <div class="flex items-center gap-4">
+                <div>
+                  <img src="/facebook-logo.png" alt="logo" class="size-8" />
+                </div>
+                <div>Company</div>
+              </div>
+              <div>Title</div>
+              <div>Type</div>
+              <div>Location</div>
+              <div class="rounded-3xl bg-blue-100 px-6 py-2">status</div>
             </div>
-          </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
-            Software <br />Engineer
-          </div>
-        </div>
-        <div
-          class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 bg-white px-3 py-10 shadow hover:shadow-2xl"
-        >
-          <div class="w-30 flex items-center justify-center">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="grid grid-cols-5 place-items-center gap-4 rounded-lg p-2 font-semibold text-blue-gray-900"
             >
-              <i
-                class="fa-solid fa-laptop-code fa-xl"
-                style="color: #3aa6b9"
-              ></i>
+              <div class="flex items-center gap-4">
+                <div>
+                  <img src="/facebook-logo.png" alt="logo" class="size-8" />
+                </div>
+                <div>Company</div>
+              </div>
+              <div>Title</div>
+              <div>Type</div>
+              <div>Location</div>
+              <div class="rounded-3xl bg-blue-100 px-6 py-2">status</div>
             </div>
-          </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
-            Software <br />Engineer
-          </div>
-        </div>
-        <div
-          class="flex h-[230px] w-[225px] flex-col gap-10 rounded-lg border border-gray-300 bg-white px-3 py-10 shadow hover:shadow-2xl"
-        >
-          <div class="w-30 flex items-center justify-center">
             <div
-              class="flex size-16 items-center justify-center rounded border border-gray-300 bg-light-blue-50 text-center"
+              class="grid grid-cols-5 place-items-center gap-4 rounded-lg p-2 font-semibold text-blue-gray-900"
             >
-              <i
-                class="fa-solid fa-laptop-code fa-xl"
-                style="color: #3aa6b9"
-              ></i>
+              <div class="flex items-center gap-4">
+                <div>
+                  <img src="/facebook-logo.png" alt="logo" class="size-8" />
+                </div>
+                <div>Company</div>
+              </div>
+              <div>Title</div>
+              <div>Type</div>
+              <div>Location</div>
+              <div class="rounded-3xl bg-blue-100 px-6 py-2">status</div>
             </div>
-          </div>
-          <div class="w-30 text-center text-lg font-medium tracking-widest">
-            Software <br />Engineer
           </div>
         </div>
       </div>
     </div>
-    <!-- popular section ends -->
-    <!-- job section starts -->
-    <div class="p-12">
-      <div class="mb-12 flex flex-col gap-4 text-center">
-        <p class="text-5xl font-bold">Get your dream Job now</p>
-        <p class="text-lg text-gray-400">
-          Search your career opportunity through the available positions.
-        </p>
-      </div>
-      <div
-        class="flex items-center justify-center gap-9"
-        id="popular_jobs"
-      ></div>
-    </div>
-    <!-- job section ends -->
-
-    <!-- footer section  -->
-    <footer class="bg-white shadow dark:bg-gray-900">
-      <div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
-        <div class="m-6 sm:flex sm:items-center sm:justify-between">
-          <a
-            href="/"
-            class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse"
-          >
-            <img src="./jobboard2.jpg" class="h-8" alt="Job Board" />
-            <span
-              class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
-            ></span>
-          </a>
-          <ul
-            class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-100 sm:mb-0"
-          >
-            <li>
-              <a href="/" class="me-4 hover:underline md:me-6">Home</a>
-            </li>
-            <li>
-              <a
-                href="http://localhost:5173/src/pages/jobs_page/index.html"
-                class="me-4 hover:underline md:me-6"
-                >Jobs</a
-              >
-            </li>
-            <li>
-              <a href="#categories" class="me-4 hover:underline md:me-6"
-                >Categories</a
-              >
-            </li>
-            <li>
-              <a href="#" class="hover:underline">Contact</a>
-            </li>
-          </ul>
-        </div>
-        <hr
-          class="my-8 border-gray-100 sm:mx-auto lg:my-10 dark:border-gray-700"
-        />
-        <span class="block text-sm text-gray-100 sm:text-center"
-          >© 2024
-          <a href="https://flowbite.com/" class="hover:underline">JobBoard</a>.
-          All Rights Reserved.</span
-        >
-      </div>
-    </footer>
 
     <div id="app"></div>
     <script src="node_modules/@material-tailwind/html@latest/scripts/dialog.js"></script>
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="./src/common/navbar.ts"></script>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="../../common/navbar.ts"></script>
+    <script type="module" src="index.ts"></script>
   </body>
 </html>

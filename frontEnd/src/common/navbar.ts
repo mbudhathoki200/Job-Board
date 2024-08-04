@@ -3,7 +3,6 @@ import { validateForm } from "../utils/validator";
 import { LoginSchema, RegisterUserSchema } from "../schema/user.schema";
 import Swal from "sweetalert2";
 import axiosInstance from "../axios";
-
 const loginModal = document.getElementById("login_Modal2") as HTMLDivElement;
 const signUpButton = document.getElementById("signup-btn") as HTMLButtonElement;
 const logOutButton = document.getElementById("logout-btn") as HTMLButtonElement;
@@ -15,6 +14,9 @@ const loginErrorMessage = document.getElementById(
 const signUpErrorMessage = document.getElementById(
   "signUperrorMessage",
 ) as HTMLDivElement;
+const userProfileBtn = document.getElementById(
+  "user--btn",
+) as HTMLButtonElement;
 const nonUserElements = document.querySelectorAll("#none_user_element");
 const userElements = document.querySelectorAll("#user_element");
 
@@ -41,7 +43,7 @@ loginForm.addEventListener("submit", (event) => {
     .post("http://localhost:3000/login", formData)
     .then((res) => {
       localStorage.setItem("accessToken", res.data.data.accessToken);
-      vaidateUser();
+      validateUser();
     })
     .catch((error) => {
       loginErrorMessage.innerHTML = error.response.data.message;
@@ -78,7 +80,7 @@ signupForm.addEventListener("submit", (event) => {
   }
 });
 
-async function vaidateUser() {
+async function validateUser() {
   let accessToken = localStorage.getItem("accessToken");
   if (accessToken) {
     try {
@@ -103,5 +105,17 @@ async function vaidateUser() {
 
 logOutButton.addEventListener("click", () => {
   localStorage.clear();
-  location.reload();
+  // location.reload();
+  window.location.href = "/";
 });
+
+userProfileBtn.addEventListener("click", () => {
+  const location = "http://localhost:5173/src/pages/user_profile/index.html";
+  if (window.location.href !== location) {
+    window.location.href = location;
+  }
+});
+
+window.onload = async () => {
+  validateUser();
+};
