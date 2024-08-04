@@ -1,10 +1,10 @@
 import { AxiosError } from "axios";
+import Swal from "sweetalert2";
 import axiosInstance from "../../axios";
 import { ICompany } from "../../interfaces/company.interface";
-import Swal from "sweetalert2";
-import { jobBodySchema, updateJobBodySchema } from "../../schema/job.schema";
-import { validateForm } from "../../utils/validator";
 import { createCompanySchema } from "../../schema/company.schema";
+import { updateJobBodySchema } from "../../schema/job.schema";
+import { validateForm } from "../../utils/validator";
 
 const modal = document.getElementById("modal") as HTMLDivElement;
 const dropdownElement = document.getElementById(

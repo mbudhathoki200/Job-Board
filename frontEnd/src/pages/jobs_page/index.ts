@@ -8,6 +8,9 @@ const jobSection = document.getElementById("job_section") as HTMLDivElement;
 const filterForm = document.getElementById("filter_form") as HTMLFormElement;
 
 window.onload = async () => {
+  let params = new URL(document.location.toString()).searchParams;
+  const searchData = params.get("search");
+
   try {
     const jobDetails = await axiosInstance.get("/job");
     renderJobs(jobDetails.data.data);
@@ -19,6 +22,9 @@ window.onload = async () => {
         text: `${error.response.data.message}`,
       });
     }
+  }
+  if (searchData) {
+    searchJob(searchData);
   }
 };
 
@@ -53,6 +59,22 @@ async function getFilterData(data: IFilter) {
   }
 }
 
+async function searchJob(searchData: string) {
+  try {
+    console.log(searchData);
+    const response = await axiosInstance.get(`/job?title=${searchData}`);
+    console.log(response.data.data);
+    renderJobs(response.data.data);
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
+  }
+}
 function renderJobs(jobs: Array<IJOB>) {
   jobSection.innerHTML = "";
   const singleJob = document.createElement("div");

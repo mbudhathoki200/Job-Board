@@ -8,6 +8,8 @@ const popularJobsSection = document.getElementById(
 const nonUserElements = document.querySelectorAll("#none_user_element");
 const userElements = document.querySelectorAll("#user_element");
 const loginModal = document.getElementById("login_Modal2") as HTMLDivElement;
+const searchForm = document.getElementById("search-form") as HTMLFormElement;
+const searchBar = document.getElementById("default-search") as HTMLInputElement;
 
 window.onload = async () => {
   try {
@@ -109,4 +111,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       loginModal.classList.add("hidden");
     } catch (error) {}
   }
+});
+
+searchForm.addEventListener("submit", (event: Event) => {
+  event.preventDefault();
+  const searchData = searchBar.value;
+  window.location.href = `http://localhost:5173/src/pages/jobs_page/index.html?search=${searchData}`;
+  console.log(searchData);
 });
