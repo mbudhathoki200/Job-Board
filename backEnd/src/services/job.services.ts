@@ -24,7 +24,6 @@ export async function createJob(userId: string, job: IJOB) {
 export async function getJobs(query: GetJobQuery) {
   logger.info("get Jobs");
   const data = await JobModel.JobModel.getJobs(query);
-
   if (data.length == 0) {
     throw new NotFoundError("No Jobs Exists");
   }

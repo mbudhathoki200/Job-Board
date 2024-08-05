@@ -31,6 +31,7 @@ export class JobModel extends BaseModel {
 
   static getJobs(filter: GetJobQuery) {
     const { title, category, location, type, salary } = filter;
+    const today = new Date();
     const job = this.queryBuilder()
       .select(
         "jobListings.id",
@@ -55,6 +56,7 @@ export class JobModel extends BaseModel {
       )
       .table("jobListings")
       .join("company", "jobListings.companyId", "company.id")
+      .where("jobListings.expiryDate", ">=", today)
       .limit(filter.size!)
       .offset((filter.page! - 1) * filter.size!);
 
