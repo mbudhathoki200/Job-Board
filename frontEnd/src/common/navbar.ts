@@ -65,7 +65,7 @@ signupForm.addEventListener("submit", async (event) => {
       loginUser(loginData);
     } catch (error) {
       if (error instanceof AxiosError && error.response) {
-        loginErrorMessage.innerHTML = error.response.data.message;
+        signUpErrorMessage.innerHTML = error.response.data.message;
       }
     }
   }
