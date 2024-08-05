@@ -83,3 +83,45 @@ export async function getApplications(
     next(error);
   }
 }
+export async function getAppliedApplications(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("get Appliations");
+  const { user } = req;
+  const userId = user?.id;
+  console.log(userId);
+  try {
+    const data = await ApplicationService.getAppliedApplications(userId!);
+    return res.status(HttpStatusCodes.OK).send({
+      Applications: data,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function updateApplicationStatus(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("update Application");
+  const userId = req.user?.id!;
+  const { id } = req.params;
+  const { body } = req;
+  try {
+    const data = await ApplicationService.updateApplicationStatus(
+      userId,
+      id,
+      body
+    );
+    res.status(HttpStatusCodes.OK).send({
+      message: "Upated Succesfully",
+      application: data,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

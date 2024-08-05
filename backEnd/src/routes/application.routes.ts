@@ -4,6 +4,8 @@ import { upload } from "../middleware/multer.middleware";
 import {
   applyJob,
   getApplications,
+  getAppliedApplications,
+  updateApplicationStatus,
   validateAppliedJob,
 } from "../controllers/application.controller";
 
@@ -27,6 +29,25 @@ router.get(
 );
 
 //get application of recruiter
-router.get("/application/get", authenticate, getApplications);
+router.get(
+  "/application/get",
+  authenticate,
+  authorize("admin"),
+  getApplications
+);
+
+router.get(
+  "/application/applied",
+  authenticate,
+  authorize("user"),
+  getAppliedApplications
+);
+
+router.put(
+  "/application/update/:id",
+  authenticate,
+  authorize("admin"),
+  updateApplicationStatus
+);
 
 export default router;
