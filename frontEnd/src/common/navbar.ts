@@ -1,8 +1,8 @@
-import axios from "axios";
-import { validateForm } from "../utils/validator";
-import { LoginSchema, RegisterUserSchema } from "../schema/user.schema";
-import Swal from "sweetalert2";
+import { AxiosError } from "axios";
 import axiosInstance from "../axios";
+import { IUser } from "../interfaces/user.interface";
+import { LoginSchema, RegisterUserSchema } from "../schema/user.schema";
+import { validateForm } from "../utils/validator";
 const loginModal = document.getElementById("login_Modal2") as HTMLDivElement;
 const signUpButton = document.getElementById("signup-btn") as HTMLButtonElement;
 const logOutButton = document.getElementById("logout-btn") as HTMLButtonElement;
@@ -39,18 +39,10 @@ loginForm.addEventListener("submit", (event) => {
     loginErrorMessage.innerHTML = error![0].message;
     return;
   }
-  axios
-    .post("http://localhost:3000/login", formData)
-    .then((res) => {
-      localStorage.setItem("accessToken", res.data.data.accessToken);
-      validateUser();
-    })
-    .catch((error) => {
-      loginErrorMessage.innerHTML = error.response.data.message;
-    });
+  loginUser(formData);
 });
 
-signupForm.addEventListener("submit", (event) => {
+signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const target = event.target as HTMLFormElement;
   const formData = {
@@ -63,20 +55,19 @@ signupForm.addEventListener("submit", (event) => {
   if (error) {
     signUpErrorMessage.innerHTML = error![0].message;
   } else {
-    axios
-      .post("http://localhost:3000/signUp", formData)
-      .then(() => {
-        signupForm.classList.add("hidden");
-        Swal.fire({
-          title: "Account created!",
-          icon: "success",
-          timer: 1000,
-          showConfirmButton: false,
-        });
-      })
-      .catch((error) => {
-        signUpErrorMessage.innerHTML = error.response.data.message;
-      });
+    try {
+      await axiosInstance.post("http://localhost:3000/signUp", formData);
+      signupForm.classList.add("hidden");
+      const loginData = {
+        email: formData.email,
+        password: formData.password,
+      };
+      loginUser(loginData);
+    } catch (error) {
+      if (error instanceof AxiosError && error.response) {
+        loginErrorMessage.innerHTML = error.response.data.message;
+      }
+    }
   }
 });
 
@@ -92,10 +83,6 @@ userProfileBtn.addEventListener("click", () => {
     window.location.href = location;
   }
 });
-
-// window.onload = async () => {
-//   validateUser();
-// };
 
 export async function validateUser() {
   console.log("hello");
@@ -130,3 +117,18 @@ export async function validateUser() {
 document.addEventListener("DOMContentLoaded", async () => {
   validateUser();
 });
+
+async function loginUser(data: IUser) {
+  try {
+    const response = await axiosInstance.post(
+      "http://localhost:3000/login",
+      data,
+    );
+    localStorage.setItem("accessToken", response.data.data.accessToken);
+    validateUser();
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      loginErrorMessage.innerHTML = error.response.data.message;
+    }
+  }
+}
