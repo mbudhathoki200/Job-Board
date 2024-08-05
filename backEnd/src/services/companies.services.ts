@@ -39,3 +39,12 @@ export async function getCompanies(userId: string) {
   }
   return data;
 }
+
+export async function getAllCompanies() {
+  logger.info("Get All companies");
+  const data = await CompanyModel.CompanyModel.getAllCompanies();
+  if (data.length == 0) {
+    throw new NotFoundError(`No companies Found`);
+  }
+  return data;
+}

@@ -62,3 +62,17 @@ export async function getCompanies(
     next(error);
   }
 }
+
+export async function getAllCompanies(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  logger.info("get All Companies");
+  try {
+    const data = await CompaniesServices.getAllCompanies();
+    res.status(HttpStatusCodes.OK).send({
+      companies: data,
+    });
+  } catch (error) {}
+}

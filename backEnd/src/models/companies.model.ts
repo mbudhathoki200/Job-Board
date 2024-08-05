@@ -40,4 +40,12 @@ export class CompanyModel extends BaseModel {
 
     return data;
   }
+
+  static getAllCompanies() {
+    const data = this.queryBuilder()
+      .select("id", "name", "description", "logoUrl", "website", "userId")
+      .table("company")
+      .limit(4);
+    return data;
+  }
 }
