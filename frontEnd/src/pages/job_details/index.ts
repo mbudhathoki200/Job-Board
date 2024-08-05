@@ -295,15 +295,6 @@ async function submitApplyForm(formData: FormData) {
   }
 }
 
-// document.addEventListener("DOMContentLoaded", async () => {
-//   let accessToken = localStorage.getItem("accessToken");
-//   if (accessToken) {
-//     try {
-//       validateAppliedJobs();
-//     } catch (error) {}
-//   }
-// });
-
 async function validateAppliedJobs() {
   let params = new URL(document.location.toString()).searchParams;
   const id = params.get("id");

@@ -11,8 +11,7 @@ const applicationCount = document.getElementById("job-count") as HTMLDivElement;
 
 window.onload = async () => {
   try {
-    const response = await axiosInstance.get("/application/get");
-    renderApplications(response.data.Applications);
+    getApplications();
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
       Swal.fire({
@@ -36,15 +35,29 @@ function renderApplications(applications: any) {
     const remainigDays = calculateDays(application.expiryDate);
     const formattedDate = formatDate(application.expiryDate);
     singleJob.innerHTML += /*HTML*/ `<div
-            class="flex justify-center rounded-lg bg-gray-400/20 p-6 shadow-md"
+            class="flex rounded-xl bg-white p-6 shadow-md border-2 border-white"
           >
-            <div class="flex w-[95%] flex-col gap-2">
+            <div class="flex w-fit flex-col gap-2 p-2">
+            <div class="flex text-center justify-between">
               <p
                 class="w-fit rounded-full bg-blue-500 p-2 text-base font-semibold text-white"
               >
-                <span class="text-lg font-semibold">Application Id: </span>
+                <span class="text-base font-medium">Application Id: </span>
                 ${application.id}
               </p>
+              <div class="flex items-center gap-3">
+  <p class="text-md font-semibold">Status:</p>
+  <select
+    class="statusDropdown rounded border p-1"
+    data-application-id="${application.id}"
+  >
+    <option value="submitted" ${application.status === "submitted" ? "selected" : ""}>Submitted</option>
+    <option value="reviewing" ${application.status === "reviewing" ? "selected" : ""}>Reviewing</option>
+    <option value="accepted" ${application.status === "accepted" ? "selected" : ""}>Accepted</option>
+    <option value="rejected" ${application.status === "rejected" ? "selected" : ""}>Rejected</option>
+  </select>
+</div>
+            </div>
               <div class="flex gap-10">
                 <div class="flex flex-col gap-3">
                   <div class="flex items-center gap-2">
@@ -150,6 +163,9 @@ function renderApplications(applications: any) {
   document.querySelectorAll(".viewResumeBtn").forEach((button) => {
     button.addEventListener("click", handleViewBtn);
   });
+  document.querySelectorAll(".statusDropdown").forEach((dropdown) => {
+    dropdown.addEventListener("change", handleStatusChange);
+  });
 }
 
 function handleViewBtn(event: Event) {
@@ -159,5 +175,51 @@ function handleViewBtn(event: Event) {
     window.open(resumeUrl, "_blank");
   } else {
     console.error("Resume URL not found");
+  }
+}
+
+async function handleStatusChange(event: Event) {
+  const dropdown = event.currentTarget as HTMLSelectElement;
+  const applicationId = dropdown.getAttribute("data-application-id");
+  const newStatus = dropdown.value;
+  const updateData = { status: newStatus };
+  try {
+    const response = await axiosInstance.put(
+      `/application/update/${applicationId}`,
+      updateData,
+    );
+    if (response.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Status Updated",
+        text: "Application status has been updated successfully.",
+        timer: 1000,
+        showConfirmButton: false,
+      });
+    }
+    getApplications();
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
+  }
+}
+
+async function getApplications() {
+  try {
+    const response = await axiosInstance.get("/application/get");
+    renderApplications(response.data.Applications);
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
   }
 }

@@ -18,7 +18,7 @@ window.onload = async () => {
 
 async function getApplications() {
   try {
-    const response = await axiosInstance.get("/application/get");
+    const response = await axiosInstance.get("/application/applied");
     renderApplications(response.data.Applications);
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
