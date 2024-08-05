@@ -54,7 +54,8 @@ export class ApplicationModel extends BaseModel {
       .join("job_listings", "job_listings.id", "job_applications.jobId")
       .join("users", "job_applications.userId", "users.id")
       .join("company", "job_listings.companyId", "company.id")
-      .where("company.userId", userId);
+      .where("company.userId", userId)
+      .orderBy("job_applications.appliedDate", "desc");
 
     return data;
   }
@@ -80,6 +81,7 @@ export class ApplicationModel extends BaseModel {
       )
       .table("job_applications")
       .where("job_applications.userId", userId)
+      .orderBy("job_applications.appliedDate", "desc")
       .join("users", "job_applications.userId", "users.id")
       .join("job_listings", "job_listings.id", "job_applications.jobId")
       .join("company", "job_listings.companyId", "company.id");

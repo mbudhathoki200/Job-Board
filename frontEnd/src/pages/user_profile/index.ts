@@ -53,12 +53,35 @@ function renderApplications(applications: any) {
               <div>${application.type}</div>
               <div>${application.location}</div>
               <div>${formattedDate}</div>
-              <div class="rounded-3xl bg-blue-100 px-6 py-2">${application.status}</div>
+              <div class="rounded-3xl  px-6 py-2 application-status">${application.status}</div>
             </div>`;
   });
   applicationSection.appendChild(singleApplication);
+  const applicationStatuses = document.querySelectorAll(
+    ".application-status",
+  ) as NodeListOf<HTMLDivElement>;
+  applicationStatuses.forEach((statusElement) =>
+    handleStatusColor(statusElement),
+  );
 }
 
+function handleStatusColor(applicationStatus: HTMLDivElement) {
+  if (applicationStatus) {
+    const status = applicationStatus.textContent?.trim();
+
+    switch (status) {
+      case "rejected":
+        applicationStatus.classList.add("bg-red-400");
+        break;
+      case "accepted":
+        applicationStatus.classList.add("bg-green-400");
+        break;
+      default:
+        applicationStatus.classList.add("bg-blue-100");
+        break;
+    }
+  }
+}
 async function getUserDetails() {
   try {
     const response = await axiosInstance.get("/me");
