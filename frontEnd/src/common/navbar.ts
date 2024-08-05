@@ -85,24 +85,15 @@ userProfileBtn.addEventListener("click", () => {
 });
 
 export async function validateUser() {
-  console.log("hello");
   let accessToken = localStorage.getItem("accessToken");
   if (accessToken) {
     try {
       const response = await axiosInstance.get("/me");
-      console.log(response.data.data);
       const userData = response.data.data;
       if (userData.roles == "admin") {
         window.location.href =
           "http://localhost:5173/src/pages/admin_dashboard/index.html";
       }
-      // nonUserElements.forEach((el) => {
-      //   el.classList.add("hidden");
-      //   el.classList.remove("flex");
-      // });
-      // userElements.forEach((el) => {
-      //   el.classList.toggle("hidden");
-      // });
       if (nonUserElement && userElement) {
         nonUserElement.classList.add("hidden");
         nonUserElement.classList.remove("flex");
@@ -110,7 +101,13 @@ export async function validateUser() {
         userElement.classList.add("flex");
       }
       loginModal.classList.add("hidden");
-    } catch (error) {}
+    } catch (error) {
+      if (error instanceof AxiosError && error.response) {
+        if (error.response.status == 401) {
+          window.location.href = "/";
+        }
+      }
+    }
   }
 }
 

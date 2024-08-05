@@ -91,11 +91,9 @@ async function getUserDetails() {
     userRoleSection.innerHTML = userDetail.roles;
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `${error.response.data.message}`,
-      });
+      if (error.response.status == 401) {
+        window.location.href = "/";
+      }
     }
   }
 }
