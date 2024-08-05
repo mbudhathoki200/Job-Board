@@ -90,29 +90,6 @@ function renderPopularJobs(jobs: Array<IJOB>) {
   popularJobsSection.appendChild(singleJob);
 }
 
-// document.addEventListener("DOMContentLoaded", async () => {
-//   let accessToken = localStorage.getItem("accessToken");
-//   if (accessToken) {
-//     try {
-//       const response = await axiosInstance.get("/me");
-//       console.log(response.data.data);
-//       const userData = response.data.data;
-//       if (userData.roles == "admin") {
-//         window.location.href =
-//           "http://localhost:5173/src/pages/admin_dashboard/index.html";
-//       }
-//       nonUserElements.forEach((el) => {
-//         el.classList.add("hidden");
-//         el.classList.remove("flex");
-//       });
-//       userElements.forEach((el) => {
-//         el.classList.toggle("hidden");
-//       });
-//       loginModal.classList.add("hidden");
-//     } catch (error) {}
-//   }
-// });
-
 searchForm.addEventListener("submit", (event: Event) => {
   event.preventDefault();
   const searchData = searchBar.value;

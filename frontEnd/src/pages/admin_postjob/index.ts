@@ -47,6 +47,10 @@ const expiryDate = document.getElementById("datepicker") as HTMLInputElement;
 const companyDropdown = document.getElementById(
   "companyDropdown",
 ) as HTMLSelectElement;
+const applicationNumberSection = document.getElementById(
+  "application-number",
+) as HTMLDivElement;
+const applicationCount = localStorage.getItem("applications")!;
 
 modalCloseBtn.addEventListener("click", () => {
   modal.classList.toggle("hidden");
@@ -104,6 +108,7 @@ async function handleCompanySubmitForm(event: Event) {
 }
 
 window.onload = async () => {
+  applicationNumberSection.innerHTML = applicationCount;
   try {
     const response = await axiosInstance.get("/company");
     const companies = response.data.companies;

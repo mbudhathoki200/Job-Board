@@ -7,11 +7,14 @@ import Swal from "sweetalert2";
 const applicationSection = document.getElementById(
   "application-section",
 ) as HTMLDivElement;
-const applicationCount = document.getElementById("job-count") as HTMLDivElement;
-
+const applicationNumberSection = document.getElementById(
+  "application-number",
+) as HTMLDivElement;
+const applicationCount = localStorage.getItem("applications")!;
 window.onload = async () => {
   try {
     getApplications();
+    applicationNumberSection.innerHTML = applicationCount;
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
       Swal.fire({
@@ -24,12 +27,10 @@ window.onload = async () => {
 };
 
 function renderApplications(applications: any) {
-  const count = applications.length;
   applicationSection.innerHTML = " ";
   const singleJob = document.createElement("div");
   singleJob.className = "grid grid-cols-1 gap-[1.5rem]";
   singleJob.innerHTML = " ";
-  applicationCount.innerHTML = count;
 
   applications.forEach((application: any) => {
     const remainigDays = calculateDays(application.expiryDate);

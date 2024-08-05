@@ -30,8 +30,13 @@ const level = document.getElementById("level") as HTMLSelectElement;
 const location = document.getElementById("location") as HTMLInputElement;
 const openings = document.getElementById("openings") as HTMLInputElement;
 const expiryDate = document.getElementById("datepicker") as HTMLInputElement;
+const applicationNumberSection = document.getElementById(
+  "application-number",
+) as HTMLDivElement;
+const applicationCount = localStorage.getItem("applications")!;
 
 window.onload = async () => {
+  applicationNumberSection.innerHTML = applicationCount;
   try {
     const response = await axiosInstance.get("/job/user/job");
     renderJobs(response.data.jobs);
