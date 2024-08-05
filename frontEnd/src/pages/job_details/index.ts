@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import axiosInstance from "../../axios";
 import { IJOB } from "../../interfaces/job.interface";
 import { formatDate } from "../../utils/formatDate";
+import { validateUser } from "../../common/navbar";
 
 const jobDetailsSection = document.getElementById(
   "job_details",
@@ -12,12 +13,14 @@ let fileInput: HTMLInputElement | null = null;
 
 let applyBtn: HTMLButtonElement | null = null;
 
+let accessToken: string | null;
 const modal = document.getElementById("modal") as HTMLDivElement;
 
 window.onload = async () => {
   let params = new URL(document.location.toString()).searchParams;
   const id = params.get("id");
-  let accessToken = localStorage.getItem("accessToken");
+  accessToken = localStorage.getItem("accessToken");
+  validateUser();
   try {
     const response = await axiosInstance.get(`/job/${id}`);
     renderJobPage(response.data.job);
@@ -142,7 +145,7 @@ function renderJobPage(data: IJOB) {
                 </div>
                 <div class="flex flex-col gap-2">
                   <p class="text-xl font-medium">Experience:</p>
-                  <p class="text-lg text-blue-600">${data.experience}</p>
+                  <p class="text-lg text-blue-600">${data.experience} Years</p>
                 </div>
               </div>
               <div class="flex items-center gap-5">
@@ -240,7 +243,15 @@ function renderJobPage(data: IJOB) {
   applyForm.addEventListener("submit", handleApplyJob);
 
   applyBtn.addEventListener("click", () => {
-    modal.classList.toggle("hidden");
+    if (accessToken) {
+      modal.classList.toggle("hidden");
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please log in to apply",
+      });
+    }
   });
   const modalCloseBtn = document.getElementById(
     "btn--close-modal",

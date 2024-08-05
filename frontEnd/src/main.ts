@@ -5,9 +5,9 @@ import { calculateDays } from "./utils/calculateDays";
 const popularJobsSection = document.getElementById(
   "popular_jobs",
 ) as HTMLDivElement;
-const nonUserElements = document.querySelectorAll("#none_user_element");
-const userElements = document.querySelectorAll("#user_element");
-const loginModal = document.getElementById("login_Modal2") as HTMLDivElement;
+// const nonUserElements = document.querySelectorAll("#none_user_element");
+// const userElements = document.querySelectorAll("#user_element");
+// const loginModal = document.getElementById("login_Modal2") as HTMLDivElement;
 const searchForm = document.getElementById("search-form") as HTMLFormElement;
 const searchBar = document.getElementById("default-search") as HTMLInputElement;
 
@@ -90,32 +90,31 @@ function renderPopularJobs(jobs: Array<IJOB>) {
   popularJobsSection.appendChild(singleJob);
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-  let accessToken = localStorage.getItem("accessToken");
-  if (accessToken) {
-    try {
-      const response = await axiosInstance.get("/me");
-      console.log(response.data.data);
-      const userData = response.data.data;
-      if (userData.roles == "admin") {
-        window.location.href =
-          "http://localhost:5173/src/pages/admin_dashboard/index.html";
-      }
-      nonUserElements.forEach((el) => {
-        el.classList.add("hidden");
-        el.classList.remove("flex");
-      });
-      userElements.forEach((el) => {
-        el.classList.toggle("hidden");
-      });
-      loginModal.classList.add("hidden");
-    } catch (error) {}
-  }
-});
+// document.addEventListener("DOMContentLoaded", async () => {
+//   let accessToken = localStorage.getItem("accessToken");
+//   if (accessToken) {
+//     try {
+//       const response = await axiosInstance.get("/me");
+//       console.log(response.data.data);
+//       const userData = response.data.data;
+//       if (userData.roles == "admin") {
+//         window.location.href =
+//           "http://localhost:5173/src/pages/admin_dashboard/index.html";
+//       }
+//       nonUserElements.forEach((el) => {
+//         el.classList.add("hidden");
+//         el.classList.remove("flex");
+//       });
+//       userElements.forEach((el) => {
+//         el.classList.toggle("hidden");
+//       });
+//       loginModal.classList.add("hidden");
+//     } catch (error) {}
+//   }
+// });
 
 searchForm.addEventListener("submit", (event: Event) => {
   event.preventDefault();
   const searchData = searchBar.value;
   window.location.href = `http://localhost:5173/src/pages/jobs_page/index.html?search=${searchData}`;
-  console.log(searchData);
 });

@@ -33,20 +33,30 @@
             <li
               class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
             >
-              <a href="#" class="flex items-center"> Home </a>
+              <a
+                href="/"
+                class="flex items-center text-blue-gray-900 hover:text-blue-700"
+              >
+                Home
+              </a>
             </li>
             <li
-              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased hover:text-blue-700"
             >
-              <a href="#" class="flex items-center"> Jobs </a>
+              <a
+                href="../../../src/pages/jobs_page/index.html"
+                class="flex items-center"
+              >
+                Jobs
+              </a>
             </li>
             <li
-              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased hover:text-blue-700"
             >
-              <a href="#" class="flex items-center"> Categories </a>
+              <a href="#categories" class="flex items-center"> Categories </a>
             </li>
             <li
-              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased"
+              class="block p-1 font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased hover:text-blue-700"
             >
               <a href="#" class="flex items-center"> Contact </a>
             </li>
@@ -56,12 +66,13 @@
           <button
             class="select-none rounded-lg px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
             type="button"
+            data-dialog-target="login"
             id="login_button"
           >
             <span>Log In</span>
           </button>
           <button
-            class="mx-4 select-none rounded-lg bg-gray-900 px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            class="mx-4 select-none rounded-lg bg-blue-700 px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"
             data-dialog-target="sign-in-dialog"
             id="signup-btn"
@@ -69,14 +80,23 @@
             Sign up
           </button>
         </div>
-        <div id="user_element" class="hidden">
-          <button
-            class="mx-4 select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
-            type="button"
-            id="logout-btn"
-          >
-            <span>LOG OUT</span>
-          </button>
+        <div id="user_element" class="hidden items-center gap-2">
+          <div class="flex gap-3">
+            <button
+              type="button"
+              id="user--btn"
+              class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300"
+            >
+              <img src="/user.png" alt="user" class="size-8" />
+            </button>
+            <button
+              class="mx-4 select-none rounded-lg bg-blue-700 px-4 py-2 text-center align-middle font-sans text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+              type="button"
+              id="logout-btn"
+            >
+              <span>LOG OUT</span>
+            </button>
+          </div>
         </div>
 
         <button
@@ -104,6 +124,255 @@
       </div>
     </nav>
     <!-- nav bar ends-->
+    <!-- login form starts -->
+    <div id="login_Modal2" class="">
+      <form id="login_form">
+        <div
+          data-dialog-backdrop="login"
+          data-dialog-backdrop-close="true"
+          class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+        >
+          <div
+            data-dialog="login"
+            class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+          >
+            <div class="flex flex-col gap-4 p-6">
+              <h4
+                class="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
+              >
+                Log In
+              </h4>
+              <p
+                class="mb-3 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased"
+              >
+                Enter your email and password to Log In.
+              </p>
+              <h6
+                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+              >
+                Your Email
+              </h6>
+              <div class="relative h-11 w-full min-w-[200px]">
+                <input
+                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  placeholder=" "
+                  id="email"
+                />
+                <label
+                  class="before:content[' '] after:content[' '] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:border-blue-gray-200 before:transition-all after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:!border-gray-900 peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                >
+                  Email
+                </label>
+              </div>
+              <h6
+                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+              >
+                Your Password
+              </h6>
+              <div class="relative h-11 w-full min-w-[200px]">
+                <input
+                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  placeholder=" "
+                  type="password"
+                  id="password"
+                  autocomplete=""
+                />
+                <label
+                  class="before:content[' '] after:content[' '] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:border-blue-gray-200 before:transition-all after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:!border-gray-900 peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                >
+                  Password
+                </label>
+              </div>
+              <div class="-ml-2.5 -mt-3">
+                <div class="inline-flex items-center">
+                  <label
+                    class="relative flex cursor-pointer items-center rounded-full p-3"
+                    htmlFor="remember"
+                  >
+                    <input
+                      type="checkbox"
+                      class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                      id="remember"
+                    />
+                    <span
+                      class="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-3.5 w-3.5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        stroke="currentColor"
+                        stroke-width="1"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </span>
+                  </label>
+                  <label
+                    class="mt-px cursor-pointer select-none font-light text-gray-700"
+                    htmlFor="remember"
+                  >
+                    Remember Me
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              id="errorMessage"
+              class="mx-auto -mt-4 mb-3 flex w-full max-w-[24rem] items-center justify-center text-red-900"
+            ></div>
+            <div class="p-6 pt-0">
+              <button
+                class="block w-full select-none rounded-lg bg-blue-700 px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="submit"
+                id="login_submit_button"
+              >
+                Log In
+              </button>
+              <p
+                class="mt-4 flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased"
+              >
+                Don&apos;t have an account?
+                <a
+                  href="#signup"
+                  class="ml-1 block font-sans text-sm font-bold leading-normal text-blue-gray-900 antialiased"
+                >
+                  Sign up
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- login form ends-->
+    <!-- signup form starts-->
+    <div id="signup_Form" class="hidden">
+      <form>
+        <div
+          data-dialog-backdrop="sign-in-dialog"
+          data-dialog-backdrop-close="true"
+          class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+        >
+          <div
+            data-dialog="sign-in-dialog"
+            class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+          >
+            <div class="flex flex-col gap-4 p-6">
+              <h4
+                class="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
+              >
+                Sign Up
+              </h4>
+              <p
+                class="mb-3 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased"
+              >
+                Enter your details to Sign Up.
+              </p>
+              <h6
+                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+              >
+                Your Name
+              </h6>
+              <div class="relative h-11 w-full min-w-[200px]">
+                <input
+                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  placeholder=" "
+                  type="text"
+                  autocomplete="off"
+                  id="userName"
+                />
+                <label
+                  class="before:content[' '] after:content[' '] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:border-blue-gray-200 before:transition-all after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:!border-gray-900 peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                >
+                  Name
+                </label>
+              </div>
+              <h6
+                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+              >
+                Your Email
+              </h6>
+              <div class="relative h-11 w-full min-w-[200px]">
+                <input
+                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  placeholder=" "
+                  type="email"
+                  id="userEmail"
+                />
+                <label
+                  class="before:content[' '] after:content[' '] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:border-blue-gray-200 before:transition-all after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:!border-gray-900 peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                >
+                  Email
+                </label>
+              </div>
+              <h6
+                class="-mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+              >
+                Your Password
+              </h6>
+              <div class="relative h-11 w-full min-w-[200px]">
+                <input
+                  class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  placeholder=" "
+                  type="password"
+                  id="userPassword"
+                  autocomplete="off"
+                />
+                <label
+                  class="before:content[' '] after:content[' '] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mr-1 before:mt-[6.5px] before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-l before:border-t before:border-blue-gray-200 before:transition-all after:pointer-events-none after:ml-1 after:mt-[6.5px] after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-r after:border-t after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-l-2 peer-focus:before:border-t-2 peer-focus:before:!border-gray-900 peer-focus:after:border-r-2 peer-focus:after:border-t-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                >
+                  Password
+                </label>
+              </div>
+              <div class="relative h-11 w-full min-w-[200px]">
+                <h6
+                  class="mb-2 block font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased"
+                >
+                  Your Role
+                </h6>
+                <select
+                  class="peer mb-4 h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  id="roles"
+                >
+                  <option value="user">User</option>
+                  <option value="admin">Recruiter</option>
+                </select>
+              </div>
+            </div>
+            <div
+              id="signUperrorMessage"
+              class="mx-auto mt-8 flex w-full max-w-[24rem] items-center justify-center text-red-900"
+            ></div>
+            <div class="mt-7 p-6 pt-0">
+              <button
+                class="block w-full select-none rounded-lg bg-blue-700 px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="submit"
+              >
+                Sign Up
+              </button>
+              <p
+                class="mt-4 flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased"
+              >
+                Already have an account?
+                <a
+                  href="#signup"
+                  class="ml-1 block font-sans text-sm font-bold leading-normal text-blue-gray-900 antialiased"
+                >
+                  Log in
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- signup form ends-->
     <!-- job details section starts -->
     <div
       class="flex h-max justify-center bg-gray-200 p-10"
@@ -112,10 +381,10 @@
     <div class="hidden" id="modal"></div>
 
     <!-- job details section ends -->
-
     <script src="node_modules/@material-tailwind/html@latest/scripts/dialog.js"></script>
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../../../src/common/navbar.ts"></script>
     <script type="module" src="./index.ts"></script>
   </body>
 </html>

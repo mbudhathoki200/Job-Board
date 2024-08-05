@@ -17,8 +17,8 @@ const signUpErrorMessage = document.getElementById(
 const userProfileBtn = document.getElementById(
   "user--btn",
 ) as HTMLButtonElement;
-const nonUserElements = document.querySelectorAll("#none_user_element");
-const userElements = document.querySelectorAll("#user_element");
+const nonUserElement = document.getElementById("none_user_element");
+const userElement = document.getElementById("user_element");
 
 signUpButton.addEventListener("click", () => {
   signupForm.classList.remove("hidden");
@@ -80,29 +80,6 @@ signupForm.addEventListener("submit", (event) => {
   }
 });
 
-async function validateUser() {
-  let accessToken = localStorage.getItem("accessToken");
-  if (accessToken) {
-    try {
-      const response = await axiosInstance.get("/me");
-      console.log(response.data.data);
-      const userData = response.data.data;
-      if (userData.roles == "admin") {
-        window.location.href =
-          "http://localhost:5173/src/pages/admin_dashboard/index.html";
-      }
-      nonUserElements.forEach((el) => {
-        el.classList.add("hidden");
-        el.classList.remove("flex");
-      });
-      userElements.forEach((el) => {
-        el.classList.toggle("hidden");
-      });
-      loginModal.classList.add("hidden");
-    } catch (error) {}
-  }
-}
-
 logOutButton.addEventListener("click", () => {
   localStorage.clear();
   // location.reload();
@@ -116,6 +93,40 @@ userProfileBtn.addEventListener("click", () => {
   }
 });
 
-window.onload = async () => {
+// window.onload = async () => {
+//   validateUser();
+// };
+
+export async function validateUser() {
+  console.log("hello");
+  let accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    try {
+      const response = await axiosInstance.get("/me");
+      console.log(response.data.data);
+      const userData = response.data.data;
+      if (userData.roles == "admin") {
+        window.location.href =
+          "http://localhost:5173/src/pages/admin_dashboard/index.html";
+      }
+      // nonUserElements.forEach((el) => {
+      //   el.classList.add("hidden");
+      //   el.classList.remove("flex");
+      // });
+      // userElements.forEach((el) => {
+      //   el.classList.toggle("hidden");
+      // });
+      if (nonUserElement && userElement) {
+        nonUserElement.classList.add("hidden");
+        nonUserElement.classList.remove("flex");
+        userElement.classList.remove("hidden");
+        userElement.classList.add("flex");
+      }
+      loginModal.classList.add("hidden");
+    } catch (error) {}
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
   validateUser();
-};
+});
