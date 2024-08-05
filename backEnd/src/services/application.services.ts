@@ -113,3 +113,8 @@ export async function updateApplicationStatus(
     updatedApplication
   );
 }
+
+export async function deleteApplication(jobId: string) {
+  logger.info("delete Application");
+  ApplicationModel.ApplicationModel.deleteApplication(jobId);
+}

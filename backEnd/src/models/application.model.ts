@@ -118,4 +118,8 @@ export class ApplicationModel extends BaseModel {
 
     return updatedJob;
   }
+
+  static async deleteApplication(jobId: string) {
+    await this.queryBuilder().table("job_applications").del().where({ jobId });
+  }
 }

@@ -3,6 +3,7 @@ import { UnauthenticatedError } from "../error/UnauthenticatedError";
 import { GetJobQuery, IJOB } from "../interfaces/job.interface";
 import * as JobModel from "../models/job.model";
 import loggerWithaNameSpace from "../utils/logger";
+import { deleteApplication } from "./application.services";
 import { getCategoryById } from "./categories.services";
 import { getCompanyById } from "./companies.services";
 
@@ -76,7 +77,7 @@ export async function deleteJob(jobId: string, userId: string) {
   if (data.createdBy !== userId) {
     throw new UnauthenticatedError("Forbidden!!!");
   }
-
+  deleteApplication(jobId);
   JobModel.JobModel.deleteJob(jobId);
 }
 

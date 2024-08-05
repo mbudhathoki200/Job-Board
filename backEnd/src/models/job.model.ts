@@ -181,6 +181,7 @@ export class JobModel extends BaseModel {
   }
 
   static getUsersJobs(userId: string) {
+    const today = new Date();
     const data = this.queryBuilder()
       .select(
         "jobListings.id",
@@ -205,7 +206,8 @@ export class JobModel extends BaseModel {
       )
       .table("job_listings")
       .join("company", "jobListings.companyId", "company.id")
-      .where({ "job_listings.createdBy": userId });
+      .where({ "job_listings.createdBy": userId })
+      .where("jobListings.expiryDate", ">=", today);
 
     return data;
   }
