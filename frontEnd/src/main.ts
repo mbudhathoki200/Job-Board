@@ -1,9 +1,15 @@
+import { AxiosError } from "axios";
 import axiosInstance from "./axios";
+import { ICompany } from "./interfaces/company.interface";
 import { IJOB } from "./interfaces/job.interface";
 import { calculateDays } from "./utils/calculateDays";
+import Swal from "sweetalert2";
 
 const popularJobsSection = document.getElementById(
   "popular_jobs",
+) as HTMLDivElement;
+const companySection = document.getElementById(
+  "company-section",
 ) as HTMLDivElement;
 // const nonUserElements = document.querySelectorAll("#none_user_element");
 // const userElements = document.querySelectorAll("#user_element");
@@ -13,12 +19,87 @@ const searchBar = document.getElementById("default-search") as HTMLInputElement;
 
 window.onload = async () => {
   try {
+    fetchJobs();
+    fetchCompanies();
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
+  }
+};
+
+async function fetchJobs() {
+  try {
     const jobDetails = await axiosInstance.get("/job?page=1&size=3");
     renderPopularJobs(jobDetails.data.data);
   } catch (error) {
-    console.log(error);
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
   }
-};
+}
+
+async function fetchCompanies() {
+  try {
+    const response = await axiosInstance.get("/company/get/companies");
+    renderCompanies(response.data.companies);
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.message}`,
+      });
+    }
+  }
+}
+
+function renderCompanies(companies: Array<ICompany>) {
+  console.log(companies);
+  const singleCompany = document.createElement("div");
+  singleCompany.innerHTML = "";
+  singleCompany.className = "grid grid-cols-2 gap-9";
+
+  companies.forEach((company) => {
+    singleCompany.innerHTML += `<div
+          class="flex w-[350px] items-center justify-between gap-5 rounded-lg bg-white p-5 shadow transition-all duration-500 hover:shadow-2xl"
+        >
+          <div class="flex items-center gap-2">
+            <div
+              class="flex size-20 items-center justify-center rounded-md bg-white shadow"
+            >
+              <img
+                src=${company.logoUrl}
+                alt="company_logo"
+                class="size-12"
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <p
+                class="ms-3 min-w-[190px] text-nowrap text-lg font-semibold hover:text-blue-600"
+              >
+                ${company.name}
+              </p>
+              <div
+                class="ms-3 flex items-center gap-2 text-gray-500"
+              >
+                <i class="fa-solid fa-earth-americas fa-lg mt-1"></i>
+                <p class="text-nowrap">${company.website}</p>
+              </div>
+            </div>
+          </div>
+        </div>`;
+  });
+  companySection.appendChild(singleCompany);
+}
 
 function renderPopularJobs(jobs: Array<IJOB>) {
   const singleJob = document.createElement("div");
