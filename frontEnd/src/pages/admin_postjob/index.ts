@@ -50,6 +50,10 @@ const companyDropdown = document.getElementById(
 const applicationNumberSection = document.getElementById(
   "application-number",
 ) as HTMLDivElement;
+const avatarSpinner = document.getElementById("avatar-spinner") as HTMLElement;
+const companyRegisterBtn = document.getElementById(
+  "btn--company-register",
+) as HTMLButtonElement;
 const applicationCount = localStorage.getItem("applications")!;
 
 modalCloseBtn.addEventListener("click", () => {
@@ -87,6 +91,8 @@ async function handleCompanySubmitForm(event: Event) {
   }
 
   try {
+    companyRegisterBtn.disabled = true;
+    avatarSpinner.classList.toggle("hidden");
     const response = await axiosInstance.post("/company/add", formData);
     const newCompany = response.data.company;
     console.log(newCompany);
@@ -102,7 +108,8 @@ async function handleCompanySubmitForm(event: Event) {
     });
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
-      console.log(error.response);
+      companyRegisterBtn.disabled = false;
+      avatarSpinner.classList.toggle("hidden");
     }
   }
 }
