@@ -299,15 +299,33 @@ async function submitApplyForm(formData: FormData) {
       },
     });
 
-    let recipientEmail = await getOwnerDetails(id!);
-    let userName = await getUserDetails();
+    let ownerDetails = await getOwnerDetails(id!);
+    let userDetails = await getUserDetails();
 
     const templateParams = {
-      to_email: recipientEmail,
-      from_name: userName,
-      message: `${userName} Applied To your Job`,
-    };
+      to_email: ownerDetails?.recipientEmail,
+      from_name: userDetails?.userName,
+      job_title: ownerDetails?.jobTitle,
+      company_name: ownerDetails?.companyName,
+      application_date: new Date().toLocaleDateString(),
+      applicant_name: userDetails?.userName,
+      applicant_email: userDetails?.userEmail,
+      message: `Dear Recruiter,
 
+    A new application has been submitted for the ${ownerDetails?.jobTitle} position at ${ownerDetails?.companyName}.
+
+    Applicant Details:
+    Name: ${userDetails?.userName}
+    Email: ${userDetails?.userEmail}
+    Date Applied: ${new Date().toLocaleDateString()}
+
+    You can review the full application by loggin in your dashboard
+
+    Please process this application at your earliest convenience.
+
+    Best regards,
+    Your Recruitment Team`,
+    };
     sendEmail(templateParams);
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
@@ -360,10 +378,16 @@ function sendEmail(templateParams: any) {
 async function getOwnerDetails(id: string) {
   try {
     const response = await axiosInstance.get(`/job/${id}`);
+    const jobTitle = response.data.job.title;
+    const companyName = response.data.job.companyName;
     const userId = response.data.job.createdBy;
     const userResponse = await axiosInstance.get(`/${userId}`);
     const recipientEmail = userResponse.data.data.email;
-    return recipientEmail;
+    return {
+      recipientEmail: recipientEmail,
+      jobTitle: jobTitle,
+      companyName: companyName,
+    };
   } catch (error) {
     console.log(error);
   }
@@ -372,7 +396,12 @@ async function getOwnerDetails(id: string) {
 async function getUserDetails() {
   try {
     const response = await axiosInstance.get("/me");
-    return response.data.data.name;
+    const userName = response.data.data.name;
+    const userEmail = response.data.data.email;
+    return {
+      userName: userName,
+      userEmail: userEmail,
+    };
   } catch (error) {
     console.error(error);
   }
