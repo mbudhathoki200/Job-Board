@@ -16,6 +16,7 @@ let fileInput: HTMLInputElement | null = null;
 let applyBtn: HTMLButtonElement | null = null;
 
 let accessToken: string | null;
+
 const modal = document.getElementById("modal") as HTMLDivElement;
 
 window.onload = async () => {
@@ -337,6 +338,7 @@ async function submitApplyForm(formData: FormData) {
     }
   }
 }
+
 function sendEmail(templateParams: any) {
   try {
     emailjs

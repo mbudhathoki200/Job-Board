@@ -3,6 +3,7 @@ import axiosInstance from "../axios";
 import { IUser } from "../interfaces/user.interface";
 import { LoginSchema, RegisterUserSchema } from "../schema/user.schema";
 import { validateForm } from "../utils/validator";
+import Swal from "sweetalert2";
 const loginModal = document.getElementById("login_Modal2") as HTMLDivElement;
 const signUpButton = document.getElementById("signup-btn") as HTMLButtonElement;
 const logOutButton = document.getElementById("logout-btn") as HTMLButtonElement;
@@ -126,6 +127,21 @@ async function loginUser(data: IUser) {
     );
     localStorage.setItem("accessToken", response.data.data.accessToken);
     validateUser();
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Logged in successfully",
+    });
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
       loginErrorMessage.innerHTML = error.response.data.message;
