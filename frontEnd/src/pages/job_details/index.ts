@@ -4,6 +4,8 @@ import axiosInstance from "../../axios";
 import { IJOB } from "../../interfaces/job.interface";
 import { formatDate } from "../../utils/formatDate";
 import { validateUser } from "../../common/navbar";
+import emailjs from "@emailjs/browser";
+import { config } from "../../config";
 
 const jobDetailsSection = document.getElementById(
   "job_details",
@@ -289,12 +291,24 @@ async function handleApplyJob(event: SubmitEvent) {
 async function submitApplyForm(formData: FormData) {
   let params = new URL(document.location.toString()).searchParams;
   const id = params.get("id");
+  console.log(id);
   try {
     await axiosInstance.post(`/apply/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
+
+    let recipientEmail = await getOwnerDetails(id!);
+    let userName = await getUserDetails();
+
+    const templateParams = {
+      to_email: recipientEmail,
+      from_name: userName,
+      message: `${userName} Applied To your Job`,
+    };
+
+    sendEmail(templateParams);
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
       Swal.fire({
@@ -303,6 +317,64 @@ async function submitApplyForm(formData: FormData) {
         text: `${error.response.data.message}`,
       });
     }
+  }
+}
+function sendEmail(templateParams: any) {
+  try {
+    emailjs
+      .send(
+        config.EMAIL_SERVICE_ID,
+        config.EMAIL_TEMPLATE_ID,
+        templateParams,
+        config.EMAIL_USER_ID,
+      )
+      .then(
+        () => {
+          Swal.fire({
+            title: "Notified User",
+            text: `Email send Successfully`,
+            icon: "success",
+            timer: 2000,
+          });
+        },
+        () => {
+          Swal.fire({
+            title: "Error Sending Mail",
+            text: "There was a problem sending the email. Please try again later.",
+            icon: "error",
+            timer: 2000,
+          });
+        },
+      );
+  } catch (error) {
+    console.log(error);
+    Swal.fire({
+      title: "Error Sending Mail",
+      text: "User not found or an error occurred.",
+      icon: "error",
+      timer: 2000,
+    });
+  }
+}
+
+async function getOwnerDetails(id: string) {
+  try {
+    const response = await axiosInstance.get(`/job/${id}`);
+    const userId = response.data.job.createdBy;
+    const userResponse = await axiosInstance.get(`/${userId}`);
+    const recipientEmail = userResponse.data.data.email;
+    return recipientEmail;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getUserDetails() {
+  try {
+    const response = await axiosInstance.get("/me");
+    return response.data.data.name;
+  } catch (error) {
+    console.error(error);
   }
 }
 
